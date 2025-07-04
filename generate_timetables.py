@@ -196,10 +196,14 @@ def generate_timetables():
                         if not activity_found_for_timeslot and re.search(r'\b' + re.escape(student) + r'\b', activity):
                             if activity.strip() == student:
                                 teacher = teachers[i]
-                                desc = f"Class with {teacher}" if teacher else f"Practice ({music_instrument} practice room)"
+                                desc = f"Private lesson with {teacher}" if teacher else f"Practice ({music_instrument} practice room)"
                                 student_schedule.append((time, desc))
                             else:
-                                student_schedule.append((time, activity))
+                                # Remove student's own ID from the activity description, as the timetable is already individualized.
+                                cleaned_activity = re.sub(r'\b' + re.escape(student) + r'\b', '', activity).strip()
+                                if cleaned_activity.lower() == 'practice':
+                                    cleaned_activity = f"Practice ({music_instrument} practice room)"
+                                student_schedule.append((time, cleaned_activity))
                             activity_found_for_timeslot = True
 
                         # Priority 2: Complex group match
@@ -216,20 +220,23 @@ def generate_timetables():
                                 else:
                                     activity_name_parts.append(part)
                             
-                            activity_name = ' '.join(activity_name_parts)
+                            activity_name = ' '.join(activity_name_parts).strip()
                             involved_groups = {f"Group {num}" for num in group_numbers}
 
                             student_groups = student_to_groups.get(student, set())
 
                             if not student_groups.isdisjoint(involved_groups):
-                                student_schedule.append((time, f"{activity_name} (Group)"))
+                                if 'acting class' in activity_name.lower():
+                                    student_schedule.append((time, "Acting class"))
+                                else:
+                                    student_schedule.append((time, f"{activity_name} (Group)"))
                                 activity_found_for_timeslot = True
 
                         # Priority 3: Simple group match (e.g., "Group 1")
                         if not activity_found_for_timeslot and activity.lower().startswith('group'):
                             student_groups = student_to_groups.get(student, set())
                             if activity in student_groups:
-                                student_schedule.append((time, activity))
+                                student_schedule.append((time, "Ensemble"))
                                 activity_found_for_timeslot = True
                 
                 # Fallback for common activities or Free Time
