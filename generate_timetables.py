@@ -95,13 +95,13 @@ def generate_timetables():
     input_filename = "flute-time-table.xlsx"
     
     # Extract instrument name, e.g., 'cello' from 'cello-time-table.xlsx'
-    music_instrument = input_filename.replace('-time-table.xlsx', '')
+    music_instrument = input_filename.replace('-time-table.xlsx', '').capitalize()
     
     try:
         # Load the workbook once to process all sheets.
         # data_only=True ensures we get cell values instead of formulas.
         workbook = load_workbook(input_filename, data_only=True)
-        print(f"Processing timetable for {music_instrument.capitalize()}...")
+        print(f"Processing timetable for {music_instrument}...")
     except FileNotFoundError:
         # This case is less likely now but good to keep as a safeguard
         print(f"Error: {input_filename} not found. Make sure the file is in the same directory.")
