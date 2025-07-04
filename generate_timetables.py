@@ -175,6 +175,15 @@ def generate_timetables():
                 time_val = row[0]
                 time = time_val.strftime('%H:%M') if isinstance(time_val, datetime.time) else str(time_val).strip()
 
+                # For Day 1 to Day 5, students finish at 17:00, so no activities are scheduled from 17:00 onwards.
+                if day_index < 5:  # Day 1 to 5
+                    try:
+                        # We only compare times that are in the HH:MM format
+                        if datetime.datetime.strptime(time, '%H:%M').time() >= datetime.time(17, 0):
+                            continue  # Skip this timeslot
+                    except ValueError:
+                        pass  # Not a time in HH:MM format, so we don't apply the filter
+
                 activities = [str(act).strip() for act in row[1:]]
                 activity_found_for_timeslot = False
 
@@ -241,13 +250,23 @@ def generate_timetables():
                 
                 # Fallback for common activities or Free Time
                 if not activity_found_for_timeslot:
-                    common_activity_found = False
-                    for common_activity in common_activities:
-                        if common_activity in activities:
-                            student_schedule.append((time, common_activity))
-                            common_activity_found = True
-                            break
-                    if not common_activity_found:
+                    # Check for any common activity for this timeslot.
+                    # Master Class is checked first, then the predefined list.
+                    activity_to_add = None
+                    for activity in activities:
+                        if activity.startswith("Master class with"):
+                            activity_to_add = activity
+                            break  # Found master class, stop searching this row
+                    
+                    if not activity_to_add:
+                        for common_activity in common_activities:
+                            if common_activity in activities:
+                                activity_to_add = common_activity
+                                break  # Found a common activity
+    
+                    if activity_to_add:
+                        student_schedule.append((time, activity_to_add))
+                    else:
                         student_schedule.append((time, "Free Time"))
 
             daily_schedules[sheet_name] = student_schedule
