@@ -2,6 +2,7 @@ import re
 import os
 import itertools
 import datetime
+import csv
 from openpyxl import load_workbook, Workbook
 from openpyxl.styles import Alignment, Font
 from openpyxl.utils import get_column_letter
@@ -35,39 +36,52 @@ def process_sheet(sheet):
         data.append([cell.value if cell.value is not None else "" for cell in row])
     return data
 
-def load_group_mappings(filename="mapping.xlsx"):
+def load_student_name_mapping(filename="student_mapping.csv"):
     """
-    Loads group-to-student mappings from the 'group' sheet in mapping.xlsx.
-    Returns a dictionary where keys are group names and values are lists of student IDs.
+    Loads student_no to student_name mappings from the specified CSV file.
+    """
+    name_map = {}
+    try:
+        with open(filename, mode='r', encoding='utf-8-sig') as infile:
+            reader = csv.DictReader(infile)
+            for row in reader:
+                student_no = row.get('student_no')
+                student_name = row.get('student_name')
+                if student_no and student_name:
+                    name_map[student_no.strip()] = student_name.strip()
+    except FileNotFoundError:
+        print(f"Warning: {filename} not found. Student numbers will be used in filenames.")
+    except Exception as e:
+        print(f"An error occurred while reading {filename}: {e}")
+    return name_map
+
+def load_group_mappings(filename="group_mapping.csv"):
+    """
+    Loads group-to-student mappings from the specified CSV file.
+    The CSV should have 'group_number' and 'student_no' columns.
+    It extracts student IDs (e.g., F1) from the 'student_no' column.
     """
     group_mappings = {}
     try:
-        workbook = load_workbook(filename, data_only=True)
-        if "group" not in workbook.sheetnames:
-            print("Warning: 'group' sheet not found in mapping.xlsx. No group activities will be added.")
-            return group_mappings
-        
-        sheet = workbook["group"]
-        # Assumes header in the first row, data starts from the second
-        header = [cell.value for cell in sheet[1]]
-        try:
-            group_col_idx = header.index("group_number") + 1
-            student_col_idx = header.index("student_no") + 1
-        except ValueError:
-            print("Warning: 'group_number' or 'student_no' column not found in 'group' sheet of mapping.xlsx.")
-            return group_mappings
-            
-        for row in sheet.iter_rows(min_row=2):
-            group_number = row[group_col_idx - 1].value
-            student_ids_str = row[student_col_idx - 1].value
-            if group_number and student_ids_str:
-                group_name = f"Group {group_number}"
-                student_ids = [s.strip() for s in str(student_ids_str).split(',')]
-                if group_name not in group_mappings:
-                    group_mappings[group_name] = []
-                group_mappings[group_name].extend(student_ids)
+        with open(filename, mode='r', encoding='utf-8-sig') as infile:
+            reader = csv.DictReader(infile)
+            for row in reader:
+                group_number = row.get('group_number')
+                student_nos_str = row.get('student_no')
+
+                if group_number and student_nos_str:
+                    group_name = f"Group {group_number.strip()}"
+                    # Extract all F-numbers (e.g., F1, F23) from the string
+                    found_students = re.findall(r'\bF\d+\b', student_nos_str)
+                    
+                    if found_students:
+                        if group_name not in group_mappings:
+                            group_mappings[group_name] = []
+                        group_mappings[group_name].extend(found_students)
     except FileNotFoundError:
-        print("Warning: mapping.xlsx not found. No group activities will be added.")
+        print(f"Warning: {filename} not found. No group activities will be added.")
+    except Exception as e:
+        print(f"An error occurred while reading {filename}: {e}")
     
     return group_mappings
 
@@ -93,7 +107,8 @@ def generate_timetables():
         print(f"Error: {input_filename} not found. Make sure the file is in the same directory.")
         return
 
-    # Load group mappings
+    # Load mappings
+    student_name_map = load_student_name_mapping()
     group_mappings = load_group_mappings()
     
     # Create a reverse mapping from student to their groups for efficient lookup
@@ -101,8 +116,8 @@ def generate_timetables():
     for group, students in group_mappings.items():
         for s in students:
             if s not in student_to_groups:
-                student_to_groups[s] = []
-            student_to_groups[s].append(group)
+                student_to_groups[s] = set()
+            student_to_groups[s].add(group)
 
     # Process all sheets and store their data in a dictionary
     processed_sheets = {}
@@ -128,7 +143,10 @@ def generate_timetables():
         "Break",
         "Ensemble Coaching",
         "Workshop",
-        "Toilet Break"
+        "Toilet Break",
+        "Rehearsal for Students and Friends Concert",
+        "Lina Summer Camp of Music Students & Friends Concert",
+        "After concert refreshment (Maritime Museum)",
     ]
 
     output_dir = "student_timetables"
@@ -142,7 +160,9 @@ def generate_timetables():
         daily_schedules = {}
 
         # Using workbook.sheetnames to preserve the order of days
-        for sheet_name in workbook.sheetnames:
+        for day_index, sheet_name in enumerate(workbook.sheetnames):
+            is_day_6 = (day_index + 1 == 6)
+
             if sheet_name not in processed_sheets:
                 continue
             
@@ -158,48 +178,62 @@ def generate_timetables():
                 activities = [str(act).strip() for act in row[1:]]
                 activity_found_for_timeslot = False
 
-                for i, activity in enumerate(activities):
-                    if not activity:
-                        continue
-
-                    # Priority 1: Direct student match
-                    if not activity_found_for_timeslot and re.search(r'\b' + re.escape(student) + r'\b', activity):
-                        if activity.strip() == student:
-                            teacher = teachers[i]
-                            desc = f"Class with {teacher}" if teacher else f"Practice ({music_instrument} practice room)"
-                            student_schedule.append((time, desc))
-                        else:
-                            student_schedule.append((time, activity))
-                        activity_found_for_timeslot = True
-
-                    # Priority 2: Complex group match
-                    if not activity_found_for_timeslot and activity.lower().startswith('group') and "," in activity:
-                        activity_body = activity[len('Group'):].strip()
-                        split_index = -1
-                        for i_rev in range(len(activity_body) - 1, -1, -1):
-                            if activity_body[i_rev].isdigit():
-                                split_index = i_rev + 1
-                                break
-                        if split_index != -1:
-                            group_part = activity_body[:split_index]
-                            activity_name = activity_body[split_index:].strip()
-                            group_numbers_str = ''.join(filter(lambda x: x.isdigit() or x == ',', group_part))
-                            activity_groups = {f"Group {num.strip()}" for num in group_numbers_str.split(',') if num.strip()}
-                            student_groups = set(student_to_groups.get(student, []))
-                            if not student_groups.isdisjoint(activity_groups):
-                                student_schedule.append((time, activity_name))
-                                activity_found_for_timeslot = True
-
-                    # Priority 3: Simple group match
-                    if not activity_found_for_timeslot and student in student_to_groups:
-                        student_groups = student_to_groups[student]
-                        if activity in student_groups:
+                if is_day_6:
+                    # For Day 6, any activity is considered a common activity for all students.
+                    # Find the first non-empty activity in the row.
+                    for activity in activities:
+                        if activity:
                             student_schedule.append((time, activity))
                             activity_found_for_timeslot = True
+                            break # Move to the next timeslot
+                else:
+                    # For all other days, run the specific matching logic.
+                    for i, activity in enumerate(activities):
+                        if not activity:
+                            continue
+
+                        # Priority 1: Direct student match
+                        if not activity_found_for_timeslot and re.search(r'\b' + re.escape(student) + r'\b', activity):
+                            if activity.strip() == student:
+                                teacher = teachers[i]
+                                desc = f"Class with {teacher}" if teacher else f"Practice ({music_instrument} practice room)"
+                                student_schedule.append((time, desc))
+                            else:
+                                student_schedule.append((time, activity))
+                            activity_found_for_timeslot = True
+
+                        # Priority 2: Complex group match
+                        if not activity_found_for_timeslot and activity.lower().startswith('group') and "," in activity:
+                            activity_body = activity[len('Group'):].strip()
+                            
+                            parts = activity_body.replace(',', ' ').split()
+                            
+                            group_numbers = []
+                            activity_name_parts = []
+                            for part in parts:
+                                if part.isdigit():
+                                    group_numbers.append(part)
+                                else:
+                                    activity_name_parts.append(part)
+                            
+                            activity_name = ' '.join(activity_name_parts)
+                            involved_groups = {f"Group {num}" for num in group_numbers}
+
+                            student_groups = student_to_groups.get(student, set())
+
+                            if not student_groups.isdisjoint(involved_groups):
+                                student_schedule.append((time, f"{activity_name} (Group)"))
+                                activity_found_for_timeslot = True
+
+                        # Priority 3: Simple group match (e.g., "Group 1")
+                        if not activity_found_for_timeslot and activity.lower().startswith('group'):
+                            student_groups = student_to_groups.get(student, set())
+                            if activity in student_groups:
+                                student_schedule.append((time, activity))
+                                activity_found_for_timeslot = True
                 
-                # After checking all cells in the row for the student's activities
+                # Fallback for common activities or Free Time
                 if not activity_found_for_timeslot:
-                    # Check for common activities only if no specific activity was found
                     common_activity_found = False
                     for common_activity in common_activities:
                         if common_activity in activities:
@@ -230,7 +264,6 @@ def generate_timetables():
                 continue
             
             student_ws.cell(row=1, column=current_col, value=sheet_name).font = Font(bold=True)
-            student_ws.cell(row=2, column=current_col, value="Activity").font = Font(bold=True)
 
             todays_schedule = daily_schedules[sheet_name]
 
@@ -264,8 +297,10 @@ def generate_timetables():
             adjusted_width = (max_length + 2)
             student_ws.column_dimensions[column_letter].width = adjusted_width
 
-        sanitized_student_name = sanitize_filename(student)
-        file_path = os.path.join(output_dir, f'{sanitized_student_name}_timetable.xlsx')
+        # Use student name for the filename, falling back to student number
+        student_name = student_name_map.get(student, student)
+        sanitized_file_name = sanitize_filename(student_name)
+        file_path = os.path.join(output_dir, f'{sanitized_file_name}_timetable.xlsx')
         student_wb.save(file_path)
 
     print(f"Successfully generated timetables for {len(all_students)} students in the '{output_dir}' directory.")

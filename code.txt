@@ -1,0 +1,26 @@
+F1= xxx 
+H1= xxx
+Lunch= all
+Dress Up, Warm Up=all
+Rehearsal for Students and Friends Concert= all students, all faculty
+Lina Summer Camp of Music Students & Friends Concert= all students,all faculty
+After concert drink in Maritime Museum=all students, all faculty
+Rehearsal for Faculty Concert= all faculty
+Group 1= Peter CHAN, Eve LUNG, Yanis SZE
+Group 2= Max TAM, Cybi CHENG
+Group 3= Ivy YUE, Gabriel LING,
+Group 4= Yau NG, Moses LO
+Group 5= Icelyn GE, Luna Zuo, Evan Qi
+Group 6= Shannon CHENG, Hailey LEUNG
+Group 7= Henry SUN, Roni WONG
+Group 8= Jansci WONG, Sonia SUNG, Grace NG
+Group 9= Ho Yee HO, Caitlyn YIP
+
+Master class with Ivy & Stephane = all flute students and flute faculty
+F1=Roni WONG
+F2=Hailey LEUNG
+F3=Evan QI
+F4=Yanis SZE
+F5=Cybi CHENG	
+F6=Moses LO
+
