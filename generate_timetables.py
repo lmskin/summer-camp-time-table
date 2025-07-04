@@ -175,14 +175,19 @@ def generate_timetables():
                 time_val = row[0]
                 time = time_val.strftime('%H:%M') if isinstance(time_val, datetime.time) else str(time_val).strip()
 
-                # For Day 1 to Day 5, students finish at 17:00, so no activities are scheduled from 17:00 onwards.
+                # For Day 1-5, students finish at 17:00. For Day 6, they finish at 16:30.
                 if day_index < 5:  # Day 1 to 5
                     try:
-                        # We only compare times that are in the HH:MM format
                         if datetime.datetime.strptime(time, '%H:%M').time() >= datetime.time(17, 0):
                             continue  # Skip this timeslot
                     except ValueError:
-                        pass  # Not a time in HH:MM format, so we don't apply the filter
+                        pass  # Not a time format
+                elif is_day_6:  # Day 6
+                    try:
+                        if datetime.datetime.strptime(time, '%H:%M').time() >= datetime.time(16, 30):
+                            continue  # Skip this timeslot
+                    except ValueError:
+                        pass  # Not a time format
 
                 activities = [str(act).strip() for act in row[1:]]
                 activity_found_for_timeslot = False
