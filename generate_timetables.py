@@ -240,7 +240,14 @@ def generate_timetables():
                                 teacher = teachers[i]
                                 if teacher:
                                     room_number = room_mappings.get(teacher, "")
-                                    desc = f"Private lesson with {teacher}"
+                                    
+                                    # If the activity was just the student ID, create a default description.
+                                    # Otherwise, use the cleaned activity text which might contain more details.
+                                    if not cleaned_activity:
+                                        desc = f"Private lesson with {teacher}"
+                                    else:
+                                        desc = cleaned_activity
+                                    
                                     if room_number:
                                         desc += f" ({room_number})"
                                 else:
@@ -248,7 +255,7 @@ def generate_timetables():
                                     desc = f"Practice ({music_instrument} practice room)"
                                 student_schedule.append((time, desc))
                             else:
-                                # It's some other activity involving the student (e.g., a duet)
+                                # It's some other activity involving the student (e.g., a duet or practice)
                                 if cleaned_activity.lower() == 'practice':
                                     cleaned_activity = f"Practice ({music_instrument} practice room)"
                                 student_schedule.append((time, cleaned_activity))
@@ -277,7 +284,11 @@ def generate_timetables():
                                 if 'acting class' in activity_name.lower():
                                     student_schedule.append((time, "Acting Class (Room Acting)"))
                                 else:
-                                    student_schedule.append((time, f"{activity_name} (Group)"))
+                                    # If the activity name already implies it's a group or has a room, don't add "(Group)"
+                                    if 'group' in activity_name.lower() or 'room' in activity_name.lower():
+                                        student_schedule.append((time, activity_name))
+                                    else:
+                                        student_schedule.append((time, f"{activity_name} (Group)"))
                                 activity_found_for_timeslot = True
 
                         # Priority 3: Simple group match (e.g., "Group 1")
