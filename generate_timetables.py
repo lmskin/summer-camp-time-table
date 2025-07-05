@@ -113,10 +113,10 @@ def generate_timetables():
     timetable will contain multiple sheets, corresponding to the dates in the
     input file.
     """
-    input_filename = "flute-time-table.xlsx"
+    input_filename = "flute-campA-time-table.xlsx"
     
     # Extract instrument name, e.g., 'cello' from 'cello-time-table.xlsx'
-    music_instrument = input_filename.replace('-time-table.xlsx', '').capitalize()
+    music_instrument = input_filename.split('-')[0].capitalize()
     
     try:
         # Load the workbook once to process all sheets.
@@ -176,6 +176,13 @@ def generate_timetables():
     output_dir = "student_timetables"
     if not os.path.exists(output_dir):
         os.makedirs(output_dir)
+
+    # Determine start date based on filename
+    start_date = None
+    if 'campa' in input_filename.lower():
+        start_date = datetime.date(2025, 7, 14)
+    elif 'campb' in input_filename.lower():
+        start_date = datetime.date(2025, 7, 21)
 
     # Generate one single-sheet Excel file for each student
     for student in sorted(list(all_students)):
@@ -351,11 +358,17 @@ def generate_timetables():
             student_ws.cell(row=i + 3, column=1, value=time)
 
         current_col = 2
-        for sheet_name in workbook.sheetnames:
+        for day_index, sheet_name in enumerate(workbook.sheetnames):
             if sheet_name not in daily_schedules:
                 continue
             
-            student_ws.cell(row=1, column=current_col, value=sheet_name).font = Font(bold=True)
+            if start_date:
+                current_date = start_date + datetime.timedelta(days=day_index)
+                header_text = current_date.strftime('%d %b (%A)')
+            else:
+                header_text = sheet_name
+            
+            student_ws.cell(row=1, column=current_col, value=header_text).font = Font(bold=True)
 
             todays_schedule = daily_schedules[sheet_name]
 
@@ -381,20 +394,23 @@ def generate_timetables():
                 else:
                     cell.alignment = Alignment(wrap_text=True)
 
-            current_col += 2
+            current_col += 1
 
-        # Autofit all columns
+        # Set column widths
         for column in student_ws.columns:
-            max_length = 0
             column_letter = get_column_letter(column[0].column)
-            for cell in column:
-                try:
-                    if len(str(cell.value)) > max_length:
-                        max_length = len(str(cell.value))
-                except:
-                    pass
-            adjusted_width = (max_length + 2)
-            student_ws.column_dimensions[column_letter].width = adjusted_width
+            if column[0].column == 1:  # First column
+                max_length = 0
+                for cell in column:
+                    try:
+                        if len(str(cell.value)) > max_length:
+                            max_length = len(str(cell.value))
+                    except:
+                        pass
+                adjusted_width = (max_length + 2)
+                student_ws.column_dimensions[column_letter].width = adjusted_width
+            else:  # Other columns
+                student_ws.column_dimensions[column_letter].width = 35
 
         # Use student name for the filename, falling back to student number
         student_name = student_name_map.get(student, student)
