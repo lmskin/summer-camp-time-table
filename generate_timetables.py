@@ -357,7 +357,8 @@ def generate_timetables():
 
                 start_row = time_to_row[start_time]
                 
-                if '(' in activity and ')' in activity:
+                # Ensure room information is on a new line, but only if it's not already.
+                if '(' in activity and ')' in activity and '\n(' not in activity:
                     activity = activity.replace('(', '\n(', 1)
 
                 cell = student_ws.cell(row=start_row, column=current_col, value=activity)
