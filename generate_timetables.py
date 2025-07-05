@@ -244,7 +244,7 @@ def generate_timetables():
                                     # If the activity was just the student ID, create a default description.
                                     # Otherwise, use the cleaned activity text which might contain more details.
                                     if not cleaned_activity:
-                                        desc = f"Private lesson with {teacher}"
+                                        desc = f"Private Lesson with {teacher}"
                                     else:
                                         desc = cleaned_activity
                                     
