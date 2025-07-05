@@ -12,7 +12,7 @@ def sanitize_filename(filename):
     Removes characters from a string that are not allowed in file names.
     This includes newline characters, which can cause issues with file paths.
     """
-    return re.sub(r'[\\/*?:"<>|\\n]', '', filename)
+    return re.sub(r'[\\/*?:"<>|\n]', '', filename)
 
 def process_sheet(sheet):
     """
@@ -85,6 +85,27 @@ def load_group_mappings(filename="group_mapping.csv"):
     
     return group_mappings
 
+def load_room_mapping(filename="room_mapping.csv"):
+    """
+    Loads teacher-to-room mappings from the specified CSV file.
+    The CSV should have 'teacher_name' and 'room_number' columns.
+    """
+    room_mappings = {}
+    try:
+        with open(filename, mode='r', encoding='utf-8-sig') as infile:
+            reader = csv.DictReader(infile)
+            for row in reader:
+                teacher_name = row.get('teacher_name')
+                room_number = row.get('room_number')
+                if teacher_name and room_number:
+                    room_mappings[teacher_name.strip()] = room_number.strip()
+    except FileNotFoundError:
+        print(f"Warning: {filename} not found. No room numbers will be assigned to teachers.")
+    except Exception as e:
+        print(f"An error occurred while reading {filename}: {e}")
+    
+    return room_mappings
+
 def generate_timetables():
     """
     Reads an Excel file with multiple sheets (each representing a date) and
@@ -110,6 +131,7 @@ def generate_timetables():
     # Load mappings
     student_name_map = load_student_name_mapping()
     group_mappings = load_group_mappings()
+    room_mappings = load_room_mapping()
     
     # Create a reverse mapping from student to their groups for efficient lookup
     student_to_groups = {}
@@ -147,6 +169,8 @@ def generate_timetables():
         "Rehearsal for Students and Friends Concert",
         "Lina Summer Camp of Music Students & Friends Concert",
         "After concert refreshment (Maritime Museum)",
+        "Group Activity",
+        "Briefing for Saturday",
     ]
 
     output_dir = "student_timetables"
@@ -210,7 +234,13 @@ def generate_timetables():
                         if not activity_found_for_timeslot and re.search(r'\b' + re.escape(student) + r'\b', activity):
                             if activity.strip() == student:
                                 teacher = teachers[i]
-                                desc = f"Private lesson with {teacher}" if teacher else f"Practice ({music_instrument} practice room)"
+                                if teacher:
+                                    room_number = room_mappings.get(teacher, "")
+                                    desc = f"Private lesson with {teacher}"
+                                    if room_number:
+                                        desc += f" ({room_number})"
+                                else:
+                                    desc = f"Practice ({music_instrument} practice room)"
                                 student_schedule.append((time, desc))
                             else:
                                 # Remove student's own ID from the activity description, as the timetable is already individualized.
@@ -264,10 +294,15 @@ def generate_timetables():
                             break  # Found master class, stop searching this row
                     
                     if not activity_to_add:
-                        for common_activity in common_activities:
-                            if common_activity in activities:
-                                activity_to_add = common_activity
-                                break  # Found a common activity
+                        for activity in activities:
+                            if not activity:
+                                continue
+                            for common_activity in common_activities:
+                                if common_activity in activity:
+                                    activity_to_add = activity
+                                    break  # Found a common activity
+                            if activity_to_add:
+                                break
     
                     if activity_to_add:
                         student_schedule.append((time, activity_to_add))
@@ -306,12 +341,18 @@ def generate_timetables():
                 if start_time not in time_to_row: continue
 
                 start_row = time_to_row[start_time]
+                
+                if '(' in activity and ')' in activity:
+                    activity = activity.replace('(', '\n(', 1)
+
                 cell = student_ws.cell(row=start_row, column=current_col, value=activity)
 
                 if row_span > 1:
                     end_row = start_row + row_span - 1
                     student_ws.merge_cells(start_row=start_row, start_column=current_col, end_row=end_row, end_column=current_col)
-                    cell.alignment = Alignment(vertical='center')
+                    cell.alignment = Alignment(vertical='center', wrap_text=True)
+                else:
+                    cell.alignment = Alignment(wrap_text=True)
 
             current_col += 2
 

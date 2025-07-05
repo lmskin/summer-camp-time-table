@@ -11,7 +11,7 @@ def sanitize_filename(filename):
     """
     Removes characters from a string that are not allowed in file names.
     """
-    return re.sub(r'[\\/*?:"<>|\\n]', '', filename)
+    return re.sub(r'[\\/*?:"<>|\n]', '', filename)
 
 def process_sheet(sheet):
     """
