@@ -4,7 +4,7 @@ import itertools
 import datetime
 import csv
 from openpyxl import load_workbook, Workbook
-from openpyxl.styles import Alignment, Font
+from openpyxl.styles import Alignment, Font, Border, Side
 from openpyxl.utils import get_column_letter
 
 def sanitize_filename(filename):
@@ -176,6 +176,14 @@ def generate_timetables():
     output_dir = "student_timetables"
     if not os.path.exists(output_dir):
         os.makedirs(output_dir)
+
+    # Define border style
+    thin_border = Border(
+        left=Side(style='thin'),
+        right=Side(style='thin'),
+        top=Side(style='thin'),
+        bottom=Side(style='thin')
+    )
 
     # Determine start date based on filename
     start_date = None
@@ -411,6 +419,11 @@ def generate_timetables():
                 student_ws.column_dimensions[column_letter].width = adjusted_width
             else:  # Other columns
                 student_ws.column_dimensions[column_letter].width = 35
+
+        # Apply borders to all cells
+        for row in student_ws.iter_rows(min_row=1, max_row=student_ws.max_row, min_col=1, max_col=student_ws.max_column):
+            for cell in row:
+                cell.border = thin_border
 
         # Use student name for the filename, falling back to student number
         student_name = student_name_map.get(student, student)

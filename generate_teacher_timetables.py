@@ -4,7 +4,7 @@ import itertools
 import datetime
 import csv
 from openpyxl import load_workbook, Workbook
-from openpyxl.styles import Alignment, Font
+from openpyxl.styles import Alignment, Font, Border, Side
 from openpyxl.utils import get_column_letter
 
 def sanitize_filename(filename):
@@ -85,6 +85,14 @@ def generate_teacher_timetables():
     output_dir = "teacher_timetables"
     if not os.path.exists(output_dir):
         os.makedirs(output_dir)
+
+    # Define border style
+    thin_border = Border(
+        left=Side(style='thin'),
+        right=Side(style='thin'),
+        top=Side(style='thin'),
+        bottom=Side(style='thin')
+    )
 
     # Determine start date based on filename
     start_date = None
@@ -200,6 +208,11 @@ def generate_teacher_timetables():
                 teacher_ws.column_dimensions[column_letter].width = adjusted_width
             else:  # Other columns
                 teacher_ws.column_dimensions[column_letter].width = 35
+
+        # Apply borders to all cells
+        for row in teacher_ws.iter_rows(min_row=1, max_row=teacher_ws.max_row, min_col=1, max_col=teacher_ws.max_column):
+            for cell in row:
+                cell.border = thin_border
 
         sanitized_file_name = sanitize_filename(teacher)
         file_path = os.path.join(output_dir, f'{sanitized_file_name}_timetable.xlsx')
