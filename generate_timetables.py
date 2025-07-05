@@ -232,7 +232,11 @@ def generate_timetables():
 
                         # Priority 1: Direct student match
                         if not activity_found_for_timeslot and re.search(r'\b' + re.escape(student) + r'\b', activity):
-                            if activity.strip() == student:
+                            
+                            cleaned_activity = re.sub(r'\b' + re.escape(student) + r'\b', '', activity).strip()
+                            is_private_lesson = (activity.strip() == student) or ('private lesson' in cleaned_activity.lower())
+
+                            if is_private_lesson:
                                 teacher = teachers[i]
                                 if teacher:
                                     room_number = room_mappings.get(teacher, "")
@@ -240,11 +244,11 @@ def generate_timetables():
                                     if room_number:
                                         desc += f" ({room_number})"
                                 else:
+                                    # Fallback if no teacher is specified in the column for a private lesson
                                     desc = f"Practice ({music_instrument} practice room)"
                                 student_schedule.append((time, desc))
                             else:
-                                # Remove student's own ID from the activity description, as the timetable is already individualized.
-                                cleaned_activity = re.sub(r'\b' + re.escape(student) + r'\b', '', activity).strip()
+                                # It's some other activity involving the student (e.g., a duet)
                                 if cleaned_activity.lower() == 'practice':
                                     cleaned_activity = f"Practice ({music_instrument} practice room)"
                                 student_schedule.append((time, cleaned_activity))
@@ -271,7 +275,7 @@ def generate_timetables():
 
                             if not student_groups.isdisjoint(involved_groups):
                                 if 'acting class' in activity_name.lower():
-                                    student_schedule.append((time, "Acting class"))
+                                    student_schedule.append((time, "Acting Class (Room Acting)"))
                                 else:
                                     student_schedule.append((time, f"{activity_name} (Group)"))
                                 activity_found_for_timeslot = True
@@ -279,17 +283,28 @@ def generate_timetables():
                         # Priority 3: Simple group match (e.g., "Group 1")
                         if not activity_found_for_timeslot and activity.lower().startswith('group'):
                             student_groups = student_to_groups.get(student, set())
-                            if activity in student_groups:
-                                student_schedule.append((time, "Ensemble"))
-                                activity_found_for_timeslot = True
+                            # New logic for group activities
+                            for group_name in student_groups:
+                                if activity.startswith(group_name):
+                                    room_match = re.search(r'\(Room\s+(.+?)\)', activity, re.IGNORECASE)
+                                    if room_match:
+                                        room_name = room_match.group(1)
+                                        student_schedule.append((time, f"Ensemble (Room {room_name})"))
+                                    else:
+                                        teacher = teachers[i]
+                                        room_number = room_mappings.get(teacher, "TBD")
+                                        student_schedule.append((time, f"Ensemble ({room_number})"))
+                                    activity_found_for_timeslot = True
+                                    break  # Found a match, no need to check other groups
                 
                 # Fallback for common activities or Free Time
                 if not activity_found_for_timeslot:
                     # Check for any common activity for this timeslot.
                     # Master Class is checked first, then the predefined list.
                     activity_to_add = None
+                    masterclass_activity_str = f"{music_instrument} MasterClass"
                     for activity in activities:
-                        if activity.startswith("Master class with"):
+                        if activity.startswith("Master class with") or masterclass_activity_str in activity:
                             activity_to_add = activity
                             break  # Found master class, stop searching this row
                     
