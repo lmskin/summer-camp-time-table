@@ -160,7 +160,7 @@ def generate_timetables():
                         all_students.add(s)
 
     common_activities = [
-        "Welcome Speech",
+        "Welcome",
         "Lunch",
         "Break",
         "Ensemble Coaching",
