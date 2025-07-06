@@ -210,11 +210,12 @@ def generate_timetables():
             schedule_rows = sheet_data[2:]
             
             student_schedule = []
+            day_6_check_in_added = False  # Flag to ensure it's added only once
             for row in schedule_rows:
                 time_val = row[0]
                 time = time_val.strftime('%H:%M') if isinstance(time_val, datetime.time) else str(time_val).strip()
 
-                # For Day 1-5, students finish at 17:00. For Day 6, they finish at 16:30.
+                # For Day 1-5, students finish at 17:00. For Day 6, they finish at 17:00.
                 if day_index < 5:  # Day 1 to 5
                     try:
                         if datetime.datetime.strptime(time, '%H:%M').time() >= datetime.time(17, 0):
@@ -223,8 +224,14 @@ def generate_timetables():
                         pass  # Not a time format
                 elif is_day_6:  # Day 6
                     try:
-                        if datetime.datetime.strptime(time, '%H:%M').time() >= datetime.time(16, 30):
+                        current_time_obj = datetime.datetime.strptime(time, '%H:%M').time()
+                        if current_time_obj >= datetime.time(17, 0):
                             continue  # Skip this timeslot
+                        
+                        # Handle the 16:30-17:00 merge block
+                        if datetime.time(16, 30) <= current_time_obj < datetime.time(17, 0):
+                            student_schedule.append((time, "DAY_6_FREE_TIME_BLOCK"))
+                            continue # Skip other processing for this row
                     except ValueError:
                         pass  # Not a time format
 
@@ -235,10 +242,29 @@ def generate_timetables():
                     # For Day 6, any activity is considered a common activity for all students.
                     # Find the first non-empty activity in the row.
                     for activity in activities:
-                        if activity:
-                            student_schedule.append((time, activity))
+                        if not activity:
+                            continue
+
+                        # Special handling for "Check in" activity
+                        if "Check in Maritime Museum" in activity:
+                            if not day_6_check_in_added:
+                                check_in_activity = "Check in Maritime Museum\nBriefing for Saturday Concert\nMaritime Museum Tour"
+                                student_schedule.extend([
+                                    ("10:00", check_in_activity),
+                                    ("10:15", check_in_activity),
+                                    ("10:30", check_in_activity),
+                                    ("10:45", check_in_activity)
+                                ])
+                                day_6_check_in_added = True
+                            # Once the block is added, we don't need to process this specific activity again.
+                            # We break here to process the next time slot from the source file.
                             activity_found_for_timeslot = True
-                            break # Move to the next timeslot
+                            break
+                        
+                        # For all other activities on Day 6
+                        student_schedule.append((time, activity))
+                        activity_found_for_timeslot = True
+                        break # Found an activity for this time slot, move to the next.
                 else:
                     # For all other days, run the specific matching logic.
                     for i, activity in enumerate(activities):
@@ -379,25 +405,42 @@ def generate_timetables():
             student_ws.cell(row=1, column=current_col, value=header_text).font = Font(bold=True)
 
             todays_schedule = daily_schedules[sheet_name]
+            
+            # Keep track of merged cells to avoid writing to them again
+            merged_cells_in_col = set()
 
-            for activity, group in itertools.groupby(todays_schedule, key=lambda x: x[1]):
-                group_list = list(group)
-                row_span = len(group_list)
-                start_time = group_list[0][0]
+            for idx, (time, activity) in enumerate(todays_schedule):
+                if time not in time_to_row:
+                    continue
                 
-                if start_time not in time_to_row: continue
-
-                start_row = time_to_row[start_time]
+                start_row = time_to_row[time]
                 
-                # Ensure room information is on a new line, but only if it's not already.
-                if '(' in activity and ')' in activity and '\n(' not in activity:
-                    activity = activity.replace('(', '\n(', 1)
+                if start_row in merged_cells_in_col:
+                    continue
 
-                cell = student_ws.cell(row=start_row, column=current_col, value=activity)
+                # Calculate row_span for merging
+                row_span = 1
+                for next_time, next_activity in todays_schedule[idx+1:]:
+                    if next_activity == activity:
+                        row_span += 1
+                    else:
+                        break
+                
+                cell_activity = activity
+                if activity == "DAY_6_FREE_TIME_BLOCK":
+                    cell_activity = ""
+                
+                if '(' in cell_activity and ')' in cell_activity and '\n(' not in cell_activity:
+                    cell_activity = cell_activity.replace('(', '\n(', 1)
+                
+                cell = student_ws.cell(row=start_row, column=current_col, value=cell_activity)
 
                 if row_span > 1:
                     end_row = start_row + row_span - 1
                     student_ws.merge_cells(start_row=start_row, start_column=current_col, end_row=end_row, end_column=current_col)
+                    # Mark cells as merged
+                    for r in range(start_row, end_row + 1):
+                        merged_cells_in_col.add(r)
 
             current_col += 1
 
