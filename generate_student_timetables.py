@@ -36,7 +36,7 @@ def process_sheet(sheet):
         data.append([cell.value if cell.value is not None else "" for cell in row])
     return data
 
-def load_student_name_mapping(filename="student_mapping.csv"):
+def load_student_name_mapping(filename=os.path.join("input", "student_mapping.csv")):
     """
     Loads student_no to student_name mappings from the specified CSV file.
     """
@@ -55,7 +55,7 @@ def load_student_name_mapping(filename="student_mapping.csv"):
         print(f"An error occurred while reading {filename}: {e}")
     return name_map
 
-def load_group_mappings(filename="group_mapping.csv"):
+def load_group_mappings(filename=os.path.join("input", "group_mapping.csv")):
     """
     Loads group-to-student mappings from the specified CSV file.
     The CSV should have 'group_number' and 'student_no' columns.
@@ -85,7 +85,7 @@ def load_group_mappings(filename="group_mapping.csv"):
     
     return group_mappings
 
-def load_room_mapping(filename="room_mapping.csv"):
+def load_room_mapping(filename=os.path.join("input", "room_mapping.csv")):
     """
     Loads teacher-to-room mappings from the specified CSV file.
     The CSV should have 'teacher_name' and 'room_number' columns.
@@ -106,26 +106,24 @@ def load_room_mapping(filename="room_mapping.csv"):
     
     return room_mappings
 
-def generate_timetables():
+def generate_timetables(input_filename):
     """
     Reads an Excel file with multiple sheets (each representing a date) and
     generates an individual Excel timetable for each student. Each student's
     timetable will contain multiple sheets, corresponding to the dates in the
     input file.
     """
-    input_filename = "flute-campA-time-table.xlsx"
-    
     # Extract instrument name, e.g., 'cello' from 'cello-time-table.xlsx'
-    music_instrument = input_filename.split('-')[0].capitalize()
+    music_instrument = os.path.basename(input_filename).split('-')[0].capitalize()
     
     try:
         # Load the workbook once to process all sheets.
         # data_only=True ensures we get cell values instead of formulas.
         workbook = load_workbook(input_filename, data_only=True)
-        print(f"Processing timetable for {music_instrument}...")
+        print(f"\nProcessing student timetables for {os.path.basename(input_filename)}...")
     except FileNotFoundError:
         # This case is less likely now but good to keep as a safeguard
-        print(f"Error: {input_filename} not found. Make sure the file is in the same directory.")
+        print(f"Error: {input_filename} not found.")
         return
 
     # Load mappings
@@ -185,12 +183,15 @@ def generate_timetables():
         bottom=Side(style='thin')
     )
 
-    # Determine start date based on filename
+    # Determine start date and camp name based on filename
     start_date = None
+    camp_name = ""
     if 'campa' in input_filename.lower():
         start_date = datetime.date(2025, 7, 14)
+        camp_name = "CampA"
     elif 'campb' in input_filename.lower():
         start_date = datetime.date(2025, 7, 21)
+        camp_name = "CampB"
 
     # Generate one single-sheet Excel file for each student
     for student in sorted(list(all_students)):
@@ -469,11 +470,27 @@ def generate_timetables():
         # Use student name for the filename, falling back to student number
         student_name = student_name_map.get(student, student)
         sanitized_file_name = sanitize_filename(student_name)
-        file_path = os.path.join(output_dir, f'{sanitized_file_name}_timetable.xlsx')
+        camp_part = f"_{camp_name}" if camp_name else ""
+        file_path = os.path.join(output_dir, f'{sanitized_file_name}{camp_part}_timetable.xlsx')
         student_wb.save(file_path)
 
-    print(f"Successfully generated timetables for {len(all_students)} students in the '{output_dir}' directory.")
+    print(f"Successfully generated timetables for {len(all_students)} students for {os.path.basename(input_filename)} in the '{output_dir}' directory.")
 
 
 if __name__ == '__main__':
-    generate_timetables() 
+    input_dir = "input"
+    if not os.path.isdir(input_dir):
+        print(f"Error: Input directory '{input_dir}' not found or is not a directory.")
+    else:
+        # Regex to match the expected filename format for specific instruments
+        filename_pattern = re.compile(r"(cello|flute|harp)-(camp[ab])\-time-table\.xlsx", re.IGNORECASE)
+        
+        timetable_files = [f for f in os.listdir(input_dir) if filename_pattern.match(f)]
+
+        if not timetable_files:
+            print(f"No timetable files matching the pattern '{{music-instrument}}-{{campA or campB}}-time-table.xlsx' were found in '{input_dir}'.")
+        else:
+            print(f"Found {len(timetable_files)} timetable file(s) to process: {', '.join(sorted(timetable_files))}")
+            for filename in sorted(timetable_files):
+                full_path = os.path.join(input_dir, filename)
+                generate_timetables(full_path) 

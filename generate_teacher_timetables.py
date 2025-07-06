@@ -32,7 +32,7 @@ def process_sheet(sheet):
         data.append([cell.value if cell.value is not None else "" for cell in row])
     return data
 
-def load_student_name_mapping(filename="student_mapping.csv"):
+def load_student_name_mapping(filename=os.path.join("input", "student_mapping.csv")):
     """
     Loads student_no to student_name mappings from the specified CSV file.
     """
@@ -51,19 +51,18 @@ def load_student_name_mapping(filename="student_mapping.csv"):
         print(f"An error occurred while reading {filename}: {e}")
     return name_map
 
-def generate_teacher_timetables():
+def generate_teacher_timetables(input_filename):
     """
     Reads an Excel file with multiple sheets (each representing a date) and
     generates an individual Excel timetable for each teacher.
     """
-    input_filename = "flute-campA-time-table.xlsx"
-    music_instrument = input_filename.split('-')[0].capitalize()
+    music_instrument = os.path.basename(input_filename).split('-')[0].capitalize()
 
     try:
         workbook = load_workbook(input_filename, data_only=True)
-        print(f"Processing teacher timetables for {music_instrument}...")
+        print(f"\nProcessing teacher timetables for {os.path.basename(input_filename)}...")
     except FileNotFoundError:
-        print(f"Error: {input_filename} not found. Make sure the file is in the same directory.")
+        print(f"Error: {input_filename} not found.")
         return
 
     student_name_map = load_student_name_mapping()
@@ -279,7 +278,22 @@ def generate_teacher_timetables():
         file_path = os.path.join(output_dir, f'{sanitized_file_name}{camp_part}_timetable.xlsx')
         teacher_wb.save(file_path)
 
-    print(f"Successfully generated timetables for {len(all_teachers)} teachers in the '{output_dir}' directory.")
+    print(f"Successfully generated timetables for {len(all_teachers)} teachers for {os.path.basename(input_filename)} in the '{output_dir}' directory.")
 
 if __name__ == '__main__':
-    generate_teacher_timetables()
+    input_dir = "input"
+    if not os.path.isdir(input_dir):
+        print(f"Error: Input directory '{input_dir}' not found or is not a directory.")
+    else:
+        # Regex to match the expected filename format for specific instruments
+        filename_pattern = re.compile(r"(cello|flute|harp)-(camp[ab])\-time-table\.xlsx", re.IGNORECASE)
+        
+        timetable_files = [f for f in os.listdir(input_dir) if filename_pattern.match(f)]
+
+        if not timetable_files:
+            print(f"No timetable files matching the pattern '{{music-instrument}}-{{campA or campB}}-time-table.xlsx' were found in '{input_dir}'.")
+        else:
+            print(f"Found {len(timetable_files)} timetable file(s) to process: {', '.join(sorted(timetable_files))}")
+            for filename in sorted(timetable_files):
+                full_path = os.path.join(input_dir, filename)
+                generate_teacher_timetables(full_path)
