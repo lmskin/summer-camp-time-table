@@ -169,7 +169,7 @@ def generate_teacher_timetables():
             
             if start_date:
                 current_date = start_date + datetime.timedelta(days=day_index)
-                header_text = current_date.strftime('%d %b (%A)')
+                header_text = current_date.strftime('%d %B (%A)')
             else:
                 header_text = sheet_name
 
