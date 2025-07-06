@@ -36,7 +36,7 @@ def process_sheet(sheet):
         data.append([cell.value if cell.value is not None else "" for cell in row])
     return data
 
-def load_student_name_mapping(filename=os.path.join("input", "student_mapping.csv")):
+def load_student_name_mapping(filename):
     """
     Loads student_no to student_name mappings from the specified CSV file.
     """
@@ -55,7 +55,7 @@ def load_student_name_mapping(filename=os.path.join("input", "student_mapping.cs
         print(f"An error occurred while reading {filename}: {e}")
     return name_map
 
-def load_group_mappings(filename=os.path.join("input", "group_mapping.csv")):
+def load_group_mappings(filename):
     """
     Loads group-to-student mappings from the specified CSV file.
     The CSV should have 'group_number' and 'student_no' columns.
@@ -85,7 +85,7 @@ def load_group_mappings(filename=os.path.join("input", "group_mapping.csv")):
     
     return group_mappings
 
-def load_room_mapping(filename=os.path.join("input", "room_mapping.csv")):
+def load_room_mapping(filename):
     """
     Loads teacher-to-room mappings from the specified CSV file.
     The CSV should have 'teacher_name' and 'room_number' columns.
@@ -113,23 +113,35 @@ def generate_timetables(input_filename):
     timetable will contain multiple sheets, corresponding to the dates in the
     input file.
     """
-    # Extract instrument name, e.g., 'cello' from 'cello-time-table.xlsx'
-    music_instrument = os.path.basename(input_filename).split('-')[0].capitalize()
+    basename = os.path.basename(input_filename)
+    music_instrument = basename.split('-')[0].capitalize()
+
+    # Extract camp (e.g., "campA") from filename
+    camp_match = re.search(r"-(camp[ab])\-", basename, re.IGNORECASE)
+    if not camp_match:
+        print(f"Warning: Could not determine camp from filename {basename}. Cannot load mappings.")
+        return
+    
+    camp_part = camp_match.group(1).lower() # e.g., 'campa'
     
     try:
         # Load the workbook once to process all sheets.
         # data_only=True ensures we get cell values instead of formulas.
         workbook = load_workbook(input_filename, data_only=True)
-        print(f"\nProcessing student timetables for {os.path.basename(input_filename)}...")
+        print(f"\nProcessing student timetables for {basename}...")
     except FileNotFoundError:
         # This case is less likely now but good to keep as a safeguard
         print(f"Error: {input_filename} not found.")
         return
 
-    # Load mappings
-    student_name_map = load_student_name_mapping()
-    group_mappings = load_group_mappings()
-    room_mappings = load_room_mapping()
+    # Load mappings for the specific camp
+    student_mapping_file = os.path.join("input", f"student_mapping-{camp_part}.csv")
+    group_mapping_file = os.path.join("input", f"group_mapping-{camp_part}.csv")
+    room_mapping_file = os.path.join("input", f"room_mapping-{camp_part}.csv")
+
+    student_name_map = load_student_name_mapping(student_mapping_file)
+    group_mappings = load_group_mappings(group_mapping_file)
+    room_mappings = load_room_mapping(room_mapping_file)
     
     # Create a reverse mapping from student to their groups for efficient lookup
     student_to_groups = {}

@@ -32,7 +32,7 @@ def process_sheet(sheet):
         data.append([cell.value if cell.value is not None else "" for cell in row])
     return data
 
-def load_student_name_mapping(filename=os.path.join("input", "student_mapping.csv")):
+def load_student_name_mapping(filename):
     """
     Loads student_no to student_name mappings from the specified CSV file.
     """
@@ -56,16 +56,26 @@ def generate_teacher_timetables(input_filename):
     Reads an Excel file with multiple sheets (each representing a date) and
     generates an individual Excel timetable for each teacher.
     """
-    music_instrument = os.path.basename(input_filename).split('-')[0].capitalize()
+    basename = os.path.basename(input_filename)
+    music_instrument = basename.split('-')[0].capitalize()
+
+    # Extract camp (e.g., "campA") from filename
+    camp_match = re.search(r"-(camp[ab])\-", basename, re.IGNORECASE)
+    if not camp_match:
+        print(f"Warning: Could not determine camp from filename {basename}. Cannot load mappings.")
+        return
+    
+    camp_part = camp_match.group(1).lower() # e.g., 'campa'
 
     try:
         workbook = load_workbook(input_filename, data_only=True)
-        print(f"\nProcessing teacher timetables for {os.path.basename(input_filename)}...")
+        print(f"\nProcessing teacher timetables for {basename}...")
     except FileNotFoundError:
         print(f"Error: {input_filename} not found.")
         return
 
-    student_name_map = load_student_name_mapping()
+    student_mapping_file = os.path.join("input", f"student_mapping-{camp_part}.csv")
+    student_name_map = load_student_name_mapping(student_mapping_file)
 
     processed_sheets = {}
     for sheet_name in workbook.sheetnames:
