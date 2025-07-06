@@ -398,9 +398,6 @@ def generate_timetables():
                 if row_span > 1:
                     end_row = start_row + row_span - 1
                     student_ws.merge_cells(start_row=start_row, start_column=current_col, end_row=end_row, end_column=current_col)
-                    cell.alignment = Alignment(vertical='center', wrap_text=True)
-                else:
-                    cell.alignment = Alignment(wrap_text=True)
 
             current_col += 1
 
@@ -420,10 +417,11 @@ def generate_timetables():
             else:  # Other columns
                 student_ws.column_dimensions[column_letter].width = 35
 
-        # Apply borders to all cells
+        # Apply borders and alignment to all cells
         for row in student_ws.iter_rows(min_row=1, max_row=student_ws.max_row, min_col=1, max_col=student_ws.max_column):
             for cell in row:
                 cell.border = thin_border
+                cell.alignment = Alignment(horizontal='center', vertical='center', wrap_text=True)
 
         # Use student name for the filename, falling back to student number
         student_name = student_name_map.get(student, student)

@@ -249,9 +249,6 @@ def generate_teacher_timetables():
                 if row_span > 1:
                     end_row = start_row + row_span - 1
                     teacher_ws.merge_cells(start_row=start_row, start_column=current_col, end_row=end_row, end_column=current_col)
-                    cell.alignment = Alignment(vertical='center', wrap_text=True)
-                else:
-                    cell.alignment = Alignment(wrap_text=True)
 
             current_col += 1
 
@@ -271,10 +268,11 @@ def generate_teacher_timetables():
             else:  # Other columns
                 teacher_ws.column_dimensions[column_letter].width = 35
 
-        # Apply borders to all cells
+        # Apply borders and alignment to all cells
         for row in teacher_ws.iter_rows(min_row=1, max_row=teacher_ws.max_row, min_col=1, max_col=teacher_ws.max_column):
             for cell in row:
                 cell.border = thin_border
+                cell.alignment = Alignment(horizontal='center', vertical='center', wrap_text=True)
 
         sanitized_file_name = sanitize_filename(teacher)
         camp_part = f"_{camp_name}" if camp_name else ""
