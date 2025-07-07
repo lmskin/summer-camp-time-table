@@ -113,6 +113,9 @@ def generate_teacher_timetables(input_filename):
         start_date = datetime.date(2025, 7, 21)
         camp_name = "CampB"
 
+    # Teachers with a special event on Friday evening
+    special_friday_teachers = ["Stephane RETY", "Tomasz SKWERES", "Sivan MEGAN", "Liya HUANG", "Gwyneth WENTINK"]
+
     for teacher in sorted(list(all_teachers)):
         all_time_slots = set()
         daily_schedules = {}
@@ -186,13 +189,19 @@ def generate_teacher_timetables(input_filename):
 
             # For weekdays, manually add the evening merge block
             if not is_day_6:
+                is_friday = (day_index == 4)
                 evening_times = [
                     "19:00", "19:15", "19:30", "19:45",
                     "20:00", "20:15", "20:30", "20:45",
                     "21:00", "21:15", "21:30", "21:45"
                 ]
+                
+                evening_activity = "EVENING_MERGE_BLOCK"
+                if is_friday and teacher in special_friday_teachers:
+                    evening_activity = "Transfer to Mandarin Oriental"
+
                 for evening_time in evening_times:
-                    teacher_schedule.append((evening_time, "EVENING_MERGE_BLOCK"))
+                    teacher_schedule.append((evening_time, evening_activity))
 
             # For Saturday, manually add the morning merge block
             if is_day_6:

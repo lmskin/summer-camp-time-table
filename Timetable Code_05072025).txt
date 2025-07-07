@@ -1,0 +1,115 @@
+
+Lunch= all
+Dress Up, Warm Up=all
+Rehearsal for Students and Friends Concert= all students, all faculty
+Lina Summer Camp of Music Students & Friends Concert= all students,all faculty
+After concert drink in Maritime Museum=all students, all faculty
+Rehearsal for Faculty Concert= all faculty
+Group 1= Peter CHAN, Eve LUNG, Yanis SZE
+Group 2= Max TAM, Cybi CHENG, Shelley NG
+Group 3= Ivy YUE, Gabriel LING,
+Group 4= Yau NG, Moses LO, Queena CHU
+Group 5= Icelyn GE, Luna Zuo, Evan Qi
+Group 6= Shannon CHENG, Hailey LEUNG
+Group 7= Henry SUN, Roni WONG
+Group 8= Jansci WONG, Sonia SUNG, Grace NG
+Group 9= Ho Yee HO, Caitlyn YIP
+
+Master class with Ivy & Stephane = all flute students and flute faculty
+F1=Roni WONG
+F2=Hailey LEUNG
+F3=Evan QI
+F4=Yanis SZE
+F5=Cybi CHENG	
+F6=Moses LO
+
+C1= Max TAM
+C2= Henry SUN
+C3= Peter CHAN
+C4= Yauyau NG
+C5= Icelyn GE
+C6= Ivy YUE
+
+
+H1= Sonia SUNG
+H2= Eve LUNG
+H3= Shannon CHENG
+H4= Luna ZUO
+H5= Gabriel LING
+H6= Grace Ng
+H7= Ho Yee HO
+H8= Caitlyn YIP
+H9= Jansci WONG
+
+
+Room Shelley=
+Room Queena=
+Room Ivy=
+Room Stephane= 
+Room TanCong= 
+Room Tomasz=
+Room Liya=
+Room Sivan=
+Room GW=
+Room Acting=
+Room Group Activity= 
+Stephane RETY, Tomasz SKWERES, Sivan MEGAN, Liya HUANG, Gwyneth WENTINK= transfer to Mandarin Oriental 
+
+Camp B: 
+Group 1: Tucker POON, Zhuangluan ZHOU, Issac CHAN
+Group 2: Venus CHAN, Clement YIM
+Group 3: Charlotte LAW, Victor CHEN, Vincci CHAN
+Group 4: Hannah HO, Monique NG
+Group 5: Effie WONG, Phyllis LUK, Marquis YEUNG
+Group 6: Feiyang WANG, Molly WONG, Angelina WONG
+Group 7: Janmie WONG, Tsz Ching Hung, Celine YIP, Nicole LAU
+Group 8: Jansci WONG Kaylee WONG
+Group 9: Valerie LIU, Si yu QI
+
+
+Room Shelley=
+Room Vincci=
+Room Jason=
+Room Ivy=
+Room Karen= 
+Room TanCong= 
+Room Piotr=
+Room Liya=
+Room Naoko=
+Room Judy=
+Room GW=
+Room Acting=
+Room Group Activity= 
+Vincci CHAN, Karen JONES, Pitor SKWERES, Liya HUANG, Judy LOMAN, Gwyneth WENTINK= transfer to Mandarin Oriental 
+
+
+F1= Marquis YEUNG
+F2= Angelina WONG
+F3= Issac CHAN
+F4= Victor CHEN
+F5= Molly WONG
+F6= Kaylee WONG
+
+
+C1= Tucker POON
+C2= Venus CHAN
+C3= Charlotte LAW
+C4= Hannah HO
+C5= Effie WONG
+
+
+H1= Nicole LAU 
+H2= Celine IP
+H3= Valerie LIU
+H4= Janmie WONG
+H5= Jansci WONG
+H6= Phyllis LUK
+H7= Amanda HUNG
+H8= Zhuangluan ZHOU
+H9= Monique NG
+H10= Si Yu QI
+H11= Clement Yim
+H12
+
+
+
