@@ -2,13 +2,13 @@
 Lunch= all
 Dress Up, Warm Up=all
 Rehearsal for Students and Friends Concert= all students, all faculty
-Lina Summer Camp of Music Students & Friends Concert= all students,all faculty
+Lina Summer Camp of Music Students & Friends Concert= all students, all faculty
 After concert drink in Maritime Museum=all students, all faculty
 Rehearsal for Faculty Concert= all faculty
 Group 1= Peter CHAN, Eve LUNG, Yanis SZE
-Group 2= Max TAM, Cybi CHENG, Shelley NG
-Group 3= Ivy YUE, Gabriel LING,
-Group 4= Yau NG, Moses LO, Queena CHU
+Group 2= Max TAM, Cybi CHENG
+Group 3= Ivy YUE, Gabriel MOK
+Group 4= Yau NG, Moses LO
 Group 5= Icelyn GE, Luna Zuo, Evan Qi
 Group 6= Shannon CHENG, Hailey LEUNG
 Group 7= Henry SUN, Roni WONG
@@ -46,7 +46,7 @@ Room Shelley= G22
 Room Queena= 204
 Room Ivy= G14
 Room Stephane= G19
-Room TanCong= 
+Room TanCong= 201
 Room Tomasz= G15
 Room Liya= 242
 Room Sivan= 245
@@ -58,27 +58,27 @@ Stephane RETY, Tomasz SKWERES, Sivan MEGAN, Liya HUANG, Gwyneth WENTINK= transfe
 Camp B: 
 Group 1: Tucker POON, Zhuangluan ZHOU, Issac CHAN
 Group 2: Venus CHAN, Clement YIM
-Group 3: Charlotte LAW, Victor CHEN, Vincci CHAN
+Group 3: Charlotte LAW, Victor CHEN
 Group 4: Hannah HO, Monique NG
 Group 5: Effie WONG, Phyllis LUK, Marquis YEUNG
 Group 6: Feiyang WANG, Molly WONG, Angelina WONG
 Group 7: Janmie WONG, Amanda HUNG, Celine YIP, Nicole LAU
 Group 8: Jansci WONG, Kaylee WONG
-Group 9: Valerie LIU, Si yu QI
+Group 9: Valerie LIU, Si Yu QI
 
 
-Room Shelley=
-Room Vincci=
+Room Shelley= G22
+Room Vincci= 
 Room Jason=
-Room Ivy=
-Room Karen= 
-Room TanCong= 
-Room Piotr=
-Room Liya=
-Room Naoko=
-Room Judy=
-Room GW=
-Room Acting=
+Room Ivy= G14
+Room Karen= G19
+Room TanCong= 201
+Room Piotr= G15
+Room Liya= 204
+Room Naoko= 242
+Room Judy=245
+Room GW= 237
+Room Acting= G13
 Room Group Activity= 
 Vincci CHAN, Karen JONES, Pitor SKWERES, Liya HUANG, Judy LOMAN, Gwyneth WENTINK= transfer to Mandarin Oriental 
 
