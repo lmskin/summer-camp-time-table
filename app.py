@@ -17,13 +17,22 @@ def main():
 
     st.sidebar.header("Instructions")
     st.sidebar.info(
-        "1. **Upload your timetable file.** The filename must be in the format: "
+        "1. **Upload mapping files** using the uploader below.\n\n"
+        "2. **Upload your timetable file.** The filename must be in the format: "
         "`{music-instrument}-{campA or campB}-time-table.xlsx`.\n"
         "   For example: `flute-campA-time-table.xlsx`.\n\n"
-        "2. **Select which timetables** you want to generate (Student, Teacher, or Both).\n\n"
-        "3. **Click 'Generate Timetables'**.\n\n"
-        "4. **Download the generated files** as a ZIP archive."
+        "3. **Select which timetables** you want to generate (Student, Teacher, or Both).\n\n"
+        "4. **Click 'Generate Timetables'**.\n\n"
+        "5. **Download the generated files** as a ZIP archive."
     )
+    
+    st.sidebar.markdown("---")
+    st.sidebar.header("Upload Mapping Files")
+    st.sidebar.info(
+        "Upload all `student_mapping`, `group_mapping`, `room_mapping`, and `room_no_mapping` CSV files for your camps."
+    )
+    mapping_files = st.sidebar.file_uploader("Upload Mapping CSVs", type=["csv"], accept_multiple_files=True)
+
 
     uploaded_file = st.file_uploader("Upload Excel Timetable", type=["xlsx"])
     
@@ -34,6 +43,18 @@ def main():
 
     if st.button("Generate Timetables"):
         if uploaded_file is not None:
+            # Save mapping files first, so they are available to the generator scripts.
+            if mapping_files:
+                for mapping_file in mapping_files:
+                    # Save each mapping file to the 'input' directory.
+                    mapping_filepath = os.path.join("input", mapping_file.name)
+                    with open(mapping_filepath, "wb") as f:
+                        f.write(mapping_file.getbuffer())
+                st.sidebar.success(f"{len(mapping_files)} mapping files uploaded successfully.")
+            else:
+                # Warn the user if no mapping files are provided, as it can affect output.
+                st.warning("Warning: No mapping files uploaded. Name and room mappings may not work correctly.")
+
             filename = uploaded_file.name
             
             # Pattern to validate filename based on project conventions.
@@ -86,7 +107,7 @@ def main():
             else:
                 st.error(f"Invalid filename format. Please use the format '{{music-instrument}}-{{campA or campB}}-time-table.xlsx'.")
         else:
-            st.warning("Please upload a file first.")
+            st.warning("Please upload a timetable file first.")
 
 def clear_output_dirs():
     """Removes all files from the output directories to ensure a clean run."""
