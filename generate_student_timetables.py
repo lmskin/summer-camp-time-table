@@ -165,7 +165,6 @@ def generate_timetables(input_filename):
 
     # Generate one single-sheet Excel file for each student
     for student in sorted(list(all_students)):
-        print(f"\n--- Processing student: {student_name_map.get(student, student)} ({student}) ---")
         # Pre-process to gather all time slots and daily schedules for the student
         all_time_slots = set()
         daily_schedules = {}
@@ -177,8 +176,6 @@ def generate_timetables(input_filename):
             if sheet_name not in processed_sheets:
                 continue
             
-            print(f"  -- Day: {sheet_name} --")
-
             sheet_data = processed_sheets[sheet_name]
             teachers = [str(name).strip() for name in sheet_data[0][1:]]
             schedule_rows = sheet_data[2:]
@@ -209,13 +206,8 @@ def generate_timetables(input_filename):
                     if not time and ':' in time_str:
                         time = time_str
 
-                if DEBUG:
-                    print(f"    Raw time_val: {repr(time_val)} -> Processed time: '{time}'")
-
                 # Skip processing if time is empty or invalid
                 if not time or time.strip() == '' or time.lower() in ['none', 'nan']:
-                    if DEBUG:
-                        print(f"    Skipping row with invalid time: '{time}'")
                     continue
 
                 # For Day 1-5, students finish at 17:00. For Day 6, they finish at 17:00.
@@ -224,8 +216,6 @@ def generate_timetables(input_filename):
                         if datetime.datetime.strptime(time, '%H:%M').time() >= datetime.time(17, 0):
                             continue  # Skip this timeslot
                     except ValueError:
-                        if DEBUG:
-                            print(f"    Could not parse time '{time}' - skipping time check")
                         pass  # Not a time format
                 elif is_day_6:  # Day 6
                     try:
@@ -238,8 +228,6 @@ def generate_timetables(input_filename):
                             student_schedule.append((time, "DAY_6_FREE_TIME_BLOCK"))
                             continue # Skip other processing for this row
                     except ValueError:
-                        if DEBUG:
-                            print(f"    Could not parse time '{time}' for Day 6 - skipping time check")
                         pass  # Not a time format
 
                 activities = [str(act).strip() for act in row[1:]]
@@ -256,8 +244,6 @@ def generate_timetables(input_filename):
                         if "Check in Maritime Museum" in activity:
                             if not day_6_check_in_added:
                                 check_in_activity = "Check in Maritime Museum\nBriefing for Saturday Concert\nMaritime Museum Tour"
-                                if DEBUG:
-                                    print(f"    [{time}] Adding Day 6 Check-in block.")
                                 student_schedule.extend([
                                     ("10:00", check_in_activity),
                                     ("10:15", check_in_activity),
@@ -270,8 +256,6 @@ def generate_timetables(input_filename):
                             activity_found_for_timeslot = True
                             break
                         
-                        if DEBUG:
-                            print(f"    [{time}] Found Day 6 activity: '{activity}'")
                         # For all other activities on Day 6
                         student_schedule.append((time, activity))
                         activity_found_for_timeslot = True
@@ -284,9 +268,6 @@ def generate_timetables(input_filename):
 
                         # Priority 1: Direct student match
                         if not activity_found_for_timeslot and re.search(r'\b' + re.escape(student) + r'\b', activity):
-                            if DEBUG:
-                                print(f"    [{time}] Matched P1 (Direct): student='{student}' in cell='{activity}'")
-                            
                             cleaned_activity = re.sub(r'\b' + re.escape(student) + r'\b', '', activity).strip()
                             is_private_lesson = (activity.strip() == student) or ('private lesson' in cleaned_activity.lower())
 
@@ -335,8 +316,6 @@ def generate_timetables(input_filename):
                             student_groups = student_to_groups.get(student, set())
 
                             if not student_groups.isdisjoint(involved_groups):
-                                if DEBUG:
-                                    print(f"    [{time}] Matched P2 (Complex Group): student='{student}' in cell='{activity}'")
                                 if 'acting class' in activity_name.lower():
                                     student_schedule.append((time, "Acting Class (Room Acting)"))
                                 else:
@@ -353,8 +332,6 @@ def generate_timetables(input_filename):
                             # New logic for group activities
                             for group_name in student_groups:
                                 if activity.startswith(group_name):
-                                    if DEBUG:
-                                        print(f"    [{time}] Matched P3 (Simple Group): student='{student}' in cell='{activity}'")
                                     room_match = re.search(r'\(Room\s+(.+?)\)', activity, re.IGNORECASE)
                                     if room_match:
                                         room_name = room_match.group(1)
@@ -389,22 +366,12 @@ def generate_timetables(input_filename):
                                 break
     
                     if activity_to_add:
-                        if DEBUG:
-                            print(f"    [{time}] Matched Common Activity: '{activity_to_add}'")
                         student_schedule.append((time, activity_to_add))
                     else:
-                        if DEBUG:
-                            print(f"    [{time}] No specific activity found. Assigning 'Free Time'.")
                         student_schedule.append((time, "Free Time"))
 
             # Sort the schedule by time to ensure correct grouping for merging
             student_schedule.sort(key=lambda x: x[0])
-
-            if DEBUG:
-                print(f"  -- Final schedule for {sheet_name}:")
-                for time, activity in student_schedule:
-                    if activity and activity != "Free Time":
-                        print(f"    {time}: {activity.replace(chr(10), ' / ')}")
 
             daily_schedules[sheet_name] = student_schedule
             for time, _ in student_schedule:
