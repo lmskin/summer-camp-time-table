@@ -8,8 +8,6 @@ from openpyxl.styles import Alignment, Font, Border, Side
 from openpyxl.utils import get_column_letter
 from shared_utils import sanitize_filename, process_sheet, load_student_name_mapping, load_room_no_mapping
 
-DEBUG = True
-
 def load_group_mappings(filename, music_instrument):
     """
     Loads group-to-student mappings from the specified CSV file.
@@ -102,10 +100,6 @@ def generate_timetables(input_filename):
     room_no_mapping_file = os.path.join("input", f"room_no_mapping-{camp_part}.csv")
     room_no_map = load_room_no_mapping(room_no_mapping_file)
     
-    if DEBUG:
-        print(f"\n--- DEBUG: Group Mappings for {music_instrument} ---")
-        print(group_mappings)
-
     # Create a reverse mapping from student to their groups for efficient lookup
     student_to_groups = {}
     for group, students in group_mappings.items():
@@ -113,10 +107,6 @@ def generate_timetables(input_filename):
             if s not in student_to_groups:
                 student_to_groups[s] = set()
             student_to_groups[s].add(group)
-
-    if DEBUG:
-        print(f"--- DEBUG: Student to Groups Mapping for {music_instrument} ---")
-        print(student_to_groups)
 
     # Process all sheets and store their data in a dictionary
     processed_sheets = {}
@@ -175,8 +165,7 @@ def generate_timetables(input_filename):
 
     # Generate one single-sheet Excel file for each student
     for student in sorted(list(all_students)):
-        if DEBUG:
-            print(f"\n--- Processing student: {student_name_map.get(student, student)} ({student}) ---")
+        print(f"\n--- Processing student: {student_name_map.get(student, student)} ({student}) ---")
         # Pre-process to gather all time slots and daily schedules for the student
         all_time_slots = set()
         daily_schedules = {}
@@ -188,8 +177,7 @@ def generate_timetables(input_filename):
             if sheet_name not in processed_sheets:
                 continue
             
-            if DEBUG:
-                print(f"  -- Day: {sheet_name} --")
+            print(f"  -- Day: {sheet_name} --")
 
             sheet_data = processed_sheets[sheet_name]
             teachers = [str(name).strip() for name in sheet_data[0][1:]]

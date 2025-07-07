@@ -45,28 +45,12 @@ def main():
         if uploaded_file is not None:
             # Save mapping files first, so they are available to the generator scripts.
             if mapping_files:
-                st.write(f"DEBUG: Found {len(mapping_files)} mapping files to upload:")
                 for mapping_file in mapping_files:
-                    st.write(f"  - {mapping_file.name}")
                     # Save each mapping file to the 'input' directory.
                     mapping_filepath = os.path.join("input", mapping_file.name)
                     with open(mapping_filepath, "wb") as f:
                         f.write(mapping_file.getbuffer())
-                    
-                    # Verify the file was saved correctly
-                    if os.path.exists(mapping_filepath):
-                        file_size = os.path.getsize(mapping_filepath)
-                        st.write(f"  ✓ Saved {mapping_file.name} ({file_size} bytes)")
-                    else:
-                        st.error(f"  ✗ Failed to save {mapping_file.name}")
-                
                 st.sidebar.success(f"{len(mapping_files)} mapping files uploaded successfully.")
-                
-                # List all files in input directory for verification
-                st.write("DEBUG: Files in input directory after upload:")
-                for file in os.listdir("input"):
-                    st.write(f"  - {file}")
-                    
             else:
                 # Warn the user if no mapping files are provided, as it can affect output.
                 st.warning("Warning: No mapping files uploaded. Name and room mappings may not work correctly.")
