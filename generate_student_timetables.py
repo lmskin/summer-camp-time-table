@@ -78,7 +78,7 @@ def generate_timetables(input_filename):
         print(f"Warning: Could not determine camp from filename {basename}. Cannot load mappings.")
         return
     
-    camp_part = camp_match.group(1).lower() # e.g., 'campa'
+    camp_part = camp_match.group(1) # e.g., 'campA' - preserve original case
     
     try:
         # Load the workbook once to process all sheets.
