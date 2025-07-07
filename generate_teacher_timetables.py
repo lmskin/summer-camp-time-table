@@ -49,6 +49,11 @@ def load_student_name_mapping(filename):
         print(f"Warning: {filename} not found. Student numbers will be used in filenames.")
     except Exception as e:
         print(f"An error occurred while reading {filename}: {e}")
+    
+    print(f"DEBUG (teacher_timetables): Loaded student name map from {filename}. Found {len(name_map)} mappings.")
+    if not name_map:
+        print(f"DEBUG (teacher_timetables): The name map is empty. Check if the file exists and is correctly formatted.")
+
     return name_map
 
 def load_room_no_mapping(filename):
