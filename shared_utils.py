@@ -1,6 +1,7 @@
 import re
 import csv
 from openpyxl import load_workbook
+import os
 
 def sanitize_filename(filename):
     """
@@ -31,6 +32,19 @@ def load_student_name_mapping(filename):
     """
     Loads student_no to student_name mappings from the specified CSV file.
     """
+    print(f"DEBUG (shared_utils): Attempting to load student mapping from: {filename}")
+    print(f"DEBUG (shared_utils): Current working directory: {os.getcwd()}")
+    print(f"DEBUG (shared_utils): File exists check: {os.path.exists(filename)}")
+    
+    # List contents of input directory for debugging
+    input_dir = os.path.dirname(filename)
+    if os.path.exists(input_dir):
+        print(f"DEBUG (shared_utils): Contents of {input_dir}:")
+        for file in os.listdir(input_dir):
+            print(f"  - {file}")
+    else:
+        print(f"DEBUG (shared_utils): Directory {input_dir} does not exist")
+    
     name_map = {}
     try:
         with open(filename, mode='r', encoding='utf-8-sig') as infile:
