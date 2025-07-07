@@ -51,6 +51,25 @@ def load_student_name_mapping(filename):
         print(f"An error occurred while reading {filename}: {e}")
     return name_map
 
+def load_room_no_mapping(filename):
+    """
+    Loads room_name to room_number mappings from the specified CSV file.
+    """
+    room_no_map = {}
+    try:
+        with open(filename, mode='r', encoding='utf-8-sig') as infile:
+            reader = csv.DictReader(infile)
+            for row in reader:
+                room_name = row.get('room_name')
+                room_number = row.get('room_number')
+                if room_name and room_number:
+                    room_no_map[room_name.strip()] = room_number.strip()
+    except FileNotFoundError:
+        print(f"Warning: {filename} not found. Room names will not be replaced with numbers.")
+    except Exception as e:
+        print(f"An error occurred while reading {filename}: {e}")
+    return room_no_map
+
 def generate_teacher_timetables(input_filename):
     """
     Reads an Excel file with multiple sheets (each representing a date) and
@@ -76,6 +95,9 @@ def generate_teacher_timetables(input_filename):
 
     student_mapping_file = os.path.join("input", f"student_mapping-{camp_part}.csv")
     student_name_map = load_student_name_mapping(student_mapping_file)
+
+    room_no_mapping_file = os.path.join("input", f"room_no_mapping-{camp_part}.csv")
+    room_no_map = load_room_no_mapping(room_no_mapping_file)
 
     processed_sheets = {}
     for sheet_name in workbook.sheetnames:
@@ -176,7 +198,8 @@ def generate_teacher_timetables(input_filename):
                         activity = re.sub(r'(Group\s+\d+)(?! Ensemble Coaching)', r'\1 Ensemble Coaching', activity)
 
                         # Find all student IDs (e.g., F1) in the activity string
-                        student_ids = re.findall(r'\bF\d+\b', activity)
+                        instrument_prefix = music_instrument[0].upper()
+                        student_ids = re.findall(rf'\b{instrument_prefix}\d+\b', activity)
                         for student_id in student_ids:
                             # Replace each student ID with their name, if available
                             student_name = student_name_map.get(student_id, student_id)
@@ -208,6 +231,9 @@ def generate_teacher_timetables(input_filename):
                 morning_times = ["10:00", "10:15", "10:30", "10:45"]
                 for morning_time in morning_times:
                     teacher_schedule.append((morning_time, "SATURDAY_MORNING_MERGE_BLOCK"))
+
+            # Sort the schedule by time to ensure correct grouping for merging
+            teacher_schedule.sort(key=lambda x: x[0])
 
             daily_schedules[sheet_name] = teacher_schedule
             for time, _ in teacher_schedule:
@@ -261,6 +287,11 @@ def generate_teacher_timetables(input_filename):
                 # Ensure "Ensemble Coaching" is on a new line
                 if 'Ensemble Coaching' in cell_activity and '\nEnsemble Coaching' not in cell_activity:
                     cell_activity = cell_activity.replace(' Ensemble Coaching', '\nEnsemble Coaching', 1)
+
+                # Replace room names with room numbers
+                if room_no_map:
+                    for r_name, r_number in room_no_map.items():
+                        cell_activity = cell_activity.replace(r_name, r_number)
 
                 cell = teacher_ws.cell(row=start_row, column=current_col, value=cell_activity)
 

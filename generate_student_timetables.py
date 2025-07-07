@@ -7,6 +7,8 @@ from openpyxl import load_workbook, Workbook
 from openpyxl.styles import Alignment, Font, Border, Side
 from openpyxl.utils import get_column_letter
 
+DEBUG = True
+
 def sanitize_filename(filename):
     """
     Removes characters from a string that are not allowed in file names.
@@ -55,7 +57,7 @@ def load_student_name_mapping(filename):
         print(f"An error occurred while reading {filename}: {e}")
     return name_map
 
-def load_group_mappings(filename):
+def load_group_mappings(filename, music_instrument):
     """
     Loads group-to-student mappings from the specified CSV file.
     The CSV should have 'group_number' and 'student_no' columns.
@@ -72,7 +74,8 @@ def load_group_mappings(filename):
                 if group_number and student_nos_str:
                     group_name = f"Group {group_number.strip()}"
                     # Extract all F-numbers (e.g., F1, F23) from the string
-                    found_students = re.findall(r'\bF\d+\b', student_nos_str)
+                    instrument_prefix = music_instrument[0].upper()
+                    found_students = re.findall(rf'\b{instrument_prefix}\d+\b', student_nos_str)
                     
                     if found_students:
                         if group_name not in group_mappings:
@@ -88,7 +91,7 @@ def load_group_mappings(filename):
 def load_room_mapping(filename):
     """
     Loads teacher-to-room mappings from the specified CSV file.
-    The CSV should have 'teacher_name' and 'room_number' columns.
+    The CSV should have 'teacher_name' and 'room_name' columns.
     """
     room_mappings = {}
     try:
@@ -96,7 +99,7 @@ def load_room_mapping(filename):
             reader = csv.DictReader(infile)
             for row in reader:
                 teacher_name = row.get('teacher_name')
-                room_number = row.get('room_number')
+                room_number = row.get('room_name')
                 if teacher_name and room_number:
                     room_mappings[teacher_name.strip()] = room_number.strip()
     except FileNotFoundError:
@@ -105,6 +108,25 @@ def load_room_mapping(filename):
         print(f"An error occurred while reading {filename}: {e}")
     
     return room_mappings
+
+def load_room_no_mapping(filename):
+    """
+    Loads room_name to room_number mappings from the specified CSV file.
+    """
+    room_no_map = {}
+    try:
+        with open(filename, mode='r', encoding='utf-8-sig') as infile:
+            reader = csv.DictReader(infile)
+            for row in reader:
+                room_name = row.get('room_name')
+                room_number = row.get('room_number')
+                if room_name and room_number:
+                    room_no_map[room_name.strip()] = room_number.strip()
+    except FileNotFoundError:
+        print(f"Warning: {filename} not found. Room names will not be replaced with numbers.")
+    except Exception as e:
+        print(f"An error occurred while reading {filename}: {e}")
+    return room_no_map
 
 def generate_timetables(input_filename):
     """
@@ -140,9 +162,16 @@ def generate_timetables(input_filename):
     room_mapping_file = os.path.join("input", f"room_mapping-{camp_part}.csv")
 
     student_name_map = load_student_name_mapping(student_mapping_file)
-    group_mappings = load_group_mappings(group_mapping_file)
+    group_mappings = load_group_mappings(group_mapping_file, music_instrument)
     room_mappings = load_room_mapping(room_mapping_file)
     
+    room_no_mapping_file = os.path.join("input", f"room_no_mapping-{camp_part}.csv")
+    room_no_map = load_room_no_mapping(room_no_mapping_file)
+    
+    if DEBUG:
+        print(f"\n--- DEBUG: Group Mappings for {music_instrument} ---")
+        print(group_mappings)
+
     # Create a reverse mapping from student to their groups for efficient lookup
     student_to_groups = {}
     for group, students in group_mappings.items():
@@ -150,6 +179,10 @@ def generate_timetables(input_filename):
             if s not in student_to_groups:
                 student_to_groups[s] = set()
             student_to_groups[s].add(group)
+
+    if DEBUG:
+        print(f"--- DEBUG: Student to Groups Mapping for {music_instrument} ---")
+        print(student_to_groups)
 
     # Process all sheets and store their data in a dictionary
     processed_sheets = {}
@@ -165,7 +198,8 @@ def generate_timetables(input_filename):
             for cell in row[1:]:
                 if isinstance(cell, str):
                     # Use regex to find all student IDs (e.g., F1) in a cell
-                    found_students = re.findall(r'\bF\d+\b', cell)
+                    instrument_prefix = music_instrument[0].upper()
+                    found_students = re.findall(rf'\b{instrument_prefix}\d+\b', cell)
                     for s in found_students:
                         all_students.add(s)
 
@@ -207,6 +241,8 @@ def generate_timetables(input_filename):
 
     # Generate one single-sheet Excel file for each student
     for student in sorted(list(all_students)):
+        if DEBUG:
+            print(f"\n--- Processing student: {student_name_map.get(student, student)} ({student}) ---")
         # Pre-process to gather all time slots and daily schedules for the student
         all_time_slots = set()
         daily_schedules = {}
@@ -218,6 +254,9 @@ def generate_timetables(input_filename):
             if sheet_name not in processed_sheets:
                 continue
             
+            if DEBUG:
+                print(f"  -- Day: {sheet_name} --")
+
             sheet_data = processed_sheets[sheet_name]
             teachers = [str(name).strip() for name in sheet_data[0][1:]]
             schedule_rows = sheet_data[2:]
@@ -226,7 +265,36 @@ def generate_timetables(input_filename):
             day_6_check_in_added = False  # Flag to ensure it's added only once
             for row in schedule_rows:
                 time_val = row[0]
-                time = time_val.strftime('%H:%M') if isinstance(time_val, datetime.time) else str(time_val).strip()
+                time = ""
+                
+                # Handle different time formats from Excel
+                if isinstance(time_val, datetime.time):
+                    time = time_val.strftime('%H:%M')
+                elif isinstance(time_val, datetime.datetime):
+                    time = time_val.strftime('%H:%M')
+                elif time_val is not None:
+                    time_str = str(time_val).strip()
+                    # Try to parse common time formats
+                    for fmt in ['%H:%M:%S', '%H:%M', '%I:%M %p', '%I:%M:%S %p']:
+                        try:
+                            parsed_time = datetime.datetime.strptime(time_str, fmt).time()
+                            time = parsed_time.strftime('%H:%M')
+                            break
+                        except ValueError:
+                            continue
+                    
+                    # If no format worked, use the string as-is if it looks like a time
+                    if not time and ':' in time_str:
+                        time = time_str
+
+                if DEBUG:
+                    print(f"    Raw time_val: {repr(time_val)} -> Processed time: '{time}'")
+
+                # Skip processing if time is empty or invalid
+                if not time or time.strip() == '' or time.lower() in ['none', 'nan']:
+                    if DEBUG:
+                        print(f"    Skipping row with invalid time: '{time}'")
+                    continue
 
                 # For Day 1-5, students finish at 17:00. For Day 6, they finish at 17:00.
                 if day_index < 5:  # Day 1 to 5
@@ -234,6 +302,8 @@ def generate_timetables(input_filename):
                         if datetime.datetime.strptime(time, '%H:%M').time() >= datetime.time(17, 0):
                             continue  # Skip this timeslot
                     except ValueError:
+                        if DEBUG:
+                            print(f"    Could not parse time '{time}' - skipping time check")
                         pass  # Not a time format
                 elif is_day_6:  # Day 6
                     try:
@@ -246,6 +316,8 @@ def generate_timetables(input_filename):
                             student_schedule.append((time, "DAY_6_FREE_TIME_BLOCK"))
                             continue # Skip other processing for this row
                     except ValueError:
+                        if DEBUG:
+                            print(f"    Could not parse time '{time}' for Day 6 - skipping time check")
                         pass  # Not a time format
 
                 activities = [str(act).strip() for act in row[1:]]
@@ -262,6 +334,8 @@ def generate_timetables(input_filename):
                         if "Check in Maritime Museum" in activity:
                             if not day_6_check_in_added:
                                 check_in_activity = "Check in Maritime Museum\nBriefing for Saturday Concert\nMaritime Museum Tour"
+                                if DEBUG:
+                                    print(f"    [{time}] Adding Day 6 Check-in block.")
                                 student_schedule.extend([
                                     ("10:00", check_in_activity),
                                     ("10:15", check_in_activity),
@@ -274,6 +348,8 @@ def generate_timetables(input_filename):
                             activity_found_for_timeslot = True
                             break
                         
+                        if DEBUG:
+                            print(f"    [{time}] Found Day 6 activity: '{activity}'")
                         # For all other activities on Day 6
                         student_schedule.append((time, activity))
                         activity_found_for_timeslot = True
@@ -286,6 +362,8 @@ def generate_timetables(input_filename):
 
                         # Priority 1: Direct student match
                         if not activity_found_for_timeslot and re.search(r'\b' + re.escape(student) + r'\b', activity):
+                            if DEBUG:
+                                print(f"    [{time}] Matched P1 (Direct): student='{student}' in cell='{activity}'")
                             
                             cleaned_activity = re.sub(r'\b' + re.escape(student) + r'\b', '', activity).strip()
                             is_private_lesson = (activity.strip() == student) or ('private lesson' in cleaned_activity.lower())
@@ -335,6 +413,8 @@ def generate_timetables(input_filename):
                             student_groups = student_to_groups.get(student, set())
 
                             if not student_groups.isdisjoint(involved_groups):
+                                if DEBUG:
+                                    print(f"    [{time}] Matched P2 (Complex Group): student='{student}' in cell='{activity}'")
                                 if 'acting class' in activity_name.lower():
                                     student_schedule.append((time, "Acting Class (Room Acting)"))
                                 else:
@@ -351,6 +431,8 @@ def generate_timetables(input_filename):
                             # New logic for group activities
                             for group_name in student_groups:
                                 if activity.startswith(group_name):
+                                    if DEBUG:
+                                        print(f"    [{time}] Matched P3 (Simple Group): student='{student}' in cell='{activity}'")
                                     room_match = re.search(r'\(Room\s+(.+?)\)', activity, re.IGNORECASE)
                                     if room_match:
                                         room_name = room_match.group(1)
@@ -385,9 +467,22 @@ def generate_timetables(input_filename):
                                 break
     
                     if activity_to_add:
+                        if DEBUG:
+                            print(f"    [{time}] Matched Common Activity: '{activity_to_add}'")
                         student_schedule.append((time, activity_to_add))
                     else:
+                        if DEBUG:
+                            print(f"    [{time}] No specific activity found. Assigning 'Free Time'.")
                         student_schedule.append((time, "Free Time"))
+
+            # Sort the schedule by time to ensure correct grouping for merging
+            student_schedule.sort(key=lambda x: x[0])
+
+            if DEBUG:
+                print(f"  -- Final schedule for {sheet_name}:")
+                for time, activity in student_schedule:
+                    if activity and activity != "Free Time":
+                        print(f"    {time}: {activity.replace(chr(10), ' / ')}")
 
             daily_schedules[sheet_name] = student_schedule
             for time, _ in student_schedule:
@@ -446,6 +541,11 @@ def generate_timetables(input_filename):
                 if '(' in cell_activity and ')' in cell_activity and '\n(' not in cell_activity:
                     cell_activity = cell_activity.replace('(', '\n(', 1)
                 
+                # Replace room names with room numbers
+                if room_no_map:
+                    for r_name, r_number in room_no_map.items():
+                        cell_activity = cell_activity.replace(r_name, r_number)
+
                 cell = student_ws.cell(row=start_row, column=current_col, value=cell_activity)
 
                 if row_span > 1:

@@ -35,23 +35,23 @@ H1= Sonia SUNG
 H2= Eve LUNG
 H3= Shannon CHENG
 H4= Luna ZUO
-H5= Gabriel LING
+H5= Gabriel Mok
 H6= Grace Ng
 H7= Ho Yee HO
 H8= Caitlyn YIP
 H9= Jansci WONG
 
 
-Room Shelley=
-Room Queena=
-Room Ivy=
-Room Stephane= 
+Room Shelley= G22
+Room Queena= 204
+Room Ivy= G14
+Room Stephane= G19
 Room TanCong= 
-Room Tomasz=
-Room Liya=
-Room Sivan=
-Room GW=
-Room Acting=
+Room Tomasz= G15
+Room Liya= 242
+Room Sivan= 245
+Room GW= 236
+Room Acting= G13
 Room Group Activity= 
 Stephane RETY, Tomasz SKWERES, Sivan MEGAN, Liya HUANG, Gwyneth WENTINK= transfer to Mandarin Oriental 
 
@@ -62,8 +62,8 @@ Group 3: Charlotte LAW, Victor CHEN, Vincci CHAN
 Group 4: Hannah HO, Monique NG
 Group 5: Effie WONG, Phyllis LUK, Marquis YEUNG
 Group 6: Feiyang WANG, Molly WONG, Angelina WONG
-Group 7: Janmie WONG, Tsz Ching Hung, Celine YIP, Nicole LAU
-Group 8: Jansci WONG Kaylee WONG
+Group 7: Janmie WONG, Amanda HUNG, Celine YIP, Nicole LAU
+Group 8: Jansci WONG, Kaylee WONG
 Group 9: Valerie LIU, Si yu QI
 
 
@@ -99,7 +99,7 @@ C5= Effie WONG
 
 
 H1= Nicole LAU 
-H2= Celine IP
+H2= Celine YIP
 H3= Valerie LIU
 H4= Janmie WONG
 H5= Jansci WONG
@@ -108,8 +108,8 @@ H7= Amanda HUNG
 H8= Zhuangluan ZHOU
 H9= Monique NG
 H10= Si Yu QI
-H11= Clement Yim
-H12
+H11= Feiyang WANG
+H12= Clement YIM
 
 
 
