@@ -201,9 +201,12 @@ def generate_teacher_timetables(input_filename):
                 header_text = sheet_name
 
             teacher_ws.cell(row=1, column=current_col, value=header_text).font = Font(bold=True)
-            todays_schedule = daily_schedules[sheet_name]
+            
+            # Create a full schedule for the day, including empty slots, to allow merging of consecutive empty cells.
+            todays_schedule_map = dict(daily_schedules[sheet_name])
+            full_day_schedule = [(time, todays_schedule_map.get(time, "")) for time in sorted_times]
 
-            for activity, group in itertools.groupby(todays_schedule, key=lambda x: x[1]):
+            for activity, group in itertools.groupby(full_day_schedule, key=lambda x: x[1]):
                 group_list = list(group)
                 row_span = len(group_list)
                 start_time = group_list[0][0]
