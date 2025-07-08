@@ -139,6 +139,8 @@ def generate_timetables(input_filename):
         "After concert refreshment (Maritime Museum)",
         "Group Activity",
         "Briefing for Saturday",
+        "Yoga Class",
+        "Harp Regulation Class",
     ]
 
     output_dir = "student_timetables"
@@ -182,6 +184,10 @@ def generate_timetables(input_filename):
             
             student_schedule = []
             day_6_check_in_added = False  # Flag to ensure it's added only once
+            
+            is_friday = (day_index == 4)
+            is_harp = music_instrument.lower() == 'harp'
+
             for row in schedule_rows:
                 time_val = row[0]
                 time = ""
@@ -266,7 +272,34 @@ def generate_timetables(input_filename):
                         if not activity:
                             continue
 
-                        # Priority 1: Direct student match
+                        # Generalized logic for any Masterclass containing student's ID
+                        if not activity_found_for_timeslot and 'masterclass' in activity.lower() and re.search(r'\b' + re.escape(student) + r'\b', activity):
+                            teacher = None
+                            # Try to find a teacher from the mapping directly in the activity string
+                            # Iterate a sorted list of teacher names (longest first) to avoid substring conflicts
+                            for known_teacher in sorted(room_mappings.keys(), key=len, reverse=True):
+                                if known_teacher in activity:
+                                    teacher = known_teacher
+                                    break
+                            
+                            # Fallback to header if no teacher found in string (less reliable)
+                            if not teacher:
+                                teacher = teachers[i]
+
+                            room_number = room_mappings.get(teacher, "TBD")
+
+                            # Remove all student IDs (e.g., H1, F12) from the activity string
+                            instrument_prefix = music_instrument[0].upper()
+                            base_activity = re.sub(rf'\b{instrument_prefix}\d+\b,?\s*', '', activity).strip()
+                            
+                            # Also remove any existing room string, since we'll add the correct one from the mapping
+                            base_activity = re.sub(r'\s*\([^)]+\)$', '', base_activity).strip()
+
+                            desc = f"{base_activity} ({room_number})"
+                            student_schedule.append((time, desc))
+                            activity_found_for_timeslot = True
+
+                        # Priority 1: Direct student match (will be skipped if the above logic runs)
                         if not activity_found_for_timeslot and re.search(r'\b' + re.escape(student) + r'\b', activity):
                             cleaned_activity = re.sub(r'\b' + re.escape(student) + r'\b', '', activity).strip()
                             is_private_lesson = (activity.strip() == student) or ('private lesson' in cleaned_activity.lower())
@@ -346,24 +379,16 @@ def generate_timetables(input_filename):
                 # Fallback for common activities or Free Time
                 if not activity_found_for_timeslot:
                     # Check for any common activity for this timeslot.
-                    # Master Class is checked first, then the predefined list.
                     activity_to_add = None
-                    masterclass_activity_str = f"{music_instrument} MasterClass"
                     for activity in activities:
-                        if activity.startswith("Master class with") or masterclass_activity_str in activity:
-                            activity_to_add = activity
-                            break  # Found master class, stop searching this row
-                    
-                    if not activity_to_add:
-                        for activity in activities:
-                            if not activity:
-                                continue
-                            for common_activity in common_activities:
-                                if common_activity in activity:
-                                    activity_to_add = activity
-                                    break  # Found a common activity
-                            if activity_to_add:
-                                break
+                        if not activity:
+                            continue
+                        for common_activity in common_activities:
+                            if common_activity in activity:
+                                activity_to_add = activity
+                                break  # Found a common activity
+                        if activity_to_add:
+                            break
     
                     if activity_to_add:
                         student_schedule.append((time, activity_to_add))
