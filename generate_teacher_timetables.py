@@ -99,7 +99,7 @@ def generate_teacher_timetables(input_filename):
                     continue
 
             schedule_rows = sheet_data[2:]
-            teacher_schedule = []
+            daily_schedule_map = {}
             
             for row in schedule_rows:
                 time_val = row[0]
@@ -144,9 +144,7 @@ def generate_teacher_timetables(input_filename):
                             activity = activity.replace(student_id, student_name)
                 
                 if activity:
-                    teacher_schedule.append((time, activity))
-                else:
-                    teacher_schedule.append((time, ""))
+                    daily_schedule_map[time] = activity
 
             # For weekdays, manually add the evening merge block
             if not is_day_6:
@@ -162,16 +160,16 @@ def generate_teacher_timetables(input_filename):
                     evening_activity = "Transfer to Mandarin Oriental"
 
                 for evening_time in evening_times:
-                    teacher_schedule.append((evening_time, evening_activity))
+                    daily_schedule_map[evening_time] = evening_activity
 
             # For Saturday, manually add the morning merge block
             if is_day_6:
                 morning_times = ["10:00", "10:15", "10:30", "10:45"]
                 for morning_time in morning_times:
-                    teacher_schedule.append((morning_time, "SATURDAY_MORNING_MERGE_BLOCK"))
+                    daily_schedule_map[morning_time] = "SATURDAY_MORNING_MERGE_BLOCK"
 
             # Sort the schedule by time to ensure correct grouping for merging
-            teacher_schedule.sort(key=lambda x: x[0])
+            teacher_schedule = sorted(daily_schedule_map.items())
 
             daily_schedules[sheet_name] = teacher_schedule
             for time, _ in teacher_schedule:
@@ -203,9 +201,12 @@ def generate_teacher_timetables(input_filename):
                 header_text = sheet_name
 
             teacher_ws.cell(row=1, column=current_col, value=header_text).font = Font(bold=True)
-            todays_schedule = daily_schedules[sheet_name]
+            
+            # Create a full schedule for the day, including empty slots, to allow merging of consecutive empty cells.
+            todays_schedule_map = dict(daily_schedules[sheet_name])
+            full_day_schedule = [(time, todays_schedule_map.get(time, "")) for time in sorted_times]
 
-            for activity, group in itertools.groupby(todays_schedule, key=lambda x: x[1]):
+            for activity, group in itertools.groupby(full_day_schedule, key=lambda x: x[1]):
                 group_list = list(group)
                 row_span = len(group_list)
                 start_time = group_list[0][0]
@@ -231,11 +232,12 @@ def generate_teacher_timetables(input_filename):
                     for r_name, r_number in room_no_map.items():
                         cell_activity = cell_activity.replace(r_name, r_number)
 
-                cell = teacher_ws.cell(row=start_row, column=current_col, value=cell_activity)
-
                 if row_span > 1:
                     end_row = start_row + row_span - 1
                     teacher_ws.merge_cells(start_row=start_row, start_column=current_col, end_row=end_row, end_column=current_col)
+
+                # Set value on the top-left cell of the (merged) range
+                cell = teacher_ws.cell(row=start_row, column=current_col, value=cell_activity)
 
             current_col += 1
 
