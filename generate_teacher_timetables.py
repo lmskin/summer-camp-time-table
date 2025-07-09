@@ -219,6 +219,9 @@ def generate_teacher_timetables(input_filename):
                 if activity == "EVENING_MERGE_BLOCK" or activity == "SATURDAY_MORNING_MERGE_BLOCK":
                     cell_activity = ""
 
+                # Remove any "*" characters from the cell content
+                cell_activity = cell_activity.replace('*', '')
+
                 # Ensure room information is on a new line, but only if it's not already.
                 if '(' in cell_activity and ')' in cell_activity and '\n(' not in cell_activity:
                     cell_activity = cell_activity.replace('(', '\n(', 1)
