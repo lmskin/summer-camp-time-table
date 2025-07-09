@@ -121,7 +121,7 @@ def generate_teacher_timetables(input_filename):
 
                 # Get the activity from the teacher's column
                 activity = str(row[teacher_col_index]).strip() if len(row) > teacher_col_index else ""
-
+                
                 if is_day_6:
                     if "Lunch" in activity and "Dress Up, Warm Up" in activity:
                         activity = "Lunch"
@@ -138,6 +138,7 @@ def generate_teacher_timetables(input_filename):
                         # Find all student IDs (e.g., F1) in the activity string
                         instrument_prefix = music_instrument[0].upper()
                         student_ids = re.findall(rf'\b{instrument_prefix}\d+\b', activity)
+                        
                         for student_id in student_ids:
                             # Replace each student ID with their name, if available
                             student_name = student_name_map.get(student_id, student_id)

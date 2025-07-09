@@ -140,6 +140,7 @@ def generate_timetables(input_filename):
         "Group Activity",
         "Briefing for Saturday",
         "Yoga Class",
+        "Harp Regulation Workshop",
         "Harp Regulation Class",
     ]
 
@@ -303,8 +304,25 @@ def generate_timetables(input_filename):
                         if not activity_found_for_timeslot and re.search(r'\b' + re.escape(student) + r'\b', activity):
                             cleaned_activity = re.sub(r'\b' + re.escape(student) + r'\b', '', activity).strip()
                             is_private_lesson = (activity.strip() == student) or ('private lesson' in cleaned_activity.lower())
-
-                            if is_private_lesson:
+                            
+                            # Check for "Lesson with {teacher} & pianist" pattern
+                            pianist_lesson_match = re.search(r'lesson with (.+?) & pianist', cleaned_activity.lower())
+                            if pianist_lesson_match:
+                                teacher_name = pianist_lesson_match.group(1).strip()
+                                # Find the teacher in the room mappings (case-insensitive)
+                                teacher_room = None
+                                for mapped_teacher, room in room_mappings.items():
+                                    if mapped_teacher.lower() == teacher_name.lower():
+                                        teacher_room = room
+                                        break
+                                
+                                if teacher_room:
+                                    desc = f"Lesson with {teacher_name.title()} & pianist ({teacher_room})"
+                                else:
+                                    desc = f"Lesson with {teacher_name.title()} & pianist"
+                                student_schedule.append((time, desc))
+                                activity_found_for_timeslot = True
+                            elif is_private_lesson:
                                 teacher = teachers[i]
                                 if teacher:
                                     room_number = room_mappings.get(teacher, "")
@@ -348,9 +366,25 @@ def generate_timetables(input_filename):
 
                             student_groups = student_to_groups.get(student, set())
 
+                            # Debug output for student C5
+                            if student == "C5":
+                                print(f"DEBUG C5: Time {time}, Activity: '{activity}'")
+                                print(f"DEBUG C5: Activity body: '{activity_body}'")
+                                print(f"DEBUG C5: Activity name: '{activity_name}'")
+                                print(f"DEBUG C5: Involved groups: {involved_groups}")
+                                print(f"DEBUG C5: Student groups: {student_groups}")
+                                print(f"DEBUG C5: Groups intersection: {not student_groups.isdisjoint(involved_groups)}")
+                                print(f"DEBUG C5: All activities in this timeslot: {activities}")
+                                print(f"DEBUG C5: Teacher column index: {i}")
+                                print(f"DEBUG C5: Teachers: {teachers}")
+                                print(f"DEBUG C5: Teachers[i]: {teachers[i] if i < len(teachers) else 'INDEX OUT OF RANGE'}")
+                                print("---")
+
                             if not student_groups.isdisjoint(involved_groups):
                                 if 'acting class' in activity_name.lower():
-                                    student_schedule.append((time, "Acting Class (Room Acting)"))
+                                    # Use the room mapping to find the correct room for acting class
+                                    acting_room = room_mappings.get("Room Acting Class", "Room Acting Class")
+                                    student_schedule.append((time, f"Acting Class ({acting_room})"))
                                 else:
                                     # If the activity name already implies it's a group or has a room, don't add "(Group)"
                                     if 'group' in activity_name.lower() or 'room' in activity_name.lower():
@@ -362,9 +396,17 @@ def generate_timetables(input_filename):
                         # Priority 3: Simple group match (e.g., "Group 1")
                         if not activity_found_for_timeslot and activity.lower().startswith('group'):
                             student_groups = student_to_groups.get(student, set())
+                            
+                            # Debug output for student C5
+                            if student == "C5":
+                                print(f"DEBUG C5: Simple group match - Time {time}, Activity: '{activity}'")
+                                print(f"DEBUG C5: Student groups: {student_groups}")
+                                
                             # New logic for group activities
                             for group_name in student_groups:
                                 if activity.startswith(group_name):
+                                    if student == "C5":
+                                        print(f"DEBUG C5: Found matching group: {group_name}")
                                     room_match = re.search(r'\(Room\s+(.+?)\)', activity, re.IGNORECASE)
                                     if room_match:
                                         room_name = room_match.group(1)
@@ -391,8 +433,12 @@ def generate_timetables(input_filename):
                             break
     
                     if activity_to_add:
+                        if student == "C5":
+                            print(f"DEBUG C5: Fallback - Time {time}, Activity: '{activity_to_add}'")
                         student_schedule.append((time, activity_to_add))
                     else:
+                        if student == "C5":
+                            print(f"DEBUG C5: Free Time - Time {time}")
                         student_schedule.append((time, "Free Time"))
 
             # Sort the schedule by time to ensure correct grouping for merging
