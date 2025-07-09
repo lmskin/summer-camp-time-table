@@ -257,6 +257,24 @@ def generate_teacher_timetables(input_filename):
             else:  # Other columns
                 teacher_ws.column_dimensions[column_letter].width = 35
 
+        # Auto-adjust row heights to ensure content is visible
+        for row_index in range(1, teacher_ws.max_row + 1):
+            max_cell_height = 15  # Minimum row height
+            for col_index in range(1, teacher_ws.max_column + 1):
+                cell = teacher_ws.cell(row=row_index, column=col_index)
+                if cell.value:
+                    # Estimate height needed for the cell
+                    # Count lines from explicit newlines
+                    lines = str(cell.value).count('\n') + 1
+                    
+                    # Estimate height based on line count (15 pixels per line as a heuristic)
+                    estimated_height = lines * 15
+
+                    if estimated_height > max_cell_height:
+                        max_cell_height = estimated_height
+            
+            teacher_ws.row_dimensions[row_index].height = max_cell_height
+
         # Apply borders and alignment to all cells
         for row in teacher_ws.iter_rows(min_row=1, max_row=teacher_ws.max_row, min_col=1, max_col=teacher_ws.max_column):
             for cell in row:
