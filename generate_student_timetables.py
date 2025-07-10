@@ -142,6 +142,14 @@ def generate_timetables(input_filename):
         "Yoga Class",
         "Harp Regulation Workshop",
         "Harp Regulation Class",
+        "Harp Regulation",
+        "Cello Regulation & Maintance Class",
+        "Cello Regulation & Maintenance Class",
+        "Workshop - Warm Up",
+        "Cello MasterClass",
+        "MasterClass",
+        "Flute MasterClass",
+        "Harp MasterClass"
     ]
 
     output_dir = "student_timetables"
@@ -297,6 +305,7 @@ def generate_timetables(input_filename):
                             base_activity = re.sub(r'\s*\([^)]+\)$', '', base_activity).strip()
 
                             desc = f"{base_activity} ({room_number})"
+                            
                             student_schedule.append((time, desc))
                             activity_found_for_timeslot = True
 
@@ -366,20 +375,6 @@ def generate_timetables(input_filename):
 
                             student_groups = student_to_groups.get(student, set())
 
-                            # Debug output for student C5
-                            if student == "C5":
-                                print(f"DEBUG C5: Time {time}, Activity: '{activity}'")
-                                print(f"DEBUG C5: Activity body: '{activity_body}'")
-                                print(f"DEBUG C5: Activity name: '{activity_name}'")
-                                print(f"DEBUG C5: Involved groups: {involved_groups}")
-                                print(f"DEBUG C5: Student groups: {student_groups}")
-                                print(f"DEBUG C5: Groups intersection: {not student_groups.isdisjoint(involved_groups)}")
-                                print(f"DEBUG C5: All activities in this timeslot: {activities}")
-                                print(f"DEBUG C5: Teacher column index: {i}")
-                                print(f"DEBUG C5: Teachers: {teachers}")
-                                print(f"DEBUG C5: Teachers[i]: {teachers[i] if i < len(teachers) else 'INDEX OUT OF RANGE'}")
-                                print("---")
-
                             if not student_groups.isdisjoint(involved_groups):
                                 if 'acting class' in activity_name.lower():
                                     # Use the room mapping to find the correct room for acting class
@@ -397,16 +392,9 @@ def generate_timetables(input_filename):
                         if not activity_found_for_timeslot and activity.lower().startswith('group'):
                             student_groups = student_to_groups.get(student, set())
                             
-                            # Debug output for student C5
-                            if student == "C5":
-                                print(f"DEBUG C5: Simple group match - Time {time}, Activity: '{activity}'")
-                                print(f"DEBUG C5: Student groups: {student_groups}")
-                                
                             # New logic for group activities
                             for group_name in student_groups:
                                 if activity.startswith(group_name):
-                                    if student == "C5":
-                                        print(f"DEBUG C5: Found matching group: {group_name}")
                                     room_match = re.search(r'\(Room\s+(.+?)\)', activity, re.IGNORECASE)
                                     if room_match:
                                         room_name = room_match.group(1)
@@ -433,13 +421,10 @@ def generate_timetables(input_filename):
                             break
     
                     if activity_to_add:
-                        if student == "C5":
-                            print(f"DEBUG C5: Fallback - Time {time}, Activity: '{activity_to_add}'")
                         student_schedule.append((time, activity_to_add))
                     else:
-                        if student == "C5":
-                            print(f"DEBUG C5: Free Time - Time {time}")
-                        student_schedule.append((time, "Free Time"))
+                        # Debug output for student C1 - no activity found at all
+                        student_schedule.append((time, ""))
 
             # Sort the schedule by time to ensure correct grouping for merging
             student_schedule.sort(key=lambda x: x[0])
@@ -517,21 +502,42 @@ def generate_timetables(input_filename):
 
             current_col += 1
 
-        # Set column widths
+        # Auto-fit column widths based on content
         for column in student_ws.columns:
             column_letter = get_column_letter(column[0].column)
-            if column[0].column == 1:  # First column
-                max_length = 0
-                for cell in column:
-                    try:
-                        if len(str(cell.value)) > max_length:
-                            max_length = len(str(cell.value))
-                    except:
-                        pass
-                adjusted_width = (max_length + 2)
-                student_ws.column_dimensions[column_letter].width = adjusted_width
-            else:  # Other columns
-                student_ws.column_dimensions[column_letter].width = 35
+            max_length = 0
+            for cell in column:
+                try:
+                    if cell.value:
+                        # Count lines and find the longest line
+                        lines = str(cell.value).split('\n')
+                        max_line_length = max(len(line) for line in lines) if lines else 0
+                        if max_line_length > max_length:
+                            max_length = max_line_length
+                except:
+                    pass
+            
+            # Set a reasonable width with some padding
+            adjusted_width = min(max(max_length + 2, 15), 60)  # Min 15, max 60 characters with padding
+            student_ws.column_dimensions[column_letter].width = adjusted_width
+            
+        # Auto-adjust row heights to ensure content is visible
+        for row_index in range(1, student_ws.max_row + 1):
+            max_cell_height = 15  # Minimum row height
+            for col_index in range(1, student_ws.max_column + 1):
+                cell = student_ws.cell(row=row_index, column=col_index)
+                if cell.value:
+                    # Count lines from explicit newlines
+                    lines = str(cell.value).count('\n') + 1
+                    
+                    # Estimate height based on line count (15 pixels per line as a heuristic)
+                    estimated_height = lines * 15
+
+                    if estimated_height > max_cell_height:
+                        max_cell_height = estimated_height
+            
+            student_ws.row_dimensions[row_index].height = max_cell_height
+
 
         # Apply borders and alignment to all cells
         for row in student_ws.iter_rows(min_row=1, max_row=student_ws.max_row, min_col=1, max_col=student_ws.max_column):
