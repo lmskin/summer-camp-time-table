@@ -421,6 +421,15 @@ def generate_timetables(input_filename):
                     for activity in activities:
                         if not activity:
                             continue
+                        
+                        # Skip MasterClass activities that contain specific student IDs but don't include current student
+                        if 'masterclass' in activity.lower():
+                            # Check if this activity contains any student IDs
+                            instrument_prefix = music_instrument[0].upper()
+                            found_students = re.findall(rf'\b{instrument_prefix}\d+\b', activity)
+                            if found_students and student not in found_students:
+                                continue  # Skip this MasterClass as it doesn't include current student
+                        
                         for common_activity in common_activities:
                             if common_activity in activity:
                                 activity_to_add = activity
