@@ -143,7 +143,6 @@ def generate_timetables(input_filename):
         "Harp Regulation Workshop",
         "Harp Regulation Class",
         "Harp Regulation",
-        "Cello Regulation & Maintance Class",
         "Cello Regulation & Maintenance Class",
         "Workshop - Warm Up",
         "Cello MasterClass",
@@ -512,13 +511,16 @@ def generate_timetables(input_filename):
                     r'\s*(\([A-Z]{1,3}\d+[A-Z]?\))',  # (UG24), (LG1), (B123), etc.
                     r'\s*(\([^)]*room[^)]*\))',  # Any parentheses containing "room"
                     r'\s*(\(Group\))',  # (Group)
-                    r'\s*(\([^)]*practice\s+room[^)]*\))',  # Practice room references
-                    r'\s+(or)\s+'  # The word "or" surrounded by spaces
+                    r'\s*(\([^)]*practice\s+room[^)]*\))'  # Practice room references
                 ]
                 
                 for pattern in room_patterns:
                     # Replace inline room info with newline + room info
                     cell_activity = re.sub(pattern, r'\n\1', cell_activity, flags=re.IGNORECASE)
+                
+                # Handle "or" separately with more flexible pattern and proper formatting
+                # Match "or" with optional spaces around it, ensuring proper line breaks
+                cell_activity = re.sub(r'\s*\bor\b\s*', '\nor\n', cell_activity, flags=re.IGNORECASE)
                 
                 # Clean up any double newlines or leading/trailing whitespace
                 cell_activity = re.sub(r'\n+', '\n', cell_activity).strip()
@@ -539,7 +541,7 @@ def generate_timetables(input_filename):
 
             current_col += 1
 
-        # Auto-fit column widths based on content
+        # Auto-fit column widths based on content to accommodate complete lines
         for column in student_ws.columns:
             column_letter = get_column_letter(column[0].column)
             max_length = 0
@@ -554,8 +556,21 @@ def generate_timetables(input_filename):
                 except:
                     pass
             
-            # Set a reasonable width with some padding
-            adjusted_width = min(max(max_length + 2, 15), 60)  # Min 15, max 60 characters with padding
+            # Calculate width to accommodate complete lines without wrapping
+            # Account for 14pt font size (slightly larger than default 11pt)
+            # Use a more generous width calculation to ensure complete lines fit
+            font_size_factor = 1.3  # Factor to account for 14pt font vs default
+            padding = 4  # Extra padding for better appearance
+            
+            if max_length > 0:
+                # For content columns: ensure complete lines fit, with generous width
+                adjusted_width = max(max_length * font_size_factor + padding, 20)
+                # Remove the strict 60-character limit to allow full content to display
+                adjusted_width = min(adjusted_width, 100)  # Reasonable maximum to prevent extreme widths
+            else:
+                # For empty columns: minimum width
+                adjusted_width = 15
+                
             student_ws.column_dimensions[column_letter].width = adjusted_width
             
         # Calculate uniform row height based on maximum content across entire worksheet
