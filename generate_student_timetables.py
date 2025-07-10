@@ -455,15 +455,19 @@ def generate_timetables(input_filename):
                 all_time_slots.add(time)
         
         sorted_times = sorted(list(all_time_slots))
-        time_to_row = {time: i + 3 for i, time in enumerate(sorted_times)}
+        time_to_row = {time: i + 4 for i, time in enumerate(sorted_times)}
 
         student_wb = Workbook()
         student_ws = student_wb.active
         student_ws.title = "Full Timetable"
 
-        student_ws.cell(row=2, column=1, value="Time").font = Font(bold=True, size=14)
+        # Add student name in row 1, merged across all columns
+        student_name = student_name_map.get(student, student)
+        student_ws.cell(row=1, column=1, value=student_name).font = Font(bold=True, size=14)
+        
+        student_ws.cell(row=3, column=1, value="Time").font = Font(bold=True, size=14)
         for i, time in enumerate(sorted_times):
-            student_ws.cell(row=i + 3, column=1, value=time).font = Font(size=14)
+            student_ws.cell(row=i + 4, column=1, value=time).font = Font(size=14)
 
         current_col = 2
         for day_index, sheet_name in enumerate(workbook.sheetnames):
@@ -476,7 +480,7 @@ def generate_timetables(input_filename):
             else:
                 header_text = sheet_name
             
-            student_ws.cell(row=1, column=current_col, value=header_text).font = Font(bold=True, size=14)
+            student_ws.cell(row=2, column=current_col, value=header_text).font = Font(bold=True, size=14)
 
             todays_schedule = daily_schedules[sheet_name]
             
@@ -541,6 +545,9 @@ def generate_timetables(input_filename):
 
             current_col += 1
 
+        # Merge student name across all columns in row 1
+        student_ws.merge_cells(start_row=1, start_column=1, end_row=1, end_column=current_col-1)
+
         # Auto-fit column widths based on content to accommodate complete lines
         for column in student_ws.columns:
             column_letter = get_column_letter(column[0].column)
@@ -558,39 +565,26 @@ def generate_timetables(input_filename):
             
             # Calculate width to accommodate complete lines without wrapping
             # Account for 14pt font size (slightly larger than default 11pt)
-            # Use a more generous width calculation to ensure complete lines fit
+            # Use consistent padding of 2 across all cells
             font_size_factor = 1.3  # Factor to account for 14pt font vs default
-            padding = 4  # Extra padding for better appearance
+            padding = 2  # Consistent padding for all cells
             
             if max_length > 0:
-                # For content columns: ensure complete lines fit, with generous width
-                adjusted_width = max(max_length * font_size_factor + padding, 20)
+                # For content columns: ensure complete lines fit, with consistent padding
+                adjusted_width = max(max_length * font_size_factor + padding, 15)
                 # Remove the strict 60-character limit to allow full content to display
                 adjusted_width = min(adjusted_width, 100)  # Reasonable maximum to prevent extreme widths
             else:
-                # For empty columns: minimum width
+                # For empty columns: minimum width with same padding
                 adjusted_width = 15
                 
             student_ws.column_dimensions[column_letter].width = adjusted_width
             
-        # Calculate uniform row height based on maximum content across entire worksheet
-        max_height_needed = 15  # Minimum row height
-        for row_index in range(1, student_ws.max_row + 1):
-            for col_index in range(1, student_ws.max_column + 1):
-                cell = student_ws.cell(row=row_index, column=col_index)
-                if cell.value:
-                    # Count lines from explicit newlines
-                    lines = str(cell.value).count('\n') + 1
-                    
-                    # Estimate height based on line count (15 pixels per line as a heuristic)
-                    estimated_height = lines * 15
-
-                    if estimated_height > max_height_needed:
-                        max_height_needed = estimated_height
-        
-        # Apply uniform height to all rows
-        for row_index in range(1, student_ws.max_row + 1):
-            student_ws.row_dimensions[row_index].height = max_height_needed
+        # Set specific row heights as requested
+        student_ws.row_dimensions[1].height = 50  # Student name header
+        student_ws.row_dimensions[2].height = 18  # Date headers
+        for row_index in range(3, student_ws.max_row + 1):
+            student_ws.row_dimensions[row_index].height = 35  # Time and data rows
 
 
         # Apply borders, alignment, and font to all cells
