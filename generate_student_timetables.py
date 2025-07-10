@@ -304,7 +304,7 @@ def generate_timetables(input_filename):
                             # Also remove any existing room string, since we'll add the correct one from the mapping
                             base_activity = re.sub(r'\s*\([^)]+\)$', '', base_activity).strip()
 
-                            desc = f"{base_activity} ({room_number})"
+                            desc = f"{base_activity}\n({room_number})"
                             
                             student_schedule.append((time, desc))
                             activity_found_for_timeslot = True
@@ -317,12 +317,17 @@ def generate_timetables(input_filename):
                             # Check for "Lesson with {teacher} & pianist" pattern
                             pianist_lesson_match = re.search(r'lesson with (.+?) & pianist', cleaned_activity.lower())
                             if pianist_lesson_match:
-                                teacher_name = pianist_lesson_match.group(1).strip()
+                                # Extract teacher name from the original activity (not cleaned_activity) to preserve exact formatting
+                                original_match = re.search(r'lesson with (.+?) & pianist', activity, re.IGNORECASE)
+                                if original_match:
+                                    teacher_name = original_match.group(1).strip()
+                                else:
+                                    teacher_name = pianist_lesson_match.group(1).strip()
                                 # Use the column header teacher's room instead of the teacher mentioned in the activity
                                 column_teacher = teachers[i]
                                 teacher_room = room_mappings.get(column_teacher, "TBD")
                                 
-                                desc = f"Lesson with {teacher_name.title()} & pianist ({teacher_room})"
+                                desc = f"Private Lesson with {teacher_name} & pianist\n({teacher_room})"
                                 student_schedule.append((time, desc))
                                 activity_found_for_timeslot = True
                             elif is_private_lesson:
@@ -345,15 +350,15 @@ def generate_timetables(input_filename):
                                         desc = cleaned_activity
                                     
                                     if room_number:
-                                        desc += f" ({room_number})"
+                                        desc += f"\n({room_number})"
                                 else:
                                     # Fallback if no teacher is specified in the column for a private lesson
-                                    desc = f"Practice ({music_instrument} practice room)"
+                                    desc = f"Practice\n({music_instrument} practice room)"
                                 student_schedule.append((time, desc))
                             else:
                                 # It's some other activity involving the student (e.g., a duet or practice)
                                 if cleaned_activity.lower() == 'practice':
-                                    cleaned_activity = f"Practice ({music_instrument} practice room)"
+                                    cleaned_activity = f"Practice\n({music_instrument} practice room)"
                                 student_schedule.append((time, cleaned_activity))
                             activity_found_for_timeslot = True
 
@@ -380,13 +385,13 @@ def generate_timetables(input_filename):
                                 if 'acting class' in activity_name.lower():
                                     # Use the room mapping to find the correct room for acting class
                                     acting_room = room_mappings.get("Room Acting Class", "Room Acting Class")
-                                    student_schedule.append((time, f"Acting Class ({acting_room})"))
+                                    student_schedule.append((time, f"Acting Class\n({acting_room})"))
                                 else:
                                     # If the activity name already implies it's a group or has a room, don't add "(Group)"
                                     if 'group' in activity_name.lower() or 'room' in activity_name.lower():
                                         student_schedule.append((time, activity_name))
                                     else:
-                                        student_schedule.append((time, f"{activity_name} (Group)"))
+                                        student_schedule.append((time, f"{activity_name}\n(Group)"))
                                 activity_found_for_timeslot = True
 
                         # Priority 3: Simple group match (e.g., "Group 1")
@@ -399,7 +404,7 @@ def generate_timetables(input_filename):
                                     room_match = re.search(r'\(Room\s+(.+?)\)', activity, re.IGNORECASE)
                                     if room_match:
                                         room_name = room_match.group(1)
-                                        student_schedule.append((time, f"Ensemble (Room {room_name})"))
+                                        student_schedule.append((time, f"Ensemble\n(Room {room_name})"))
                                     else:
                                         teacher = teachers[i]
                                         # Case-insensitive room mapping lookup
@@ -410,7 +415,7 @@ def generate_timetables(input_filename):
                                                 break
                                         if room_number == "TBD":
                                             room_number = room_mappings.get(teacher, "TBD")
-                                        student_schedule.append((time, f"Ensemble ({room_number})"))
+                                        student_schedule.append((time, f"Ensemble\n({room_number})"))
                                     activity_found_for_timeslot = True
                                     break  # Found a match, no need to check other groups
                 
@@ -457,9 +462,9 @@ def generate_timetables(input_filename):
         student_ws = student_wb.active
         student_ws.title = "Full Timetable"
 
-        student_ws.cell(row=2, column=1, value="Time").font = Font(bold=True)
+        student_ws.cell(row=2, column=1, value="Time").font = Font(bold=True, size=14)
         for i, time in enumerate(sorted_times):
-            student_ws.cell(row=i + 3, column=1, value=time)
+            student_ws.cell(row=i + 3, column=1, value=time).font = Font(size=14)
 
         current_col = 2
         for day_index, sheet_name in enumerate(workbook.sheetnames):
@@ -472,7 +477,7 @@ def generate_timetables(input_filename):
             else:
                 header_text = sheet_name
             
-            student_ws.cell(row=1, column=current_col, value=header_text).font = Font(bold=True)
+            student_ws.cell(row=1, column=current_col, value=header_text).font = Font(bold=True, size=14)
 
             todays_schedule = daily_schedules[sheet_name]
             
@@ -538,9 +543,9 @@ def generate_timetables(input_filename):
             adjusted_width = min(max(max_length + 2, 15), 60)  # Min 15, max 60 characters with padding
             student_ws.column_dimensions[column_letter].width = adjusted_width
             
-        # Auto-adjust row heights to ensure content is visible
+        # Calculate uniform row height based on maximum content across entire worksheet
+        max_height_needed = 15  # Minimum row height
         for row_index in range(1, student_ws.max_row + 1):
-            max_cell_height = 15  # Minimum row height
             for col_index in range(1, student_ws.max_column + 1):
                 cell = student_ws.cell(row=row_index, column=col_index)
                 if cell.value:
@@ -550,17 +555,24 @@ def generate_timetables(input_filename):
                     # Estimate height based on line count (15 pixels per line as a heuristic)
                     estimated_height = lines * 15
 
-                    if estimated_height > max_cell_height:
-                        max_cell_height = estimated_height
-            
-            student_ws.row_dimensions[row_index].height = max_cell_height
+                    if estimated_height > max_height_needed:
+                        max_height_needed = estimated_height
+        
+        # Apply uniform height to all rows
+        for row_index in range(1, student_ws.max_row + 1):
+            student_ws.row_dimensions[row_index].height = max_height_needed
 
 
-        # Apply borders and alignment to all cells
+        # Apply borders, alignment, and font to all cells
         for row in student_ws.iter_rows(min_row=1, max_row=student_ws.max_row, min_col=1, max_col=student_ws.max_column):
             for cell in row:
                 cell.border = thin_border
                 cell.alignment = Alignment(horizontal='center', vertical='center', wrap_text=True)
+                # Apply 14pt font to all cells, preserving existing bold formatting if any
+                if cell.font and cell.font.bold:
+                    cell.font = Font(bold=True, size=14)
+                else:
+                    cell.font = Font(size=14)
 
         # Use student name for the filename, falling back to student number
         student_name = student_name_map.get(student, student)
