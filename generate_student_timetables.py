@@ -505,8 +505,23 @@ def generate_timetables(input_filename):
                 if activity == "DAY_6_FREE_TIME_BLOCK":
                     cell_activity = ""
                 
-                if '(' in cell_activity and ')' in cell_activity and '\n(' not in cell_activity:
-                    cell_activity = cell_activity.replace('(', '\n(', 1)
+                # Ensure room information is always on a separate line
+                # Look for room patterns and move them to new lines if they're not already
+                room_patterns = [
+                    r'\s*(\(Room\s+[^)]+\))',  # (Room 246), (Room UG24), etc.
+                    r'\s*(\([A-Z]{1,3}\d+[A-Z]?\))',  # (UG24), (LG1), (B123), etc.
+                    r'\s*(\([^)]*room[^)]*\))',  # Any parentheses containing "room"
+                    r'\s*(\(Group\))',  # (Group)
+                    r'\s*(\([^)]*practice\s+room[^)]*\))',  # Practice room references
+                    r'\s+(or)\s+'  # The word "or" surrounded by spaces
+                ]
+                
+                for pattern in room_patterns:
+                    # Replace inline room info with newline + room info
+                    cell_activity = re.sub(pattern, r'\n\1', cell_activity, flags=re.IGNORECASE)
+                
+                # Clean up any double newlines or leading/trailing whitespace
+                cell_activity = re.sub(r'\n+', '\n', cell_activity).strip()
                 
                 # Replace room names with room numbers
                 if room_no_map:
