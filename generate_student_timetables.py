@@ -318,23 +318,24 @@ def generate_timetables(input_filename):
                             pianist_lesson_match = re.search(r'lesson with (.+?) & pianist', cleaned_activity.lower())
                             if pianist_lesson_match:
                                 teacher_name = pianist_lesson_match.group(1).strip()
-                                # Find the teacher in the room mappings (case-insensitive)
-                                teacher_room = None
-                                for mapped_teacher, room in room_mappings.items():
-                                    if mapped_teacher.lower() == teacher_name.lower():
-                                        teacher_room = room
-                                        break
+                                # Use the column header teacher's room instead of the teacher mentioned in the activity
+                                column_teacher = teachers[i]
+                                teacher_room = room_mappings.get(column_teacher, "TBD")
                                 
-                                if teacher_room:
-                                    desc = f"Lesson with {teacher_name.title()} & pianist ({teacher_room})"
-                                else:
-                                    desc = f"Lesson with {teacher_name.title()} & pianist"
+                                desc = f"Lesson with {teacher_name.title()} & pianist ({teacher_room})"
                                 student_schedule.append((time, desc))
                                 activity_found_for_timeslot = True
                             elif is_private_lesson:
                                 teacher = teachers[i]
                                 if teacher:
-                                    room_number = room_mappings.get(teacher, "")
+                                    # Case-insensitive room mapping lookup
+                                    room_number = ""
+                                    for mapped_teacher, room in room_mappings.items():
+                                        if mapped_teacher.lower() == teacher.lower():
+                                            room_number = room
+                                            break
+                                    if not room_number:
+                                        room_number = room_mappings.get(teacher, "")
                                     
                                     # If the activity was just the student ID, create a default description.
                                     # Otherwise, use the cleaned activity text which might contain more details.
@@ -401,7 +402,14 @@ def generate_timetables(input_filename):
                                         student_schedule.append((time, f"Ensemble (Room {room_name})"))
                                     else:
                                         teacher = teachers[i]
-                                        room_number = room_mappings.get(teacher, "TBD")
+                                        # Case-insensitive room mapping lookup
+                                        room_number = "TBD"
+                                        for mapped_teacher, room in room_mappings.items():
+                                            if mapped_teacher.lower() == teacher.lower():
+                                                room_number = room
+                                                break
+                                        if room_number == "TBD":
+                                            room_number = room_mappings.get(teacher, "TBD")
                                         student_schedule.append((time, f"Ensemble ({room_number})"))
                                     activity_found_for_timeslot = True
                                     break  # Found a match, no need to check other groups
