@@ -584,7 +584,7 @@ def generate_timetables(input_filename):
         student_ws.row_dimensions[1].height = 50  # Student name header
         student_ws.row_dimensions[2].height = 18  # Date headers
         for row_index in range(3, student_ws.max_row + 1):
-            student_ws.row_dimensions[row_index].height = 35  # Time and data rows
+            student_ws.row_dimensions[row_index].height = 50  # Time and data rows
 
 
         # Apply borders, alignment, and font to all cells
