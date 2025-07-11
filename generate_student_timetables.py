@@ -8,6 +8,85 @@ from openpyxl.styles import Alignment, Font, Border, Side
 from openpyxl.utils import get_column_letter
 from shared_utils import sanitize_filename, process_sheet, load_student_name_mapping, load_room_no_mapping
 
+# PDF conversion imports
+import win32com.client as win32
+import pythoncom
+
+def convert_excel_to_pdf(xlsx_file_path, pdf_file_path):
+    """
+    Convert Excel file to PDF using Excel COM automation.
+    This preserves all formatting, merged cells, and styling.
+    """
+    excel_app = None
+    workbook = None
+    
+    try:
+        # Initialize COM
+        pythoncom.CoInitialize()
+        
+        # Convert paths to absolute paths
+        abs_xlsx_path = os.path.abspath(xlsx_file_path)
+        abs_pdf_path = os.path.abspath(pdf_file_path)
+        
+        # Create Excel application
+        excel_app = win32.Dispatch("Excel.Application")
+        excel_app.Visible = False
+        excel_app.DisplayAlerts = False
+        excel_app.ScreenUpdating = False
+        
+        # Open workbook
+        workbook = excel_app.Workbooks.Open(abs_xlsx_path)
+        
+        # Get the active worksheet
+        worksheet = workbook.ActiveSheet
+        
+        # Set page setup for landscape and fit to one page
+        worksheet.PageSetup.Orientation = 2  # xlLandscape
+        worksheet.PageSetup.Zoom = False
+        worksheet.PageSetup.FitToPagesWide = 1
+        worksheet.PageSetup.FitToPagesTall = 1
+        worksheet.PageSetup.PrintArea = worksheet.UsedRange.Address
+        
+        # Set margins (in inches)
+        worksheet.PageSetup.LeftMargin = excel_app.InchesToPoints(0.3)
+        worksheet.PageSetup.RightMargin = excel_app.InchesToPoints(0.3)
+        worksheet.PageSetup.TopMargin = excel_app.InchesToPoints(0.3)
+        worksheet.PageSetup.BottomMargin = excel_app.InchesToPoints(0.3)
+        worksheet.PageSetup.HeaderMargin = excel_app.InchesToPoints(0.1)
+        worksheet.PageSetup.FooterMargin = excel_app.InchesToPoints(0.1)
+        
+        # Export to PDF with minimal parameters to avoid version compatibility issues
+        workbook.ExportAsFixedFormat(0, abs_pdf_path)  # 0 = xlTypePDF
+        
+        # Close workbook and quit Excel
+        workbook.Close(SaveChanges=False)
+        excel_app.Quit()
+        
+        return True
+        
+    except Exception as e:
+        print(f"Error converting {xlsx_file_path} to PDF: {e}")
+        return False
+        
+    finally:
+        # Clean up resources
+        try:
+            if workbook is not None:
+                workbook.Close(SaveChanges=False)
+        except:
+            pass
+        
+        try:
+            if excel_app is not None:
+                excel_app.Quit()
+        except:
+            pass
+        
+        try:
+            pythoncom.CoUninitialize()
+        except:
+            pass
+
 def load_group_mappings(filename, music_instrument):
     """
     Loads group-to-student mappings from the specified CSV file.
@@ -463,11 +542,11 @@ def generate_timetables(input_filename):
 
         # Add student name in row 1, merged across all columns
         student_name = student_name_map.get(student, student)
-        student_ws.cell(row=1, column=1, value=student_name).font = Font(bold=True, size=14)
+        student_ws.cell(row=1, column=1, value=student_name).font = Font(bold=True, size=28)
         
-        student_ws.cell(row=3, column=1, value="Time").font = Font(bold=True, size=14)
+        student_ws.cell(row=3, column=1, value="Time").font = Font(bold=True, size=20)
         for i, time in enumerate(sorted_times):
-            student_ws.cell(row=i + 4, column=1, value=time).font = Font(size=14)
+            student_ws.cell(row=i + 4, column=1, value=time).font = Font(size=20)
 
         current_col = 2
         for day_index, sheet_name in enumerate(workbook.sheetnames):
@@ -480,7 +559,7 @@ def generate_timetables(input_filename):
             else:
                 header_text = sheet_name
             
-            student_ws.cell(row=2, column=current_col, value=header_text).font = Font(bold=True, size=14)
+            student_ws.cell(row=2, column=current_col, value=header_text).font = Font(bold=True, size=20)
 
             todays_schedule = daily_schedules[sheet_name]
             
@@ -548,43 +627,42 @@ def generate_timetables(input_filename):
         # Merge student name across all columns in row 1
         student_ws.merge_cells(start_row=1, start_column=1, end_row=1, end_column=current_col-1)
 
-        # Auto-fit column widths based on content to accommodate complete lines
+        # Set column widths: Time column auto-fit, date columns set to 80
         for column in student_ws.columns:
             column_letter = get_column_letter(column[0].column)
-            max_length = 0
-            for cell in column:
-                try:
-                    if cell.value:
-                        # Count lines and find the longest line
-                        lines = str(cell.value).split('\n')
-                        max_line_length = max(len(line) for line in lines) if lines else 0
-                        if max_line_length > max_length:
-                            max_length = max_line_length
-                except:
-                    pass
+            column_number = column[0].column
             
-            # Calculate width to accommodate complete lines without wrapping
-            # Account for 14pt font size (slightly larger than default 11pt)
-            # Use consistent padding of 2 across all cells
-            font_size_factor = 1.3  # Factor to account for 14pt font vs default
-            padding = 2  # Consistent padding for all cells
-            
-            if max_length > 0:
-                # For content columns: ensure complete lines fit, with consistent padding
-                adjusted_width = max(max_length * font_size_factor + padding, 15)
-                # Remove the strict 60-character limit to allow full content to display
-                adjusted_width = min(adjusted_width, 100)  # Reasonable maximum to prevent extreme widths
-            else:
-                # For empty columns: minimum width with same padding
-                adjusted_width = 15
+            if column_number == 1:  # Time column
+                # Auto-fit time column based on content
+                max_length = 0
+                for cell in column:
+                    try:
+                        if cell.value:
+                            lines = str(cell.value).split('\n')
+                            max_line_length = max(len(line) for line in lines) if lines else 0
+                            if max_line_length > max_length:
+                                max_length = max_line_length
+                    except:
+                        pass
                 
-            student_ws.column_dimensions[column_letter].width = adjusted_width
+                # Set reasonable width for time column
+                font_size_factor = 1.3
+                padding = 2
+                if max_length > 0:
+                    adjusted_width = max(max_length * font_size_factor + padding, 15)
+                    adjusted_width = min(adjusted_width, 25)  # Reasonable max for time column
+                else:
+                    adjusted_width = 15
+                student_ws.column_dimensions[column_letter].width = adjusted_width
+            else:  # Date columns (Monday to Saturday)
+                # Set date columns to width 80
+                student_ws.column_dimensions[column_letter].width = 80
             
         # Set specific row heights as requested
         student_ws.row_dimensions[1].height = 50  # Student name header
-        student_ws.row_dimensions[2].height = 18  # Date headers
+        student_ws.row_dimensions[2].height = 30  # Date headers
         for row_index in range(3, student_ws.max_row + 1):
-            student_ws.row_dimensions[row_index].height = 50  # Time and data rows
+            student_ws.row_dimensions[row_index].height = 60  # Time and data rows
 
 
         # Apply borders, alignment, and font to all cells
@@ -592,20 +670,29 @@ def generate_timetables(input_filename):
             for cell in row:
                 cell.border = thin_border
                 cell.alignment = Alignment(horizontal='center', vertical='center', wrap_text=True)
-                # Apply 14pt font to all cells, preserving existing bold formatting if any
+                # Skip font modification for student name cell (row 1, column 1) to preserve size 28
+                if cell.row == 1 and cell.column == 1:
+                    continue
+                # Apply 20pt font to all other cells, preserving existing bold formatting if any
                 if cell.font and cell.font.bold:
-                    cell.font = Font(bold=True, size=14)
+                    cell.font = Font(bold=True, size=20)
                 else:
-                    cell.font = Font(size=14)
+                    cell.font = Font(size=20)
 
         # Use student name for the filename, falling back to student number
         student_name = student_name_map.get(student, student)
         sanitized_file_name = sanitize_filename(student_name)
         camp_part = f"_{camp_name}" if camp_name else ""
-        file_path = os.path.join(output_dir, f'{sanitized_file_name}{camp_part}_timetable.xlsx')
-        student_wb.save(file_path)
+        
+        # Save Excel file
+        xlsx_file_path = os.path.join(output_dir, f'{sanitized_file_name}{camp_part}_timetable.xlsx')
+        student_wb.save(xlsx_file_path)
+        
+        # Save PDF file by converting Excel to PDF
+        pdf_file_path = os.path.join(output_dir, f'{sanitized_file_name}{camp_part}_timetable.pdf')
+        convert_excel_to_pdf(xlsx_file_path, pdf_file_path)
 
-    print(f"Successfully generated timetables for {len(all_students)} students for {os.path.basename(input_filename)} in the '{output_dir}' directory.")
+    print(f"Successfully generated timetables (XLSX and PDF) for {len(all_students)} students for {os.path.basename(input_filename)} in the '{output_dir}' directory.")
 
 
 if __name__ == '__main__':
