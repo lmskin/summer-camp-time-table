@@ -1,466 +1,895 @@
-ena': 'Room Queena', 'TAN Cong': 'Room TanCong', 'SKWERES, Tomasz': 'Room Tomasz', 'Liya HUANG': 'Room Liya', 'Sivan MEGAN': 'Room Sivan', 'Gwyneth WENTINK': 'Room GW', 'Room Acting': 'Room Acting', 'Room Group Activity': 'Room Group Activity'}
---- DEBUG END ---
---- DEBUG START for student H2 at time 12:00 ---   
-Found masterclass activity: 'Harp MasterClass by Sivan MEGAN
-H2, H4, H9'
-Teacher name from Excel header (column 0): 'Sivan MEGAN'
-Checking against room mappings dictionary:
-{'Ivy CHUANG': 'Room Ivy', 'Stephane RETY': 'Room Stephane', 'Room Shelley': 'Room Shelley', 'Room Queena': 'Room Queena', 'TAN Cong': 'Room TanCong', 'SKWERES, Tomasz': 'Room Tomasz', 'Liya HUANG': 'Room Liya', 'Sivan MEGAN': 'Room Sivan', 'Gwyneth WENTINK': 'Room GW', 'Room Acting': 'Room Acting', 'Room Group Activity': 'Room Group Activity'}
---- DEBUG END ---
---- DEBUG START for student H2 at time 12:15 ---   
-Found masterclass activity: 'Harp MasterClass by Sivan MEGAN
-H2, H4, H9'
-Teacher name from Excel header (column 0): 'Sivan MEGAN'
-Checking against room mappings dictionary:
-{'Ivy CHUANG': 'Room Ivy', 'Stephane RETY': 'Room Stephane', 'Room Shelley': 'Room Shelley', 'Room Queena': 'Room Queena', 'TAN Cong': 'Room TanCong', 'SKWERES, Tomasz': 'Room Tomasz', 'Liya HUANG': 'Room Liya', 'Sivan MEGAN': 'Room Sivan', 'Gwyneth WENTINK': 'Room GW', 'Room Acting': 'Room Acting', 'Room Group Activity': 'Room Group Activity'}
---- DEBUG END ---
---- DEBUG START for student H2 at time 12:30 ---   
-Found masterclass activity: 'Harp MasterClass by Sivan MEGAN
-H2, H4, H9'
-Teacher name from Excel header (column 0): 'Sivan MEGAN'
-Checking against room mappings dictionary:
-{'Ivy CHUANG': 'Room Ivy', 'Stephane RETY': 'Room Stephane', 'Room Shelley': 'Room Shelley', 'Room Queena': 'Room Queena', 'TAN Cong': 'Room TanCong', 'SKWERES, Tomasz': 'Room Tomasz', 'Liya HUANG': 'Room Liya', 'Sivan MEGAN': 'Room Sivan', 'Gwyneth WENTINK': 'Room GW', 'Room Acting': 'Room Acting', 'Room Group Activity': 'Room Group Activity'}
---- DEBUG END ---
---- DEBUG START for student H2 at time 12:45 ---   
-Found masterclass activity: 'Harp MasterClass by Sivan MEGAN
-H2, H4, H9'
-Teacher name from Excel header (column 0): 'Sivan MEGAN'
-Checking against room mappings dictionary:
-{'Ivy CHUANG': 'Room Ivy', 'Stephane RETY': 'Room Stephane', 'Room Shelley': 'Room Shelley', 'Room Queena': 'Room Queena', 'TAN Cong': 'Room TanCong', 'SKWERES, Tomasz': 'Room Tomasz', 'Liya HUANG': 'Room Liya', 'Sivan MEGAN': 'Room Sivan', 'Gwyneth WENTINK': 'Room GW', 'Room Acting': 'Room Acting', 'Room Group Activity': 'Room Group Activity'}
---- DEBUG END ---
---- DEBUG START for student H2 at time 14:15 ---   
-Found masterclass activity: 'H1, H2, H4, H7, H8, H9 Observe MasterClass by Gwyneth WENTINK'
-Teacher name from Excel header (column 3): ''      
-Checking against room mappings dictionary:
-{'Ivy CHUANG': 'Room Ivy', 'Stephane RETY': 'Room Stephane', 'Room Shelley': 'Room Shelley', 'Room Queena': 'Room Queena', 'TAN Cong': 'Room TanCong', 'SKWERES, Tomasz': 'Room Tomasz', 'Liya HUANG': 'Room Liya', 'Sivan MEGAN': 'Room Sivan', 'Gwyneth WENTINK': 'Room GW', 'Room Acting': 'Room Acting', 'Room Group Activity': 'Room Group Activity'}
---- DEBUG END ---
---- DEBUG START for student H2 at time 14:30 ---   
-Found masterclass activity: 'H1, H2, H4, H7, H8, H9 Observe MasterClass by Gwyneth WENTINK'
-Teacher name from Excel header (column 3): ''      
-Checking against room mappings dictionary:
-{'Ivy CHUANG': 'Room Ivy', 'Stephane RETY': 'Room Stephane', 'Room Shelley': 'Room Shelley', 'Room Queena': 'Room Queena', 'TAN Cong': 'Room TanCong', 'SKWERES, Tomasz': 'Room Tomasz', 'Liya HUANG': 'Room Liya', 'Sivan MEGAN': 'Room Sivan', 'Gwyneth WENTINK': 'Room GW', 'Room Acting': 'Room Acting', 'Room Group Activity': 'Room Group Activity'}
---- DEBUG END ---
---- DEBUG START for student H2 at time 14:45 ---   
-Found masterclass activity: 'H1, H2, H4, H7, H8, H9 Observe MasterClass by Gwyneth WENTINK'
-Teacher name from Excel header (column 3): ''      
-Checking against room mappings dictionary:
-{'Ivy CHUANG': 'Room Ivy', 'Stephane RETY': 'Room Stephane', 'Room Shelley': 'Room Shelley', 'Room Queena': 'Room Queena', 'TAN Cong': 'Room TanCong', 'SKWERES, Tomasz': 'Room Tomasz', 'Liya HUANG': 'Room Liya', 'Sivan MEGAN': 'Room Sivan', 'Gwyneth WENTINK': 'Room GW', 'Room Acting': 'Room Acting', 'Room Group Activity': 'Room Group Activity'}
---- DEBUG END ---
---- DEBUG START for student H2 at time 15:00 ---   
-Found masterclass activity: 'H1, H2, H4, H7, H8, H9 Observe MasterClass by Gwyneth WENTINK'
-Teacher name from Excel header (column 3): ''      
-Checking against room mappings dictionary:
-{'Ivy CHUANG': 'Room Ivy', 'Stephane RETY': 'Room Stephane', 'Room Shelley': 'Room Shelley', 'Room Queena': 'Room Queena', 'TAN Cong': 'Room TanCong', 'SKWERES, Tomasz': 'Room Tomasz', 'Liya HUANG': 'Room Liya', 'Sivan MEGAN': 'Room Sivan', 'Gwyneth WENTINK': 'Room GW', 'Room Acting': 'Room Acting', 'Room Group Activity': 'Room Group Activity'}
---- DEBUG END ---
---- DEBUG START for student H3 at time 11:00 ---
-Found masterclass activity: 'H2, H3, H4, H5, H6, H9 Observe MasterClass by Liya HUANG (Room Liya)'    
-Teacher name from Excel header (column 3): ''      
-Checking against room mappings dictionary:
-{'Ivy CHUANG': 'Room Ivy', 'Stephane RETY': 'Room Stephane', 'Room Shelley': 'Room Shelley', 'Room Queena': 'Room Queena', 'TAN Cong': 'Room TanCong', 'SKWERES, Tomasz': 'Room Tomasz', 'Liya HUANG': 'Room Liya', 'Sivan MEGAN': 'Room Sivan', 'Gwyneth WENTINK': 'Room GW', 'Room Acting': 'Room Acting', 'Room Group Activity': 'Room Group Activity'}
---- DEBUG END ---
---- DEBUG START for student H3 at time 11:15 ---   
-Found masterclass activity: 'H2, H3, H4, H5, H6, H9 Observe MasterClass by Liya HUANG (Room Liya)'    
-Teacher name from Excel header (column 3): ''      
-Checking against room mappings dictionary:
-{'Ivy CHUANG': 'Room Ivy', 'Stephane RETY': 'Room Stephane', 'Room Shelley': 'Room Shelley', 'Room Queena': 'Room Queena', 'TAN Cong': 'Room TanCong', 'SKWERES, Tomasz': 'Room Tomasz', 'Liya HUANG': 'Room Liya', 'Sivan MEGAN': 'Room Sivan', 'Gwyneth WENTINK': 'Room GW', 'Room Acting': 'Room Acting', 'Room Group Activity': 'Room Group Activity'}
---- DEBUG END ---
---- DEBUG START for student H3 at time 12:00 ---   
-Found masterclass activity: 'H1, H3, H5, H6, H7, H8 Observe MasterClass by Sivan MEGAN (Room Sivan)'  
-Teacher name from Excel header (column 3): ''      
-Checking against room mappings dictionary:
-{'Ivy CHUANG': 'Room Ivy', 'Stephane RETY': 'Room Stephane', 'Room Shelley': 'Room Shelley', 'Room Queena': 'Room Queena', 'TAN Cong': 'Room TanCong', 'SKWERES, Tomasz': 'Room Tomasz', 'Liya HUANG': 'Room Liya', 'Sivan MEGAN': 'Room Sivan', 'Gwyneth WENTINK': 'Room GW', 'Room Acting': 'Room Acting', 'Room Group Activity': 'Room Group Activity'}
---- DEBUG END ---
---- DEBUG START for student H3 at time 12:15 ---   
-Found masterclass activity: 'H1, H3, H5, H6, H7, H8 Observe MasterClass by Sivan MEGAN (Room Sivan)'  
-Teacher name from Excel header (column 3): ''      
-Checking against room mappings dictionary:
-{'Ivy CHUANG': 'Room Ivy', 'Stephane RETY': 'Room Stephane', 'Room Shelley': 'Room Shelley', 'Room Queena': 'Room Queena', 'TAN Cong': 'Room TanCong', 'SKWERES, Tomasz': 'Room Tomasz', 'Liya HUANG': 'Room Liya', 'Sivan MEGAN': 'Room Sivan', 'Gwyneth WENTINK': 'Room GW', 'Room Acting': 'Room Acting', 'Room Group Activity': 'Room Group Activity'}
---- DEBUG END ---
---- DEBUG START for student H3 at time 14:15 ---   
-Found masterclass activity: 'Harp MasterClass by Gwyneth WENTINK
-H3, H5, H6'
-Teacher name from Excel header (column 0): 'Sivan MEGAN'
-Checking against room mappings dictionary:
-{'Ivy CHUANG': 'Room Ivy', 'Stephane RETY': 'Room Stephane', 'Room Shelley': 'Room Shelley', 'Room Queena': 'Room Queena', 'TAN Cong': 'Room TanCong', 'SKWERES, Tomasz': 'Room Tomasz', 'Liya HUANG': 'Room Liya', 'Sivan MEGAN': 'Room Sivan', 'Gwyneth WENTINK': 'Room GW', 'Room Acting': 'Room Acting', 'Room Group Activity': 'Room Group Activity'}
---- DEBUG END ---
---- DEBUG START for student H3 at time 14:30 ---   
-Found masterclass activity: 'Harp MasterClass by Gwyneth WENTINK
-H3, H5, H6'
-Teacher name from Excel header (column 0): 'Sivan MEGAN'
-Checking against room mappings dictionary:
-{'Ivy CHUANG': 'Room Ivy', 'Stephane RETY': 'Room Stephane', 'Room Shelley': 'Room Shelley', 'Room Queena': 'Room Queena', 'TAN Cong': 'Room TanCong', 'SKWERES, Tomasz': 'Room Tomasz', 'Liya HUANG': 'Room Liya', 'Sivan MEGAN': 'Room Sivan', 'Gwyneth WENTINK': 'Room GW', 'Room Acting': 'Room Acting', 'Room Group Activity': 'Room Group Activity'}
---- DEBUG END ---
---- DEBUG START for student H3 at time 14:45 ---   
-Found masterclass activity: 'Harp MasterClass by Gwyneth WENTINK
-H3, H5, H6'
-Teacher name from Excel header (column 0): 'Sivan MEGAN'
-Checking against room mappings dictionary:
-{'Ivy CHUANG': 'Room Ivy', 'Stephane RETY': 'Room Stephane', 'Room Shelley': 'Room Shelley', 'Room Queena': 'Room Queena', 'TAN Cong': 'Room TanCong', 'SKWERES, Tomasz': 'Room Tomasz', 'Liya HUANG': 'Room Liya', 'Sivan MEGAN': 'Room Sivan', 'Gwyneth WENTINK': 'Room GW', 'Room Acting': 'Room Acting', 'Room Group Activity': 'Room Group Activity'}
---- DEBUG END ---
---- DEBUG START for student H3 at time 15:00 ---   
-Found masterclass activity: 'Harp MasterClass by Gwyneth WENTINK
-H3, H5, H6'
-Teacher name from Excel header (column 0): 'Sivan MEGAN'
-Checking against room mappings dictionary:
-{'Ivy CHUANG': 'Room Ivy', 'Stephane RETY': 'Room Stephane', 'Room Shelley': 'Room Shelley', 'Room Queena': 'Room Queena', 'TAN Cong': 'Room TanCong', 'SKWERES, Tomasz': 'Room Tomasz', 'Liya HUANG': 'Room Liya', 'Sivan MEGAN': 'Room Sivan', 'Gwyneth WENTINK': 'Room GW', 'Room Acting': 'Room Acting', 'Room Group Activity': 'Room Group Activity'}
---- DEBUG END ---
---- DEBUG START for student H4 at time 11:00 ---
-Found masterclass activity: 'H2, H3, H4, H5, H6, H9 Observe MasterClass by Liya HUANG (Room Liya)'    
-Teacher name from Excel header (column 3): ''      
-Checking against room mappings dictionary:
-{'Ivy CHUANG': 'Room Ivy', 'Stephane RETY': 'Room Stephane', 'Room Shelley': 'Room Shelley', 'Room Queena': 'Room Queena', 'TAN Cong': 'Room TanCong', 'SKWERES, Tomasz': 'Room Tomasz', 'Liya HUANG': 'Room Liya', 'Sivan MEGAN': 'Room Sivan', 'Gwyneth WENTINK': 'Room GW', 'Room Acting': 'Room Acting', 'Room Group Activity': 'Room Group Activity'}
---- DEBUG END ---
---- DEBUG START for student H4 at time 11:15 ---   
-Found masterclass activity: 'H2, H3, H4, H5, H6, H9 Observe MasterClass by Liya HUANG (Room Liya)'    
-Teacher name from Excel header (column 3): ''      
-Checking against room mappings dictionary:
-{'Ivy CHUANG': 'Room Ivy', 'Stephane RETY': 'Room Stephane', 'Room Shelley': 'Room Shelley', 'Room Queena': 'Room Queena', 'TAN Cong': 'Room TanCong', 'SKWERES, Tomasz': 'Room Tomasz', 'Liya HUANG': 'Room Liya', 'Sivan MEGAN': 'Room Sivan', 'Gwyneth WENTINK': 'Room GW', 'Room Acting': 'Room Acting', 'Room Group Activity': 'Room Group Activity'}
---- DEBUG END ---
---- DEBUG START for student H4 at time 12:00 ---   
-Found masterclass activity: 'Harp MasterClass by Sivan MEGAN
-H2, H4, H9'
-Teacher name from Excel header (column 0): 'Sivan MEGAN'
-Checking against room mappings dictionary:
-{'Ivy CHUANG': 'Room Ivy', 'Stephane RETY': 'Room Stephane', 'Room Shelley': 'Room Shelley', 'Room Queena': 'Room Queena', 'TAN Cong': 'Room TanCong', 'SKWERES, Tomasz': 'Room Tomasz', 'Liya HUANG': 'Room Liya', 'Sivan MEGAN': 'Room Sivan', 'Gwyneth WENTINK': 'Room GW', 'Room Acting': 'Room Acting', 'Room Group Activity': 'Room Group Activity'}
---- DEBUG END ---
---- DEBUG START for student H4 at time 12:15 ---   
-Found masterclass activity: 'Harp MasterClass by Sivan MEGAN
-H2, H4, H9'
-Teacher name from Excel header (column 0): 'Sivan MEGAN'
-Checking against room mappings dictionary:
-{'Ivy CHUANG': 'Room Ivy', 'Stephane RETY': 'Room Stephane', 'Room Shelley': 'Room Shelley', 'Room Queena': 'Room Queena', 'TAN Cong': 'Room TanCong', 'SKWERES, Tomasz': 'Room Tomasz', 'Liya HUANG': 'Room Liya', 'Sivan MEGAN': 'Room Sivan', 'Gwyneth WENTINK': 'Room GW', 'Room Acting': 'Room Acting', 'Room Group Activity': 'Room Group Activity'}
---- DEBUG END ---
---- DEBUG START for student H4 at time 12:30 ---   
-Found masterclass activity: 'Harp MasterClass by Sivan MEGAN
-H2, H4, H9'
-Teacher name from Excel header (column 0): 'Sivan MEGAN'
-Checking against room mappings dictionary:
-{'Ivy CHUANG': 'Room Ivy', 'Stephane RETY': 'Room Stephane', 'Room Shelley': 'Room Shelley', 'Room Queena': 'Room Queena', 'TAN Cong': 'Room TanCong', 'SKWERES, Tomasz': 'Room Tomasz', 'Liya HUANG': 'Room Liya', 'Sivan MEGAN': 'Room Sivan', 'Gwyneth WENTINK': 'Room GW', 'Room Acting': 'Room Acting', 'Room Group Activity': 'Room Group Activity'}
---- DEBUG END ---
---- DEBUG START for student H4 at time 12:45 ---   
-Found masterclass activity: 'Harp MasterClass by Sivan MEGAN
-H2, H4, H9'
-Teacher name from Excel header (column 0): 'Sivan MEGAN'
-Checking against room mappings dictionary:
-{'Ivy CHUANG': 'Room Ivy', 'Stephane RETY': 'Room Stephane', 'Room Shelley': 'Room Shelley', 'Room Queena': 'Room Queena', 'TAN Cong': 'Room TanCong', 'SKWERES, Tomasz': 'Room Tomasz', 'Liya HUANG': 'Room Liya', 'Sivan MEGAN': 'Room Sivan', 'Gwyneth WENTINK': 'Room GW', 'Room Acting': 'Room Acting', 'Room Group Activity': 'Room Group Activity'}
---- DEBUG END ---
---- DEBUG START for student H4 at time 14:15 ---   
-Found masterclass activity: 'H1, H2, H4, H7, H8, H9 Observe MasterClass by Gwyneth WENTINK'
-Teacher name from Excel header (column 3): ''      
-Checking against room mappings dictionary:
-{'Ivy CHUANG': 'Room Ivy', 'Stephane RETY': 'Room Stephane', 'Room Shelley': 'Room Shelley', 'Room Queena': 'Room Queena', 'TAN Cong': 'Room TanCong', 'SKWERES, Tomasz': 'Room Tomasz', 'Liya HUANG': 'Room Liya', 'Sivan MEGAN': 'Room Sivan', 'Gwyneth WENTINK': 'Room GW', 'Room Acting': 'Room Acting', 'Room Group Activity': 'Room Group Activity'}
---- DEBUG END ---
---- DEBUG START for student H4 at time 14:30 ---   
-Found masterclass activity: 'H1, H2, H4, H7, H8, H9 Observe MasterClass by Gwyneth WENTINK'
-Teacher name from Excel header (column 3): ''      
-Checking against room mappings dictionary:
-{'Ivy CHUANG': 'Room Ivy', 'Stephane RETY': 'Room Stephane', 'Room Shelley': 'Room Shelley', 'Room Queena': 'Room Queena', 'TAN Cong': 'Room TanCong', 'SKWERES, Tomasz': 'Room Tomasz', 'Liya HUANG': 'Room Liya', 'Sivan MEGAN': 'Room Sivan', 'Gwyneth WENTINK': 'Room GW', 'Room Acting': 'Room Acting', 'Room Group Activity': 'Room Group Activity'}
---- DEBUG END ---
---- DEBUG START for student H4 at time 14:45 ---   
-Found masterclass activity: 'H1, H2, H4, H7, H8, H9 Observe MasterClass by Gwyneth WENTINK'
-Teacher name from Excel header (column 3): ''      
-Checking against room mappings dictionary:
-{'Ivy CHUANG': 'Room Ivy', 'Stephane RETY': 'Room Stephane', 'Room Shelley': 'Room Shelley', 'Room Queena': 'Room Queena', 'TAN Cong': 'Room TanCong', 'SKWERES, Tomasz': 'Room Tomasz', 'Liya HUANG': 'Room Liya', 'Sivan MEGAN': 'Room Sivan', 'Gwyneth WENTINK': 'Room GW', 'Room Acting': 'Room Acting', 'Room Group Activity': 'Room Group Activity'}
---- DEBUG END ---
---- DEBUG START for student H4 at time 15:00 ---   
-Found masterclass activity: 'H1, H2, H4, H7, H8, H9 Observe MasterClass by Gwyneth WENTINK'
-Teacher name from Excel header (column 3): ''      
-Checking against room mappings dictionary:
-{'Ivy CHUANG': 'Room Ivy', 'Stephane RETY': 'Room Stephane', 'Room Shelley': 'Room Shelley', 'Room Queena': 'Room Queena', 'TAN Cong': 'Room TanCong', 'SKWERES, Tomasz': 'Room Tomasz', 'Liya HUANG': 'Room Liya', 'Sivan MEGAN': 'Room Sivan', 'Gwyneth WENTINK': 'Room GW', 'Room Acting': 'Room Acting', 'Room Group Activity': 'Room Group Activity'}
---- DEBUG END ---
---- DEBUG START for student H5 at time 11:00 ---
-Found masterclass activity: 'H2, H3, H4, H5, H6, H9 Observe MasterClass by Liya HUANG (Room Liya)'    
-Teacher name from Excel header (column 3): ''      
-Checking against room mappings dictionary:
-{'Ivy CHUANG': 'Room Ivy', 'Stephane RETY': 'Room Stephane', 'Room Shelley': 'Room Shelley', 'Room Queena': 'Room Queena', 'TAN Cong': 'Room TanCong', 'SKWERES, Tomasz': 'Room Tomasz', 'Liya HUANG': 'Room Liya', 'Sivan MEGAN': 'Room Sivan', 'Gwyneth WENTINK': 'Room GW', 'Room Acting': 'Room Acting', 'Room Group Activity': 'Room Group Activity'}
---- DEBUG END ---
---- DEBUG START for student H5 at time 11:15 ---   
-Found masterclass activity: 'H2, H3, H4, H5, H6, H9 Observe MasterClass by Liya HUANG (Room Liya)'    
-Teacher name from Excel header (column 3): ''      
-Checking against room mappings dictionary:
-{'Ivy CHUANG': 'Room Ivy', 'Stephane RETY': 'Room Stephane', 'Room Shelley': 'Room Shelley', 'Room Queena': 'Room Queena', 'TAN Cong': 'Room TanCong', 'SKWERES, Tomasz': 'Room Tomasz', 'Liya HUANG': 'Room Liya', 'Sivan MEGAN': 'Room Sivan', 'Gwyneth WENTINK': 'Room GW', 'Room Acting': 'Room Acting', 'Room Group Activity': 'Room Group Activity'}
---- DEBUG END ---
---- DEBUG START for student H5 at time 12:00 ---   
-Found masterclass activity: 'H1, H3, H5, H6, H7, H8 Observe MasterClass by Sivan MEGAN (Room Sivan)'  
-Teacher name from Excel header (column 3): ''      
-Checking against room mappings dictionary:
-{'Ivy CHUANG': 'Room Ivy', 'Stephane RETY': 'Room Stephane', 'Room Shelley': 'Room Shelley', 'Room Queena': 'Room Queena', 'TAN Cong': 'Room TanCong', 'SKWERES, Tomasz': 'Room Tomasz', 'Liya HUANG': 'Room Liya', 'Sivan MEGAN': 'Room Sivan', 'Gwyneth WENTINK': 'Room GW', 'Room Acting': 'Room Acting', 'Room Group Activity': 'Room Group Activity'}
---- DEBUG END ---
---- DEBUG START for student H5 at time 12:15 ---   
-Found masterclass activity: 'H1, H3, H5, H6, H7, H8 Observe MasterClass by Sivan MEGAN (Room Sivan)'  
-Teacher name from Excel header (column 3): ''      
-Checking against room mappings dictionary:
-{'Ivy CHUANG': 'Room Ivy', 'Stephane RETY': 'Room Stephane', 'Room Shelley': 'Room Shelley', 'Room Queena': 'Room Queena', 'TAN Cong': 'Room TanCong', 'SKWERES, Tomasz': 'Room Tomasz', 'Liya HUANG': 'Room Liya', 'Sivan MEGAN': 'Room Sivan', 'Gwyneth WENTINK': 'Room GW', 'Room Acting': 'Room Acting', 'Room Group Activity': 'Room Group Activity'}
---- DEBUG END ---
---- DEBUG START for student H5 at time 14:15 ---   
-Found masterclass activity: 'Harp MasterClass by Gwyneth WENTINK
-H3, H5, H6'
-Teacher name from Excel header (column 0): 'Sivan MEGAN'
-Checking against room mappings dictionary:
-{'Ivy CHUANG': 'Room Ivy', 'Stephane RETY': 'Room Stephane', 'Room Shelley': 'Room Shelley', 'Room Queena': 'Room Queena', 'TAN Cong': 'Room TanCong', 'SKWERES, Tomasz': 'Room Tomasz', 'Liya HUANG': 'Room Liya', 'Sivan MEGAN': 'Room Sivan', 'Gwyneth WENTINK': 'Room GW', 'Room Acting': 'Room Acting', 'Room Group Activity': 'Room Group Activity'}
---- DEBUG END ---
---- DEBUG START for student H5 at time 14:30 ---   
-Found masterclass activity: 'Harp MasterClass by Gwyneth WENTINK
-H3, H5, H6'
-Teacher name from Excel header (column 0): 'Sivan MEGAN'
-Checking against room mappings dictionary:
-{'Ivy CHUANG': 'Room Ivy', 'Stephane RETY': 'Room Stephane', 'Room Shelley': 'Room Shelley', 'Room Queena': 'Room Queena', 'TAN Cong': 'Room TanCong', 'SKWERES, Tomasz': 'Room Tomasz', 'Liya HUANG': 'Room Liya', 'Sivan MEGAN': 'Room Sivan', 'Gwyneth WENTINK': 'Room GW', 'Room Acting': 'Room Acting', 'Room Group Activity': 'Room Group Activity'}
---- DEBUG END ---
---- DEBUG START for student H5 at time 14:45 ---   
-Found masterclass activity: 'Harp MasterClass by Gwyneth WENTINK
-H3, H5, H6'
-Teacher name from Excel header (column 0): 'Sivan MEGAN'
-Checking against room mappings dictionary:
-{'Ivy CHUANG': 'Room Ivy', 'Stephane RETY': 'Room Stephane', 'Room Shelley': 'Room Shelley', 'Room Queena': 'Room Queena', 'TAN Cong': 'Room TanCong', 'SKWERES, Tomasz': 'Room Tomasz', 'Liya HUANG': 'Room Liya', 'Sivan MEGAN': 'Room Sivan', 'Gwyneth WENTINK': 'Room GW', 'Room Acting': 'Room Acting', 'Room Group Activity': 'Room Group Activity'}
---- DEBUG END ---
---- DEBUG START for student H5 at time 15:00 ---   
-Found masterclass activity: 'Harp MasterClass by Gwyneth WENTINK
-H3, H5, H6'
-Teacher name from Excel header (column 0): 'Sivan MEGAN'
-Checking against room mappings dictionary:
-{'Ivy CHUANG': 'Room Ivy', 'Stephane RETY': 'Room Stephane', 'Room Shelley': 'Room Shelley', 'Room Queena': 'Room Queena', 'TAN Cong': 'Room TanCong', 'SKWERES, Tomasz': 'Room Tomasz', 'Liya HUANG': 'Room Liya', 'Sivan MEGAN': 'Room Sivan', 'Gwyneth WENTINK': 'Room GW', 'Room Acting': 'Room Acting', 'Room Group Activity': 'Room Group Activity'}
---- DEBUG END ---
---- DEBUG START for student H6 at time 11:00 ---
-Found masterclass activity: 'H2, H3, H4, H5, H6, H9 Observe MasterClass by Liya HUANG (Room Liya)'    
-Teacher name from Excel header (column 3): ''      
-Checking against room mappings dictionary:
-{'Ivy CHUANG': 'Room Ivy', 'Stephane RETY': 'Room Stephane', 'Room Shelley': 'Room Shelley', 'Room Queena': 'Room Queena', 'TAN Cong': 'Room TanCong', 'SKWERES, Tomasz': 'Room Tomasz', 'Liya HUANG': 'Room Liya', 'Sivan MEGAN': 'Room Sivan', 'Gwyneth WENTINK': 'Room GW', 'Room Acting': 'Room Acting', 'Room Group Activity': 'Room Group Activity'}
---- DEBUG END ---
---- DEBUG START for student H6 at time 11:15 ---   
-Found masterclass activity: 'H2, H3, H4, H5, H6, H9 Observe MasterClass by Liya HUANG (Room Liya)'    
-Teacher name from Excel header (column 3): ''      
-Checking against room mappings dictionary:
-{'Ivy CHUANG': 'Room Ivy', 'Stephane RETY': 'Room Stephane', 'Room Shelley': 'Room Shelley', 'Room Queena': 'Room Queena', 'TAN Cong': 'Room TanCong', 'SKWERES, Tomasz': 'Room Tomasz', 'Liya HUANG': 'Room Liya', 'Sivan MEGAN': 'Room Sivan', 'Gwyneth WENTINK': 'Room GW', 'Room Acting': 'Room Acting', 'Room Group Activity': 'Room Group Activity'}
---- DEBUG END ---
---- DEBUG START for student H6 at time 12:00 ---   
-Found masterclass activity: 'H1, H3, H5, H6, H7, H8 Observe MasterClass by Sivan MEGAN (Room Sivan)'  
-Teacher name from Excel header (column 3): ''      
-Checking against room mappings dictionary:
-{'Ivy CHUANG': 'Room Ivy', 'Stephane RETY': 'Room Stephane', 'Room Shelley': 'Room Shelley', 'Room Queena': 'Room Queena', 'TAN Cong': 'Room TanCong', 'SKWERES, Tomasz': 'Room Tomasz', 'Liya HUANG': 'Room Liya', 'Sivan MEGAN': 'Room Sivan', 'Gwyneth WENTINK': 'Room GW', 'Room Acting': 'Room Acting', 'Room Group Activity': 'Room Group Activity'}
---- DEBUG END ---
---- DEBUG START for student H6 at time 12:15 ---   
-Found masterclass activity: 'H1, H3, H5, H6, H7, H8 Observe MasterClass by Sivan MEGAN (Room Sivan)'  
-Teacher name from Excel header (column 3): ''      
-Checking against room mappings dictionary:
-{'Ivy CHUANG': 'Room Ivy', 'Stephane RETY': 'Room Stephane', 'Room Shelley': 'Room Shelley', 'Room Queena': 'Room Queena', 'TAN Cong': 'Room TanCong', 'SKWERES, Tomasz': 'Room Tomasz', 'Liya HUANG': 'Room Liya', 'Sivan MEGAN': 'Room Sivan', 'Gwyneth WENTINK': 'Room GW', 'Room Acting': 'Room Acting', 'Room Group Activity': 'Room Group Activity'}
---- DEBUG END ---
---- DEBUG START for student H6 at time 14:15 ---   
-Found masterclass activity: 'Harp MasterClass by Gwyneth WENTINK
-H3, H5, H6'
-Teacher name from Excel header (column 0): 'Sivan MEGAN'
-Checking against room mappings dictionary:
-{'Ivy CHUANG': 'Room Ivy', 'Stephane RETY': 'Room Stephane', 'Room Shelley': 'Room Shelley', 'Room Queena': 'Room Queena', 'TAN Cong': 'Room TanCong', 'SKWERES, Tomasz': 'Room Tomasz', 'Liya HUANG': 'Room Liya', 'Sivan MEGAN': 'Room Sivan', 'Gwyneth WENTINK': 'Room GW', 'Room Acting': 'Room Acting', 'Room Group Activity': 'Room Group Activity'}
---- DEBUG END ---
---- DEBUG START for student H6 at time 14:30 ---   
-Found masterclass activity: 'Harp MasterClass by Gwyneth WENTINK
-H3, H5, H6'
-Teacher name from Excel header (column 0): 'Sivan MEGAN'
-Checking against room mappings dictionary:
-{'Ivy CHUANG': 'Room Ivy', 'Stephane RETY': 'Room Stephane', 'Room Shelley': 'Room Shelley', 'Room Queena': 'Room Queena', 'TAN Cong': 'Room TanCong', 'SKWERES, Tomasz': 'Room Tomasz', 'Liya HUANG': 'Room Liya', 'Sivan MEGAN': 'Room Sivan', 'Gwyneth WENTINK': 'Room GW', 'Room Acting': 'Room Acting', 'Room Group Activity': 'Room Group Activity'}
---- DEBUG END ---
---- DEBUG START for student H6 at time 14:45 ---   
-Found masterclass activity: 'Harp MasterClass by Gwyneth WENTINK
-H3, H5, H6'
-Teacher name from Excel header (column 0): 'Sivan MEGAN'
-Checking against room mappings dictionary:
-{'Ivy CHUANG': 'Room Ivy', 'Stephane RETY': 'Room Stephane', 'Room Shelley': 'Room Shelley', 'Room Queena': 'Room Queena', 'TAN Cong': 'Room TanCong', 'SKWERES, Tomasz': 'Room Tomasz', 'Liya HUANG': 'Room Liya', 'Sivan MEGAN': 'Room Sivan', 'Gwyneth WENTINK': 'Room GW', 'Room Acting': 'Room Acting', 'Room Group Activity': 'Room Group Activity'}
---- DEBUG END ---
---- DEBUG START for student H6 at time 15:00 ---   
-Found masterclass activity: 'Harp MasterClass by Gwyneth WENTINK
-H3, H5, H6'
-Teacher name from Excel header (column 0): 'Sivan MEGAN'
-Checking against room mappings dictionary:
-{'Ivy CHUANG': 'Room Ivy', 'Stephane RETY': 'Room Stephane', 'Room Shelley': 'Room Shelley', 'Room Queena': 'Room Queena', 'TAN Cong': 'Room TanCong', 'SKWERES, Tomasz': 'Room Tomasz', 'Liya HUANG': 'Room Liya', 'Sivan MEGAN': 'Room Sivan', 'Gwyneth WENTINK': 'Room GW', 'Room Acting': 'Room Acting', 'Room Group Activity': 'Room Group Activity'}
---- DEBUG END ---
---- DEBUG START for student H7 at time 11:00 ---
-Found masterclass activity: 'Harp MasterClass by Liya HUANG
-H1, H7, H8'
-Teacher name from Excel header (column 0): 'Sivan MEGAN'
-Checking against room mappings dictionary:
-{'Ivy CHUANG': 'Room Ivy', 'Stephane RETY': 'Room Stephane', 'Room Shelley': 'Room Shelley', 'Room Queena': 'Room Queena', 'TAN Cong': 'Room TanCong', 'SKWERES, Tomasz': 'Room Tomasz', 'Liya HUANG': 'Room Liya', 'Sivan MEGAN': 'Room Sivan', 'Gwyneth WENTINK': 'Room GW', 'Room Acting': 'Room Acting', 'Room Group Activity': 'Room Group Activity'}
---- DEBUG END ---
---- DEBUG START for student H7 at time 11:15 ---   
-Found masterclass activity: 'Harp MasterClass by Liya HUANG
-H1, H7, H8'
-Teacher name from Excel header (column 0): 'Sivan MEGAN'
-Checking against room mappings dictionary:
-{'Ivy CHUANG': 'Room Ivy', 'Stephane RETY': 'Room Stephane', 'Room Shelley': 'Room Shelley', 'Room Queena': 'Room Queena', 'TAN Cong': 'Room TanCong', 'SKWERES, Tomasz': 'Room Tomasz', 'Liya HUANG': 'Room Liya', 'Sivan MEGAN': 'Room Sivan', 'Gwyneth WENTINK': 'Room GW', 'Room Acting': 'Room Acting', 'Room Group Activity': 'Room Group Activity'}
---- DEBUG END ---
---- DEBUG START for student H7 at time 11:30 ---   
-Found masterclass activity: 'Harp MasterClass by Liya HUANG
-H1, H7, H8'
-Teacher name from Excel header (column 0): 'Sivan MEGAN'
-Checking against room mappings dictionary:
-{'Ivy CHUANG': 'Room Ivy', 'Stephane RETY': 'Room Stephane', 'Room Shelley': 'Room Shelley', 'Room Queena': 'Room Queena', 'TAN Cong': 'Room TanCong', 'SKWERES, Tomasz': 'Room Tomasz', 'Liya HUANG': 'Room Liya', 'Sivan MEGAN': 'Room Sivan', 'Gwyneth WENTINK': 'Room GW', 'Room Acting': 'Room Acting', 'Room Group Activity': 'Room Group Activity'}
---- DEBUG END ---
---- DEBUG START for student H7 at time 11:45 ---   
-Found masterclass activity: 'Harp MasterClass by Liya HUANG
-H1, H7, H8'
-Teacher name from Excel header (column 0): 'Sivan MEGAN'
-Checking against room mappings dictionary:
-{'Ivy CHUANG': 'Room Ivy', 'Stephane RETY': 'Room Stephane', 'Room Shelley': 'Room Shelley', 'Room Queena': 'Room Queena', 'TAN Cong': 'Room TanCong', 'SKWERES, Tomasz': 'Room Tomasz', 'Liya HUANG': 'Room Liya', 'Sivan MEGAN': 'Room Sivan', 'Gwyneth WENTINK': 'Room GW', 'Room Acting': 'Room Acting', 'Room Group Activity': 'Room Group Activity'}
---- DEBUG END ---
---- DEBUG START for student H7 at time 12:00 ---   
-Found masterclass activity: 'H1, H3, H5, H6, H7, H8 Observe MasterClass by Sivan MEGAN (Room Sivan)'  
-Teacher name from Excel header (column 3): ''      
-Checking against room mappings dictionary:
-{'Ivy CHUANG': 'Room Ivy', 'Stephane RETY': 'Room Stephane', 'Room Shelley': 'Room Shelley', 'Room Queena': 'Room Queena', 'TAN Cong': 'Room TanCong', 'SKWERES, Tomasz': 'Room Tomasz', 'Liya HUANG': 'Room Liya', 'Sivan MEGAN': 'Room Sivan', 'Gwyneth WENTINK': 'Room GW', 'Room Acting': 'Room Acting', 'Room Group Activity': 'Room Group Activity'}
---- DEBUG END ---
---- DEBUG START for student H7 at time 12:15 ---   
-Found masterclass activity: 'H1, H3, H5, H6, H7, H8 Observe MasterClass by Sivan MEGAN (Room Sivan)'  
-Teacher name from Excel header (column 3): ''      
-Checking against room mappings dictionary:
-{'Ivy CHUANG': 'Room Ivy', 'Stephane RETY': 'Room Stephane', 'Room Shelley': 'Room Shelley', 'Room Queena': 'Room Queena', 'TAN Cong': 'Room TanCong', 'SKWERES, Tomasz': 'Room Tomasz', 'Liya HUANG': 'Room Liya', 'Sivan MEGAN': 'Room Sivan', 'Gwyneth WENTINK': 'Room GW', 'Room Acting': 'Room Acting', 'Room Group Activity': 'Room Group Activity'}
---- DEBUG END ---
---- DEBUG START for student H7 at time 14:15 ---   
-Found masterclass activity: 'H1, H2, H4, H7, H8, H9 Observe MasterClass by Gwyneth WENTINK'
-Teacher name from Excel header (column 3): ''      
-Checking against room mappings dictionary:
-{'Ivy CHUANG': 'Room Ivy', 'Stephane RETY': 'Room Stephane', 'Room Shelley': 'Room Shelley', 'Room Queena': 'Room Queena', 'TAN Cong': 'Room TanCong', 'SKWERES, Tomasz': 'Room Tomasz', 'Liya HUANG': 'Room Liya', 'Sivan MEGAN': 'Room Sivan', 'Gwyneth WENTINK': 'Room GW', 'Room Acting': 'Room Acting', 'Room Group Activity': 'Room Group Activity'}
---- DEBUG END ---
---- DEBUG START for student H7 at time 14:30 ---   
-Found masterclass activity: 'H1, H2, H4, H7, H8, H9 Observe MasterClass by Gwyneth WENTINK'
-Teacher name from Excel header (column 3): ''      
-Checking against room mappings dictionary:
-{'Ivy CHUANG': 'Room Ivy', 'Stephane RETY': 'Room Stephane', 'Room Shelley': 'Room Shelley', 'Room Queena': 'Room Queena', 'TAN Cong': 'Room TanCong', 'SKWERES, Tomasz': 'Room Tomasz', 'Liya HUANG': 'Room Liya', 'Sivan MEGAN': 'Room Sivan', 'Gwyneth WENTINK': 'Room GW', 'Room Acting': 'Room Acting', 'Room Group Activity': 'Room Group Activity'}
---- DEBUG END ---
---- DEBUG START for student H7 at time 14:45 ---   
-Found masterclass activity: 'H1, H2, H4, H7, H8, H9 Observe MasterClass by Gwyneth WENTINK'
-Teacher name from Excel header (column 3): ''      
-Checking against room mappings dictionary:
-{'Ivy CHUANG': 'Room Ivy', 'Stephane RETY': 'Room Stephane', 'Room Shelley': 'Room Shelley', 'Room Queena': 'Room Queena', 'TAN Cong': 'Room TanCong', 'SKWERES, Tomasz': 'Room Tomasz', 'Liya HUANG': 'Room Liya', 'Sivan MEGAN': 'Room Sivan', 'Gwyneth WENTINK': 'Room GW', 'Room Acting': 'Room Acting', 'Room Group Activity': 'Room Group Activity'}
---- DEBUG END ---
---- DEBUG START for student H7 at time 15:00 ---   
-Found masterclass activity: 'H1, H2, H4, H7, H8, H9 Observe MasterClass by Gwyneth WENTINK'
-Teacher name from Excel header (column 3): ''      
-Checking against room mappings dictionary:
-{'Ivy CHUANG': 'Room Ivy', 'Stephane RETY': 'Room Stephane', 'Room Shelley': 'Room Shelley', 'Room Queena': 'Room Queena', 'TAN Cong': 'Room TanCong', 'SKWERES, Tomasz': 'Room Tomasz', 'Liya HUANG': 'Room Liya', 'Sivan MEGAN': 'Room Sivan', 'Gwyneth WENTINK': 'Room GW', 'Room Acting': 'Room Acting', 'Room Group Activity': 'Room Group Activity'}
---- DEBUG END ---
---- DEBUG START for student H8 at time 11:00 ---
-Found masterclass activity: 'Harp MasterClass by Liya HUANG
-H1, H7, H8'
-Teacher name from Excel header (column 0): 'Sivan MEGAN'
-Checking against room mappings dictionary:
-{'Ivy CHUANG': 'Room Ivy', 'Stephane RETY': 'Room Stephane', 'Room Shelley': 'Room Shelley', 'Room Queena': 'Room Queena', 'TAN Cong': 'Room TanCong', 'SKWERES, Tomasz': 'Room Tomasz', 'Liya HUANG': 'Room Liya', 'Sivan MEGAN': 'Room Sivan', 'Gwyneth WENTINK': 'Room GW', 'Room Acting': 'Room Acting', 'Room Group Activity': 'Room Group Activity'}
---- DEBUG END ---
---- DEBUG START for student H8 at time 11:15 ---   
-Found masterclass activity: 'Harp MasterClass by Liya HUANG
-H1, H7, H8'
-Teacher name from Excel header (column 0): 'Sivan MEGAN'
-Checking against room mappings dictionary:
-{'Ivy CHUANG': 'Room Ivy', 'Stephane RETY': 'Room Stephane', 'Room Shelley': 'Room Shelley', 'Room Queena': 'Room Queena', 'TAN Cong': 'Room TanCong', 'SKWERES, Tomasz': 'Room Tomasz', 'Liya HUANG': 'Room Liya', 'Sivan MEGAN': 'Room Sivan', 'Gwyneth WENTINK': 'Room GW', 'Room Acting': 'Room Acting', 'Room Group Activity': 'Room Group Activity'}
---- DEBUG END ---
---- DEBUG START for student H8 at time 11:30 ---   
-Found masterclass activity: 'Harp MasterClass by Liya HUANG
-H1, H7, H8'
-Teacher name from Excel header (column 0): 'Sivan MEGAN'
-Checking against room mappings dictionary:
-{'Ivy CHUANG': 'Room Ivy', 'Stephane RETY': 'Room Stephane', 'Room Shelley': 'Room Shelley', 'Room Queena': 'Room Queena', 'TAN Cong': 'Room TanCong', 'SKWERES, Tomasz': 'Room Tomasz', 'Liya HUANG': 'Room Liya', 'Sivan MEGAN': 'Room Sivan', 'Gwyneth WENTINK': 'Room GW', 'Room Acting': 'Room Acting', 'Room Group Activity': 'Room Group Activity'}
---- DEBUG END ---
---- DEBUG START for student H8 at time 11:45 ---   
-Found masterclass activity: 'Harp MasterClass by Liya HUANG
-H1, H7, H8'
-Teacher name from Excel header (column 0): 'Sivan MEGAN'
-Checking against room mappings dictionary:
-{'Ivy CHUANG': 'Room Ivy', 'Stephane RETY': 'Room Stephane', 'Room Shelley': 'Room Shelley', 'Room Queena': 'Room Queena', 'TAN Cong': 'Room TanCong', 'SKWERES, Tomasz': 'Room Tomasz', 'Liya HUANG': 'Room Liya', 'Sivan MEGAN': 'Room Sivan', 'Gwyneth WENTINK': 'Room GW', 'Room Acting': 'Room Acting', 'Room Group Activity': 'Room Group Activity'}
---- DEBUG END ---
---- DEBUG START for student H8 at time 12:00 ---   
-Found masterclass activity: 'H1, H3, H5, H6, H7, H8 Observe MasterClass by Sivan MEGAN (Room Sivan)'  
-Teacher name from Excel header (column 3): ''      
-Checking against room mappings dictionary:
-{'Ivy CHUANG': 'Room Ivy', 'Stephane RETY': 'Room Stephane', 'Room Shelley': 'Room Shelley', 'Room Queena': 'Room Queena', 'TAN Cong': 'Room TanCong', 'SKWERES, Tomasz': 'Room Tomasz', 'Liya HUANG': 'Room Liya', 'Sivan MEGAN': 'Room Sivan', 'Gwyneth WENTINK': 'Room GW', 'Room Acting': 'Room Acting', 'Room Group Activity': 'Room Group Activity'}
---- DEBUG END ---
---- DEBUG START for student H8 at time 12:15 ---   
-Found masterclass activity: 'H1, H3, H5, H6, H7, H8 Observe MasterClass by Sivan MEGAN (Room Sivan)'  
-Teacher name from Excel header (column 3): ''      
-Checking against room mappings dictionary:
-{'Ivy CHUANG': 'Room Ivy', 'Stephane RETY': 'Room Stephane', 'Room Shelley': 'Room Shelley', 'Room Queena': 'Room Queena', 'TAN Cong': 'Room TanCong', 'SKWERES, Tomasz': 'Room Tomasz', 'Liya HUANG': 'Room Liya', 'Sivan MEGAN': 'Room Sivan', 'Gwyneth WENTINK': 'Room GW', 'Room Acting': 'Room Acting', 'Room Group Activity': 'Room Group Activity'}
---- DEBUG END ---
---- DEBUG START for student H8 at time 14:15 ---   
-Found masterclass activity: 'H1, H2, H4, H7, H8, H9 Observe MasterClass by Gwyneth WENTINK'
-Teacher name from Excel header (column 3): ''      
-Checking against room mappings dictionary:
-{'Ivy CHUANG': 'Room Ivy', 'Stephane RETY': 'Room Stephane', 'Room Shelley': 'Room Shelley', 'Room Queena': 'Room Queena', 'TAN Cong': 'Room TanCong', 'SKWERES, Tomasz': 'Room Tomasz', 'Liya HUANG': 'Room Liya', 'Sivan MEGAN': 'Room Sivan', 'Gwyneth WENTINK': 'Room GW', 'Room Acting': 'Room Acting', 'Room Group Activity': 'Room Group Activity'}
---- DEBUG END ---
---- DEBUG START for student H8 at time 14:30 ---   
-Found masterclass activity: 'H1, H2, H4, H7, H8, H9 Observe MasterClass by Gwyneth WENTINK'
-Teacher name from Excel header (column 3): ''      
-Checking against room mappings dictionary:
-{'Ivy CHUANG': 'Room Ivy', 'Stephane RETY': 'Room Stephane', 'Room Shelley': 'Room Shelley', 'Room Queena': 'Room Queena', 'TAN Cong': 'Room TanCong', 'SKWERES, Tomasz': 'Room Tomasz', 'Liya HUANG': 'Room Liya', 'Sivan MEGAN': 'Room Sivan', 'Gwyneth WENTINK': 'Room GW', 'Room Acting': 'Room Acting', 'Room Group Activity': 'Room Group Activity'}
---- DEBUG END ---
---- DEBUG START for student H8 at time 14:45 ---   
-Found masterclass activity: 'H1, H2, H4, H7, H8, H9 Observe MasterClass by Gwyneth WENTINK'
-Teacher name from Excel header (column 3): ''      
-Checking against room mappings dictionary:
-{'Ivy CHUANG': 'Room Ivy', 'Stephane RETY': 'Room Stephane', 'Room Shelley': 'Room Shelley', 'Room Queena': 'Room Queena', 'TAN Cong': 'Room TanCong', 'SKWERES, Tomasz': 'Room Tomasz', 'Liya HUANG': 'Room Liya', 'Sivan MEGAN': 'Room Sivan', 'Gwyneth WENTINK': 'Room GW', 'Room Acting': 'Room Acting', 'Room Group Activity': 'Room Group Activity'}
---- DEBUG END ---
---- DEBUG START for student H8 at time 15:00 ---   
-Found masterclass activity: 'H1, H2, H4, H7, H8, H9 Observe MasterClass by Gwyneth WENTINK'
-Teacher name from Excel header (column 3): ''      
-Checking against room mappings dictionary:
-{'Ivy CHUANG': 'Room Ivy', 'Stephane RETY': 'Room Stephane', 'Room Shelley': 'Room Shelley', 'Room Queena': 'Room Queena', 'TAN Cong': 'Room TanCong', 'SKWERES, Tomasz': 'Room Tomasz', 'Liya HUANG': 'Room Liya', 'Sivan MEGAN': 'Room Sivan', 'Gwyneth WENTINK': 'Room GW', 'Room Acting': 'Room Acting', 'Room Group Activity': 'Room Group Activity'}
---- DEBUG END ---
---- DEBUG START for student H9 at time 11:00 ---
-Found masterclass activity: 'H2, H3, H4, H5, H6, H9 Observe MasterClass by Liya HUANG (Room Liya)'    
-Teacher name from Excel header (column 3): ''      
-Checking against room mappings dictionary:
-{'Ivy CHUANG': 'Room Ivy', 'Stephane RETY': 'Room Stephane', 'Room Shelley': 'Room Shelley', 'Room Queena': 'Room Queena', 'TAN Cong': 'Room TanCong', 'SKWERES, Tomasz': 'Room Tomasz', 'Liya HUANG': 'Room Liya', 'Sivan MEGAN': 'Room Sivan', 'Gwyneth WENTINK': 'Room GW', 'Room Acting': 'Room Acting', 'Room Group Activity': 'Room Group Activity'}
---- DEBUG END ---
---- DEBUG START for student H9 at time 11:15 ---   
-Found masterclass activity: 'H2, H3, H4, H5, H6, H9 Observe MasterClass by Liya HUANG (Room Liya)'    
-Teacher name from Excel header (column 3): ''      
-Checking against room mappings dictionary:
-{'Ivy CHUANG': 'Room Ivy', 'Stephane RETY': 'Room Stephane', 'Room Shelley': 'Room Shelley', 'Room Queena': 'Room Queena', 'TAN Cong': 'Room TanCong', 'SKWERES, Tomasz': 'Room Tomasz', 'Liya HUANG': 'Room Liya', 'Sivan MEGAN': 'Room Sivan', 'Gwyneth WENTINK': 'Room GW', 'Room Acting': 'Room Acting', 'Room Group Activity': 'Room Group Activity'}
---- DEBUG END ---
---- DEBUG START for student H9 at time 12:00 ---   
-Found masterclass activity: 'Harp MasterClass by Sivan MEGAN
-H2, H4, H9'
-Teacher name from Excel header (column 0): 'Sivan MEGAN'
-Checking against room mappings dictionary:
-{'Ivy CHUANG': 'Room Ivy', 'Stephane RETY': 'Room Stephane', 'Room Shelley': 'Room Shelley', 'Room Queena': 'Room Queena', 'TAN Cong': 'Room TanCong', 'SKWERES, Tomasz': 'Room Tomasz', 'Liya HUANG': 'Room Liya', 'Sivan MEGAN': 'Room Sivan', 'Gwyneth WENTINK': 'Room GW', 'Room Acting': 'Room Acting', 'Room Group Activity': 'Room Group Activity'}
---- DEBUG END ---
---- DEBUG START for student H9 at time 12:15 ---   
-Found masterclass activity: 'Harp MasterClass by Sivan MEGAN
-H2, H4, H9'
-Teacher name from Excel header (column 0): 'Sivan MEGAN'
-Checking against room mappings dictionary:
-{'Ivy CHUANG': 'Room Ivy', 'Stephane RETY': 'Room Stephane', 'Room Shelley': 'Room Shelley', 'Room Queena': 'Room Queena', 'TAN Cong': 'Room TanCong', 'SKWERES, Tomasz': 'Room Tomasz', 'Liya HUANG': 'Room Liya', 'Sivan MEGAN': 'Room Sivan', 'Gwyneth WENTINK': 'Room GW', 'Room Acting': 'Room Acting', 'Room Group Activity': 'Room Group Activity'}
---- DEBUG END ---
---- DEBUG START for student H9 at time 12:30 ---   
-Found masterclass activity: 'Harp MasterClass by Sivan MEGAN
-H2, H4, H9'
-Teacher name from Excel header (column 0): 'Sivan MEGAN'
-Checking against room mappings dictionary:
-{'Ivy CHUANG': 'Room Ivy', 'Stephane RETY': 'Room Stephane', 'Room Shelley': 'Room Shelley', 'Room Queena': 'Room Queena', 'TAN Cong': 'Room TanCong', 'SKWERES, Tomasz': 'Room Tomasz', 'Liya HUANG': 'Room Liya', 'Sivan MEGAN': 'Room Sivan', 'Gwyneth WENTINK': 'Room GW', 'Room Acting': 'Room Acting', 'Room Group Activity': 'Room Group Activity'}
---- DEBUG END ---
---- DEBUG START for student H9 at time 12:45 ---   
-Found masterclass activity: 'Harp MasterClass by Sivan MEGAN
-H2, H4, H9'
-Teacher name from Excel header (column 0): 'Sivan MEGAN'
-Checking against room mappings dictionary:
-{'Ivy CHUANG': 'Room Ivy', 'Stephane RETY': 'Room Stephane', 'Room Shelley': 'Room Shelley', 'Room Queena': 'Room Queena', 'TAN Cong': 'Room TanCong', 'SKWERES, Tomasz': 'Room Tomasz', 'Liya HUANG': 'Room Liya', 'Sivan MEGAN': 'Room Sivan', 'Gwyneth WENTINK': 'Room GW', 'Room Acting': 'Room Acting', 'Room Group Activity': 'Room Group Activity'}
---- DEBUG END ---
---- DEBUG START for student H9 at time 14:15 ---   
-Found masterclass activity: 'H1, H2, H4, H7, H8, H9 Observe MasterClass by Gwyneth WENTINK'
-Teacher name from Excel header (column 3): ''      
-Checking against room mappings dictionary:
-{'Ivy CHUANG': 'Room Ivy', 'Stephane RETY': 'Room Stephane', 'Room Shelley': 'Room Shelley', 'Room Queena': 'Room Queena', 'TAN Cong': 'Room TanCong', 'SKWERES, Tomasz': 'Room Tomasz', 'Liya HUANG': 'Room Liya', 'Sivan MEGAN': 'Room Sivan', 'Gwyneth WENTINK': 'Room GW', 'Room Acting': 'Room Acting', 'Room Group Activity': 'Room Group Activity'}
---- DEBUG END ---
---- DEBUG START for student H9 at time 14:30 ---   
-Found masterclass activity: 'H1, H2, H4, H7, H8, H9 Observe MasterClass by Gwyneth WENTINK'
-Teacher name from Excel header (column 3): ''      
-Checking against room mappings dictionary:
-{'Ivy CHUANG': 'Room Ivy', 'Stephane RETY': 'Room Stephane', 'Room Shelley': 'Room Shelley', 'Room Queena': 'Room Queena', 'TAN Cong': 'Room TanCong', 'SKWERES, Tomasz': 'Room Tomasz', 'Liya HUANG': 'Room Liya', 'Sivan MEGAN': 'Room Sivan', 'Gwyneth WENTINK': 'Room GW', 'Room Acting': 'Room Acting', 'Room Group Activity': 'Room Group Activity'}
---- DEBUG END ---
---- DEBUG START for student H9 at time 14:45 ---   
-Found masterclass activity: 'H1, H2, H4, H7, H8, H9 Observe MasterClass by Gwyneth WENTINK'
-Teacher name from Excel header (column 3): ''      
-Checking against room mappings dictionary:
-{'Ivy CHUANG': 'Room Ivy', 'Stephane RETY': 'Room Stephane', 'Room Shelley': 'Room Shelley', 'Room Queena': 'Room Queena', 'TAN Cong': 'Room TanCong', 'SKWERES, Tomasz': 'Room Tomasz', 'Liya HUANG': 'Room Liya', 'Sivan MEGAN': 'Room Sivan', 'Gwyneth WENTINK': 'Room GW', 'Room Acting': 'Room Acting', 'Room Group Activity': 'Room Group Activity'}
---- DEBUG END ---
---- DEBUG START for student H9 at time 15:00 ---   
-Found masterclass activity: 'H1, H2, H4, H7, H8, H9 Observe MasterClass by Gwyneth WENTINK'
-ena': 'Room Queena', 'TAN Cong': 'Room TanCong', 'SKWERES, Tomasz': 'Room Tomasz', 'Liya HUANG': 'Room Liya', 'Sivan MEGAN': 'Room Sivan', 'Gwyneth WENTINK': 'Room GW', 'Room Acting': 'Room Acting', 'Room Group Activity': 'Room Group Activity'}
---- DEBUG END ---
-Successfully generated timetables for 9 students for harp-campA-time-table.xlsx in the 'student_timetables' directory.
-PS C:\Users\user\Desktop\Python\summer-camp-time-table>
+PS C:\Users\user\Desktop\Python\summer-camp-time-table> & C:/Users/user/AppData/Local/Microsoft/WindowsApps/python3.12.exe c:/Users/user/Desktop/Python/summer-camp-time-table/update_master_timetable.py
+Loading mapping files...
+DEBUG - Loading group mapping from: input\group_mapping-campA.csv
+DEBUG - CSV headers: ['group_number', 'student_no']
+DEBUG - Row 1: group_number='1', student_no='C3, H2, F4'
+DEBUG - Extracted student IDs: ['C3', 'H2', 'F4']
+DEBUG - Added mapping: Group 1 -> ['C3', 'H2', 'F4']
+DEBUG - Row 2: group_number='2', student_no='C1, F5'
+DEBUG - Extracted student IDs: ['C1', 'F5']
+DEBUG - Added mapping: Group 2 -> ['C1', 'F5']
+DEBUG - Row 3: group_number='3', student_no='C6, H5'
+DEBUG - Extracted student IDs: ['C6', 'H5']
+DEBUG - Added mapping: Group 3 -> ['C6', 'H5']
+DEBUG - Row 4: group_number='4', student_no='C4, F6'
+DEBUG - Extracted student IDs: ['C4', 'F6']
+DEBUG - Added mapping: Group 4 -> ['C4', 'F6']
+DEBUG - Row 5: group_number='5', student_no='C5, H4, F3'
+DEBUG - Extracted student IDs: ['C5', 'H4', 'F3']
+DEBUG - Added mapping: Group 5 -> ['C5', 'H4', 'F3']
+DEBUG - Row 6: group_number='6', student_no='H3, F2'
+DEBUG - Extracted student IDs: ['H3', 'F2']
+DEBUG - Added mapping: Group 6 -> ['H3', 'F2']
+DEBUG - Row 7: group_number='7', student_no='C2, F1'
+DEBUG - Extracted student IDs: ['C2', 'F1']
+DEBUG - Added mapping: Group 7 -> ['C2', 'F1']
+DEBUG - Row 8: group_number='8', student_no='H9, H1, H6'
+DEBUG - Extracted student IDs: ['H9', 'H1', 'H6']
+DEBUG - Added mapping: Group 8 -> ['H9', 'H1', 'H6']
+DEBUG - Row 9: group_number='9', student_no='H7, H8'
+DEBUG - Extracted student IDs: ['H7', 'H8']
+DEBUG - Added mapping: Group 9 -> ['H7', 'H8']
+DEBUG - Final group mappings loaded: {'Group 1': ['C3', 'H2', 'F4'], 'Group 2': ['C1', 'F5'], 'Group 3': ['C6', 'H5'], 'Group 4': ['C4', 'F6'], 'Group 5': ['C5', 'H4', 'F3'], 'Group 6': ['H3', 'F2'], 'Group 7': ['C2', 'F1'], 'Group 8': ['H9', 'H1', 'H6'], 'Group 9': ['H7', 'H8']}
+DEBUG - Loading group mapping from: input\group_mapping-campB.csv
+DEBUG - CSV headers: ['group_number', 'student_no']
+DEBUG - Row 1: group_number='1', student_no='C1, H8, F3'
+DEBUG - Extracted student IDs: ['C1', 'H8', 'F3']
+DEBUG - Added mapping: Group 1 -> ['C1', 'H8', 'F3']
+DEBUG - Row 2: group_number='2', student_no='C2, H12'
+DEBUG - Extracted student IDs: ['C2', 'H12']
+DEBUG - Added mapping: Group 2 -> ['C2', 'H12']
+DEBUG - Row 3: group_number='3', student_no='C3, F4'
+DEBUG - Extracted student IDs: ['C3', 'F4']
+DEBUG - Added mapping: Group 3 -> ['C3', 'F4']
+DEBUG - Row 4: group_number='4', student_no='C4, H9'
+DEBUG - Extracted student IDs: ['C4', 'H9']
+DEBUG - Added mapping: Group 4 -> ['C4', 'H9']
+DEBUG - Row 5: group_number='5', student_no='C5, H6, F1'
+DEBUG - Extracted student IDs: ['C5', 'H6', 'F1']
+DEBUG - Added mapping: Group 5 -> ['C5', 'H6', 'F1']
+DEBUG - Row 6: group_number='6', student_no='H11, F5, F2'
+DEBUG - Extracted student IDs: ['H11', 'F5', 'F2']
+DEBUG - Added mapping: Group 6 -> ['H11', 'F5', 'F2']
+DEBUG - Row 7: group_number='7', student_no='H4, H7, H2, H1'
+DEBUG - Extracted student IDs: ['H4', 'H7', 'H2', 'H1']
+DEBUG - Added mapping: Group 7 -> ['H4', 'H7', 'H2', 'H1']
+DEBUG - Row 8: group_number='8', student_no='H5, F6'
+DEBUG - Extracted student IDs: ['H5', 'F6']
+DEBUG - Added mapping: Group 8 -> ['H5', 'F6']
+DEBUG - Row 9: group_number='9', student_no='H3, H10'
+DEBUG - Extracted student IDs: ['H3', 'H10']
+DEBUG - Added mapping: Group 9 -> ['H3', 'H10']
+DEBUG - Final group mappings loaded: {'Group 1': ['C1', 'H8', 'F3'], 'Group 2': ['C2', 'H12'], 'Group 3': ['C3', 'F4'], 'Group 4': ['C4', 'H9'], 'Group 5': ['C5', 'H6', 'F1'], 'Group 6': ['H11', 'F5', 'F2'], 'Group 7': ['H4', 'H7', 'H2', 'H1'], 'Group 8': ['H5', 'F6'], 'Group 9': ['H3', 'H10']}
+
+DEBUG - Camp A Student mappings loaded: 21 entries
+Sample student mappings: {'F1': 'Roni WONG', 'F2': 'Hailey LEUNG', 'F3': 'Evan QI'}    
+DEBUG - Camp A Group mappings loaded: 9 entries
+Sample group mappings: {'Group 1': ['C3', 'H2', 'F4'], 'Group 2': ['C1', 'F5'], 'Group 3': ['C6', 'H5']}
+DEBUG - Camp B Student mappings loaded: 23 entries
+Sample student mappings: {'F1': 'Marquis YEUNG', 'F2': 'Angelina WONG', 'F3': 'Issac CHAN'}
+DEBUG - Camp B Group mappings loaded: 9 entries
+Sample group mappings: {'Group 1': ['C1', 'H8', 'F3'], 'Group 2': ['C2', 'H12'], 'Group 3': ['C3', 'F4']}
+
+Successfully copied 'input\master.xlsx' to 'input\master_processed.xlsx'.
+Processing sheets...
+DEBUG - Available sheets in workbook: ['Flute-Camp-A', 'Cello-Camp-A', 'Harp-Camp-A', 'Flute-Camp-B', 'Cello-Camp-B', 'Harp-Camp-B', 'Ensemble Camp A', 'Ensemble B']
+DEBUG - Target sheets to process: ['Flute-Camp-A', 'Cello-Camp-A', 'Harp-Camp-A', 'Flute-Camp-B', 'Cello-Camp-B', 'Harp-Camp-B']
+
+  - Processing sheet: 'Flute-Camp-A'
+DEBUG - Processing cell A1: '14 July (Monday)'
+DEBUG - Processing cell I1: '15 July (Tuseday)'
+DEBUG - Processing cell P1: '16 July (Wednesday)'
+DEBUG - Processing cell W1: '17 July (Thursday)'
+DEBUG - Processing cell AD1: '18 July (Friday)'
+DEBUG - Processing cell AL1: '19th July (Saturday, Maritime Museum)'
+DEBUG - Processing cell A2: 'Teacher'
+DEBUG - Processing cell B2: 'Ivy CHUANG'
+DEBUG - Processing cell C2: 'Stephane RETY'
+DEBUG - Processing cell I2: 'Ivy CHUANG'
+DEBUG - Found student IDs in B8: ['F1']
+DEBUG - Replacing student ID F1 with Roni WONG
+DEBUG - Cell B8 updated from 'F1' to 'Roni WONG'
+DEBUG - Found student IDs in C8: ['F3']
+DEBUG - Replacing student ID F3 with Evan QI
+DEBUG - Cell C8 updated from 'F3' to 'Evan QI'
+DEBUG - Found student IDs in D8: ['F6']
+DEBUG - Replacing student ID F6 with Moses LO
+DEBUG - Cell D8 updated from 'F6 Rehearsal with pianist
+(Room Shelley)' to 'Moses LO Rehearsal with pianist
+(Room Shelley)'
+DEBUG - Found student IDs in E8: ['F5']
+DEBUG - Replacing student ID F5 with Cybi CHENG
+DEBUG - Cell E8 updated from 'F5' to 'Cybi CHENG'
+DEBUG - Found student IDs in F8: ['F4']
+DEBUG - Replacing student ID F4 with Yanis SZE
+DEBUG - Cell F8 updated from 'F4' to 'Yanis SZE'
+DEBUG - Found student IDs in G8: ['F2']
+DEBUG - Replacing student ID F2 with Hailey LEUNG
+DEBUG - Cell G8 updated from 'F2' to 'Hailey LEUNG'
+DEBUG - Found student IDs in I8: ['F4']
+DEBUG - Replacing student ID F4 with Yanis SZE
+DEBUG - Cell I8 updated from 'F4' to 'Yanis SZE'
+DEBUG - Found student IDs in J8: ['F2']
+DEBUG - Replacing student ID F2 with Hailey LEUNG
+DEBUG - Cell J8 updated from 'F2  Private Lesson with Stephane RETY  & pianist' to 'Hailey LEUNG  Private Lesson with Stephane RETY  & pianist'
+DEBUG - Found student IDs in K8: ['F3']
+DEBUG - Replacing student ID F3 with Evan QI
+DEBUG - Cell K8 updated from 'F3' to 'Evan QI'
+DEBUG - Found student IDs in L8: ['F1']
+DEBUG - Replacing student ID F1 with Roni WONG
+DEBUG - Cell L8 updated from 'F1' to 'Roni WONG'
+DEBUG - Found student IDs in M8: ['F5']
+DEBUG - Replacing student ID F5 with Cybi CHENG
+DEBUG - Cell M8 updated from 'F5' to 'Cybi CHENG'
+DEBUG - Found student IDs in N8: ['F6']
+DEBUG - Replacing student ID F6 with Moses LO
+DEBUG - Cell N8 updated from 'F6' to 'Moses LO'
+DEBUG - Found student IDs in P8: ['F5']
+DEBUG - Replacing student ID F5 with Cybi CHENG
+DEBUG - Cell P8 updated from 'F5' to 'Cybi CHENG'
+DEBUG - Found student IDs in Q8: ['F6']
+DEBUG - Replacing student ID F6 with Moses LO
+DEBUG - Cell Q8 updated from 'F6' to 'Moses LO'
+DEBUG - Found student IDs in R8: ['F4']
+DEBUG - Replacing student ID F4 with Yanis SZE
+DEBUG - Cell R8 updated from 'F4 Rehearsal with pianist
+(Room Shelley)' to 'Yanis SZE Rehearsal with pianist
+(Room Shelley)'
+DEBUG - Found student IDs in S8: ['F2']
+DEBUG - Replacing student ID F2 with Hailey LEUNG
+DEBUG - Cell S8 updated from 'F2' to 'Hailey LEUNG'
+DEBUG - Found student IDs in T8: ['F1']
+DEBUG - Replacing student ID F1 with Roni WONG
+DEBUG - Cell T8 updated from 'F1' to 'Roni WONG'
+DEBUG - Found student IDs in U8: ['F3']
+DEBUG - Replacing student ID F3 with Evan QI
+DEBUG - Cell U8 updated from 'F3' to 'Evan QI'
+DEBUG - Found student IDs in W8: ['F1']
+DEBUG - Replacing student ID F1 with Roni WONG
+DEBUG - Cell W8 updated from 'F1 ' to 'Roni WONG '
+DEBUG - Found student IDs in X8: ['F3']
+DEBUG - Replacing student ID F3 with Evan QI
+DEBUG - Cell X8 updated from 'F3 Private Lesson with Stephane RETY & pianist' to 'Evan QI Private Lesson with Stephane RETY & pianist'
+DEBUG - Found student IDs in Y8: ['F2']
+DEBUG - Replacing student ID F2 with Hailey LEUNG
+DEBUG - Cell Y8 updated from 'F2' to 'Hailey LEUNG'
+DEBUG - Found student IDs in Z8: ['F4']
+DEBUG - Replacing student ID F4 with Yanis SZE
+DEBUG - Cell Z8 updated from 'F4' to 'Yanis SZE'
+DEBUG - Found student IDs in AA8: ['F6']
+DEBUG - Replacing student ID F6 with Moses LO
+DEBUG - Cell AA8 updated from 'F6' to 'Moses LO'
+DEBUG - Found student IDs in AB8: ['F5']
+DEBUG - Replacing student ID F5 with Cybi CHENG
+DEBUG - Cell AB8 updated from 'F5' to 'Cybi CHENG'
+DEBUG - Found student IDs in B12: ['F2']
+DEBUG - Replacing student ID F2 with Hailey LEUNG
+DEBUG - Cell B12 updated from 'F2' to 'Hailey LEUNG'
+DEBUG - Found student IDs in C12: ['F4']
+DEBUG - Replacing student ID F4 with Yanis SZE
+DEBUG - Cell C12 updated from 'F4' to 'Yanis SZE'
+DEBUG - Found student IDs in D12: ['F1']
+DEBUG - Replacing student ID F1 with Roni WONG
+DEBUG - Cell D12 updated from 'F1 Rehearsal with pianist
+(Room Shelley)' to 'Roni WONG Rehearsal with pianist
+(Room Shelley)'
+DEBUG - Found student IDs in E12: ['F5']
+DEBUG - Replacing student ID F5 with Cybi CHENG
+DEBUG - Cell E12 updated from 'F5' to 'Cybi CHENG'
+DEBUG - Found student IDs in F12: ['F6']
+DEBUG - Replacing student ID F6 with Moses LO
+DEBUG - Cell F12 updated from 'F6' to 'Moses LO'
+DEBUG - Found student IDs in G12: ['F3']
+DEBUG - Replacing student ID F3 with Evan QI
+DEBUG - Cell G12 updated from 'F3' to 'Evan QI'
+DEBUG - Found student IDs in I12: ['F5']
+DEBUG - Replacing student ID F5 with Cybi CHENG
+DEBUG - Cell I12 updated from 'F5 ' to 'Cybi CHENG '
+DEBUG - Found student IDs in J12: ['F6']
+DEBUG - Replacing student ID F6 with Moses LO
+DEBUG - Cell J12 updated from 'F6 Private Lesson with Stephane RETY & pianist' to 'Moses LO Private Lesson with Stephane RETY & pianist'
+DEBUG - Found student IDs in K12: ['F3']
+DEBUG - Replacing student ID F3 with Evan QI
+DEBUG - Cell K12 updated from 'F3' to 'Evan QI'
+DEBUG - Found student IDs in L12: ['F1']
+DEBUG - Replacing student ID F1 with Roni WONG
+DEBUG - Cell L12 updated from 'F1' to 'Roni WONG'
+DEBUG - Found student IDs in M12: ['F2']
+DEBUG - Replacing student ID F2 with Hailey LEUNG
+DEBUG - Cell M12 updated from 'F2' to 'Hailey LEUNG'
+DEBUG - Found student IDs in N12: ['F4']
+DEBUG - Replacing student ID F4 with Yanis SZE
+DEBUG - Cell N12 updated from 'F4' to 'Yanis SZE'
+DEBUG - Found student IDs in P12: ['F3']
+DEBUG - Replacing student ID F3 with Evan QI
+DEBUG - Cell P12 updated from 'F3' to 'Evan QI'
+DEBUG - Found student IDs in Q12: ['F1']
+DEBUG - Replacing student ID F1 with Roni WONG
+DEBUG - Cell Q12 updated from 'F1' to 'Roni WONG'
+DEBUG - Found student IDs in R12: ['F5']
+DEBUG - Replacing student ID F5 with Cybi CHENG
+DEBUG - Cell R12 updated from 'F5 Rehearsal with pianist
+(Room Shelley)' to 'Cybi CHENG Rehearsal with pianist
+(Room Shelley)'
+DEBUG - Found student IDs in S12: ['F2']
+DEBUG - Replacing student ID F2 with Hailey LEUNG
+DEBUG - Cell S12 updated from 'F2' to 'Hailey LEUNG'
+DEBUG - Found student IDs in T12: ['F4']
+DEBUG - Replacing student ID F4 with Yanis SZE
+DEBUG - Cell T12 updated from 'F4' to 'Yanis SZE'
+DEBUG - Found student IDs in U12: ['F6']
+DEBUG - Replacing student ID F6 with Moses LO
+DEBUG - Cell U12 updated from 'F6' to 'Moses LO'
+DEBUG - Found student IDs in W12: ['F2']
+DEBUG - Replacing student ID F2 with Hailey LEUNG
+DEBUG - Cell W12 updated from 'F2 ' to 'Hailey LEUNG '
+DEBUG - Found student IDs in X12: ['F4']
+DEBUG - Replacing student ID F4 with Yanis SZE
+DEBUG - Cell X12 updated from 'F4 Private Lesson with Stephane RETY & pianist' to 'Yanis SZE Private Lesson with Stephane RETY & pianist'
+DEBUG - Found student IDs in Y12: ['F3']
+DEBUG - Replacing student ID F3 with Evan QI
+DEBUG - Cell Y12 updated from 'F3' to 'Evan QI'
+DEBUG - Found student IDs in Z12: ['F1']
+DEBUG - Replacing student ID F1 with Roni WONG
+DEBUG - Cell Z12 updated from 'F1' to 'Roni WONG'
+DEBUG - Found student IDs in AA12: ['F6']
+DEBUG - Replacing student ID F6 with Moses LO
+DEBUG - Cell AA12 updated from 'F6' to 'Moses LO'
+DEBUG - Found student IDs in AB12: ['F5']
+DEBUG - Replacing student ID F5 with Cybi CHENG
+DEBUG - Cell AB12 updated from 'F5' to 'Cybi CHENG'
+DEBUG - Found student IDs in B20: ['F6']
+DEBUG - Replacing student ID F6 with Moses LO
+DEBUG - Cell B20 updated from 'F6' to 'Moses LO'
+DEBUG - Found student IDs in C20: ['F5']
+DEBUG - Replacing student ID F5 with Cybi CHENG
+DEBUG - Cell C20 updated from 'F5' to 'Cybi CHENG'
+DEBUG - Found student IDs in D20: ['F2']
+DEBUG - Replacing student ID F2 with Hailey LEUNG
+DEBUG - Cell D20 updated from 'F2  Rehearsal with pianist
+(Room Shelley)' to 'Hailey LEUNG  Rehearsal with pianist
+(Room Shelley)'
+DEBUG - Found student IDs in E20: ['F1']
+DEBUG - Replacing student ID F1 with Roni WONG
+DEBUG - Cell E20 updated from 'F1' to 'Roni WONG'
+DEBUG - Found student IDs in F20: ['F4']
+DEBUG - Replacing student ID F4 with Yanis SZE
+DEBUG - Cell F20 updated from 'F4' to 'Yanis SZE'
+DEBUG - Found student IDs in G20: ['F3']
+DEBUG - Replacing student ID F3 with Evan QI
+DEBUG - Cell G20 updated from 'F3' to 'Evan QI'
+DEBUG - Found student IDs in I20: ['F3']
+DEBUG - Replacing student ID F3 with Evan QI
+DEBUG - Cell I20 updated from 'F3 ' to 'Evan QI '
+DEBUG - Found student IDs in J20: ['F1']
+DEBUG - Replacing student ID F1 with Roni WONG
+DEBUG - Cell J20 updated from 'F1 Private Lesson with Stephane RETY & pianist' to 'Roni WONG Private Lesson with Stephane RETY & pianist'
+DEBUG - Found student IDs in K20: ['F5']
+DEBUG - Replacing student ID F5 with Cybi CHENG
+DEBUG - Cell K20 updated from 'F5' to 'Cybi CHENG'
+DEBUG - Found student IDs in L20: ['F6']
+DEBUG - Replacing student ID F6 with Moses LO
+DEBUG - Cell L20 updated from 'F6' to 'Moses LO'
+DEBUG - Found student IDs in M20: ['F2']
+DEBUG - Replacing student ID F2 with Hailey LEUNG
+DEBUG - Cell M20 updated from 'F2' to 'Hailey LEUNG'
+DEBUG - Found student IDs in N20: ['F4']
+DEBUG - Replacing student ID F4 with Yanis SZE
+DEBUG - Cell N20 updated from 'F4' to 'Yanis SZE'
+DEBUG - Found student IDs in P20: ['F4']
+DEBUG - Replacing student ID F4 with Yanis SZE
+DEBUG - Cell P20 updated from 'F4' to 'Yanis SZE'
+DEBUG - Found student IDs in Q20: ['F2']
+DEBUG - Replacing student ID F2 with Hailey LEUNG
+DEBUG - Cell Q20 updated from 'F2' to 'Hailey LEUNG'
+DEBUG - Found student IDs in R20: ['F3']
+DEBUG - Replacing student ID F3 with Evan QI
+DEBUG - Cell R20 updated from 'F3 Rehearsal with pianist
+(Room Shelley)' to 'Evan QI Rehearsal with pianist
+(Room Shelley)'
+DEBUG - Found student IDs in S20: ['F5']
+DEBUG - Replacing student ID F5 with Cybi CHENG
+DEBUG - Cell S20 updated from 'F5' to 'Cybi CHENG'
+DEBUG - Found student IDs in T20: ['F1']
+DEBUG - Replacing student ID F1 with Roni WONG
+DEBUG - Cell T20 updated from 'F1' to 'Roni WONG'
+DEBUG - Found student IDs in U20: ['F6']
+DEBUG - Replacing student ID F6 with Moses LO
+DEBUG - Cell U20 updated from 'F6' to 'Moses LO'
+DEBUG - Found student IDs in W20: ['F6']
+DEBUG - Replacing student ID F6 with Moses LO
+DEBUG - Cell W20 updated from 'F6 ' to 'Moses LO '
+DEBUG - Found student IDs in X20: ['F5']
+DEBUG - Replacing student ID F5 with Cybi CHENG
+DEBUG - Cell X20 updated from 'F5 Private Lesson with Stephane RETY  & pianist' to 'Cybi CHENG Private Lesson with Stephane RETY  & pianist'
+DEBUG - Found student IDs in Y20: ['F3']
+DEBUG - Replacing student ID F3 with Evan QI
+DEBUG - Cell Y20 updated from 'F3' to 'Evan QI'
+DEBUG - Found student IDs in Z20: ['F1']
+DEBUG - Replacing student ID F1 with Roni WONG
+DEBUG - Cell Z20 updated from 'F1' to 'Roni WONG'
+DEBUG - Found student IDs in AA20: ['F4']
+DEBUG - Replacing student ID F4 with Yanis SZE
+DEBUG - Cell AA20 updated from 'F4' to 'Yanis SZE'
+DEBUG - Found student IDs in AB20: ['F2']
+DEBUG - Replacing student ID F2 with Hailey LEUNG
+DEBUG - Cell AB20 updated from 'F2' to 'Hailey LEUNG'
+DEBUG - Found exact group match in B24: 'Group 6'
+DEBUG - Looking for group 'Group 6', found students: ['H3', 'F2']
+DEBUG - Replacing H3 with Shannon CHENG, Harp
+DEBUG - Replacing F2 with Hailey LEUNG, Flute
+DEBUG - Cell B24 updated to: 'Group 6
+Shannon CHENG, Harp
+Hailey LEUNG, Flute'
+DEBUG - Found exact group match in C24: 'Group 4'
+DEBUG - Looking for group 'Group 4', found students: ['C4', 'F6']
+DEBUG - Replacing C4 with Yauyau NG, Cello
+DEBUG - Replacing F6 with Moses LO, Flute
+DEBUG - Cell C24 updated to: 'Group 4
+Yauyau NG, Cello
+Moses LO, Flute'
+DEBUG - Found complex group match in D24: 'Group 2, 5, 7, 9 Acting Class (Room Acting Class)'
+DEBUG - Group numbers: '2, 5, 7, 9', Activity: 'Acting Class (Room Acting Class)'      
+DEBUG - Looking for group 'Group 2', found students: ['C1', 'F5']
+DEBUG - Replacing C1 with Max TAM
+DEBUG - Replacing F5 with Cybi CHENG
+DEBUG - Looking for group 'Group 5', found students: ['C5', 'H4', 'F3']
+DEBUG - Replacing C5 with Icelyn GE
+DEBUG - Replacing H4 with Luna ZUO
+DEBUG - Replacing F3 with Evan QI
+DEBUG - Looking for group 'Group 7', found students: ['C2', 'F1']
+DEBUG - Replacing C2 with Henry SUN
+DEBUG - Replacing F1 with Roni WONG
+DEBUG - Looking for group 'Group 9', found students: ['H7', 'H8']
+DEBUG - Replacing H7 with Ho Yee HO
+DEBUG - Replacing H8 with Caitlyn YIP
+DEBUG - Cell D24 updated to: 'Acting Class
+(Room Acting Class)
+Group 2
+Max TAM, Cybi CHENG
+Group 5
+Icelyn GE, Luna ZUO, Evan QI
+Group 7
+Henry SUN, Roni WONG
+Group 9
+Ho Yee HO, Caitlyn YIP'
+DEBUG - Found complex group match in E24: 'Group 1
+(Room Sivan)'
+DEBUG - Group numbers: '1', Activity: '(Room Sivan)'
+DEBUG - Looking for group 'Group 1', found students: ['C3', 'H2', 'F4']
+DEBUG - Replacing C3 with Peter CHAN
+DEBUG - Replacing H2 with Jansci WONG
+DEBUG - Replacing F4 with Yanis SZE
+DEBUG - Cell E24 updated to: '
+(Room Sivan)
+Group 1
+Peter CHAN, Jansci WONG, Yanis SZE'
+DEBUG - Found exact group match in I24: 'Group 6'
+DEBUG - Looking for group 'Group 6', found students: ['H3', 'F2']
+DEBUG - Replacing H3 with Shannon CHENG, Harp
+DEBUG - Replacing F2 with Hailey LEUNG, Flute
+DEBUG - Cell I24 updated to: 'Group 6
+Shannon CHENG, Harp
+Hailey LEUNG, Flute'
+DEBUG - Found exact group match in J24: 'Group 4'
+DEBUG - Looking for group 'Group 4', found students: ['C4', 'F6']
+DEBUG - Replacing C4 with Yauyau NG, Cello
+DEBUG - Replacing F6 with Moses LO, Flute
+DEBUG - Cell J24 updated to: 'Group 4
+Yauyau NG, Cello
+Moses LO, Flute'
+DEBUG - Found complex group match in K24: 'Group 2, 5, 7, 9 Acting Class (Room Acting Class)'
+DEBUG - Group numbers: '2, 5, 7, 9', Activity: 'Acting Class (Room Acting Class)'      
+DEBUG - Looking for group 'Group 2', found students: ['C1', 'F5']
+DEBUG - Replacing C1 with Max TAM
+DEBUG - Replacing F5 with Cybi CHENG
+DEBUG - Looking for group 'Group 5', found students: ['C5', 'H4', 'F3']
+DEBUG - Replacing C5 with Icelyn GE
+DEBUG - Replacing H4 with Luna ZUO
+DEBUG - Replacing F3 with Evan QI
+DEBUG - Looking for group 'Group 7', found students: ['C2', 'F1']
+DEBUG - Replacing C2 with Henry SUN
+DEBUG - Replacing F1 with Roni WONG
+DEBUG - Looking for group 'Group 9', found students: ['H7', 'H8']
+DEBUG - Replacing H7 with Ho Yee HO
+DEBUG - Replacing H8 with Caitlyn YIP
+DEBUG - Cell K24 updated to: 'Acting Class
+(Room Acting Class)
+Group 2
+Max TAM, Cybi CHENG
+Group 5
+Icelyn GE, Luna ZUO, Evan QI
+Group 7
+Henry SUN, Roni WONG
+Group 9
+Ho Yee HO, Caitlyn YIP'
+DEBUG - Found complex group match in L24: 'Group 1
+(Room Sivan)'
+DEBUG - Group numbers: '1', Activity: '(Room Sivan)'
+DEBUG - Looking for group 'Group 1', found students: ['C3', 'H2', 'F4']
+DEBUG - Replacing C3 with Peter CHAN
+DEBUG - Replacing H2 with Jansci WONG
+DEBUG - Replacing F4 with Yanis SZE
+DEBUG - Cell L24 updated to: '
+(Room Sivan)
+Group 1
+Peter CHAN, Jansci WONG, Yanis SZE'
+DEBUG - Found exact group match in P24: 'Group 6'
+DEBUG - Looking for group 'Group 6', found students: ['H3', 'F2']
+DEBUG - Replacing H3 with Shannon CHENG, Harp
+DEBUG - Replacing F2 with Hailey LEUNG, Flute
+DEBUG - Cell P24 updated to: 'Group 6
+Shannon CHENG, Harp
+Hailey LEUNG, Flute'
+DEBUG - Found exact group match in Q24: 'Group 4'
+DEBUG - Looking for group 'Group 4', found students: ['C4', 'F6']
+DEBUG - Replacing C4 with Yauyau NG, Cello
+DEBUG - Replacing F6 with Moses LO, Flute
+DEBUG - Cell Q24 updated to: 'Group 4
+Yauyau NG, Cello
+Moses LO, Flute'
+DEBUG - Found complex group match in R24: 'Group 2, 5, 7, 9 Acting Class (Room Acting Class)'
+DEBUG - Group numbers: '2, 5, 7, 9', Activity: 'Acting Class (Room Acting Class)'      
+DEBUG - Looking for group 'Group 2', found students: ['C1', 'F5']
+DEBUG - Replacing C1 with Max TAM
+DEBUG - Replacing F5 with Cybi CHENG
+DEBUG - Looking for group 'Group 5', found students: ['C5', 'H4', 'F3']
+DEBUG - Replacing C5 with Icelyn GE
+DEBUG - Replacing H4 with Luna ZUO
+DEBUG - Replacing F3 with Evan QI
+DEBUG - Looking for group 'Group 7', found students: ['C2', 'F1']
+DEBUG - Replacing C2 with Henry SUN
+DEBUG - Replacing F1 with Roni WONG
+DEBUG - Looking for group 'Group 9', found students: ['H7', 'H8']
+DEBUG - Replacing H7 with Ho Yee HO
+DEBUG - Replacing H8 with Caitlyn YIP
+DEBUG - Cell R24 updated to: 'Acting Class
+(Room Acting Class)
+Group 2
+Max TAM, Cybi CHENG
+Group 5
+Icelyn GE, Luna ZUO, Evan QI
+Group 7
+Henry SUN, Roni WONG
+Group 9
+Ho Yee HO, Caitlyn YIP'
+DEBUG - Found complex group match in S24: 'Group 1
+(Room Sivan)'
+DEBUG - Group numbers: '1', Activity: '(Room Sivan)'
+DEBUG - Looking for group 'Group 1', found students: ['C3', 'H2', 'F4']
+DEBUG - Replacing C3 with Peter CHAN
+DEBUG - Replacing H2 with Jansci WONG
+DEBUG - Replacing F4 with Yanis SZE
+DEBUG - Cell S24 updated to: '
+(Room Sivan)
+Group 1
+Peter CHAN, Jansci WONG, Yanis SZE'
+DEBUG - Found exact group match in W24: 'Group 6'
+DEBUG - Looking for group 'Group 6', found students: ['H3', 'F2']
+DEBUG - Replacing H3 with Shannon CHENG, Harp
+DEBUG - Replacing F2 with Hailey LEUNG, Flute
+DEBUG - Cell W24 updated to: 'Group 6
+Shannon CHENG, Harp
+Hailey LEUNG, Flute'
+DEBUG - Found exact group match in X24: 'Group 4'
+DEBUG - Looking for group 'Group 4', found students: ['C4', 'F6']
+DEBUG - Replacing C4 with Yauyau NG, Cello
+DEBUG - Replacing F6 with Moses LO, Flute
+DEBUG - Cell X24 updated to: 'Group 4
+Yauyau NG, Cello
+Moses LO, Flute'
+DEBUG - Found complex group match in Y24: 'Group 2, 5, 7, 9 Acting Class (Room Acting Class)'
+DEBUG - Group numbers: '2, 5, 7, 9', Activity: 'Acting Class (Room Acting Class)'      
+DEBUG - Looking for group 'Group 2', found students: ['C1', 'F5']
+DEBUG - Replacing C1 with Max TAM
+DEBUG - Replacing F5 with Cybi CHENG
+DEBUG - Looking for group 'Group 5', found students: ['C5', 'H4', 'F3']
+DEBUG - Replacing C5 with Icelyn GE
+DEBUG - Replacing H4 with Luna ZUO
+DEBUG - Replacing F3 with Evan QI
+DEBUG - Looking for group 'Group 7', found students: ['C2', 'F1']
+DEBUG - Replacing C2 with Henry SUN
+DEBUG - Replacing F1 with Roni WONG
+DEBUG - Looking for group 'Group 9', found students: ['H7', 'H8']
+DEBUG - Replacing H7 with Ho Yee HO
+DEBUG - Replacing H8 with Caitlyn YIP
+DEBUG - Cell Y24 updated to: 'Acting Class
+(Room Acting Class)
+Group 2
+Max TAM, Cybi CHENG
+Group 5
+Icelyn GE, Luna ZUO, Evan QI
+Group 7
+Henry SUN, Roni WONG
+Group 9
+Ho Yee HO, Caitlyn YIP'
+DEBUG - Found complex group match in Z24: 'Group 1
+(Room Sivan)'
+DEBUG - Group numbers: '1', Activity: '(Room Sivan)'
+DEBUG - Looking for group 'Group 1', found students: ['C3', 'H2', 'F4']
+DEBUG - Replacing C3 with Peter CHAN
+DEBUG - Replacing H2 with Jansci WONG
+DEBUG - Replacing F4 with Yanis SZE
+DEBUG - Cell Z24 updated to: '
+(Room Sivan)
+Group 1
+Peter CHAN, Jansci WONG, Yanis SZE'
+DEBUG - Found exact group match in AD24: 'Group 6'
+DEBUG - Looking for group 'Group 6', found students: ['H3', 'F2']
+DEBUG - Replacing H3 with Shannon CHENG, Harp
+DEBUG - Replacing F2 with Hailey LEUNG, Flute
+DEBUG - Cell AD24 updated to: 'Group 6
+Shannon CHENG, Harp
+Hailey LEUNG, Flute'
+DEBUG - Found exact group match in AE24: 'Group 4'
+DEBUG - Looking for group 'Group 4', found students: ['C4', 'F6']
+DEBUG - Replacing C4 with Yauyau NG, Cello
+DEBUG - Replacing F6 with Moses LO, Flute
+DEBUG - Cell AE24 updated to: 'Group 4
+Yauyau NG, Cello
+Moses LO, Flute'
+DEBUG - Found complex group match in AF24: 'Group 2, 5, 7, 9 Group Activity (Room Group Activity)'
+DEBUG - Group numbers: '2, 5, 7, 9', Activity: 'Group Activity (Room Group Activity)'  
+DEBUG - Looking for group 'Group 2', found students: ['C1', 'F5']
+DEBUG - Replacing C1 with Max TAM
+DEBUG - Replacing F5 with Cybi CHENG
+DEBUG - Looking for group 'Group 5', found students: ['C5', 'H4', 'F3']
+DEBUG - Replacing C5 with Icelyn GE
+DEBUG - Replacing H4 with Luna ZUO
+DEBUG - Replacing F3 with Evan QI
+DEBUG - Looking for group 'Group 7', found students: ['C2', 'F1']
+DEBUG - Replacing C2 with Henry SUN
+DEBUG - Replacing F1 with Roni WONG
+DEBUG - Looking for group 'Group 9', found students: ['H7', 'H8']
+DEBUG - Replacing H7 with Ho Yee HO
+DEBUG - Replacing H8 with Caitlyn YIP
+DEBUG - Cell AF24 updated to: 'Group Activity
+(Room Group Activity)
+Group 2
+Max TAM, Cybi CHENG
+Group 5
+Icelyn GE, Luna ZUO, Evan QI
+Group 7
+Henry SUN, Roni WONG
+Group 9
+Ho Yee HO, Caitlyn YIP'
+DEBUG - Found complex group match in AG24: 'Group 1
+(Room Sivan)'
+DEBUG - Group numbers: '1', Activity: '(Room Sivan)'
+DEBUG - Looking for group 'Group 1', found students: ['C3', 'H2', 'F4']
+DEBUG - Replacing C3 with Peter CHAN
+DEBUG - Replacing H2 with Jansci WONG
+DEBUG - Replacing F4 with Yanis SZE
+DEBUG - Cell AG24 updated to: '
+(Room Sivan)
+Group 1
+Peter CHAN, Jansci WONG, Yanis SZE'
+DEBUG - Found exact group match in B28: 'Group 5'
+DEBUG - Looking for group 'Group 5', found students: ['C5', 'H4', 'F3']
+DEBUG - Replacing C5 with Icelyn GE, Cello
+DEBUG - Replacing H4 with Luna ZUO, Harp
+DEBUG - Replacing F3 with Evan QI, Flute
+DEBUG - Cell B28 updated to: 'Group 5
+Icelyn GE, Cello
+Luna ZUO, Harp
+Evan QI, Flute'
+DEBUG - Found complex group match in D28: 'Group 1, 3, 4, 6, 8 Acting Class (Room Acting Class)'
+DEBUG - Group numbers: '1, 3, 4, 6, 8', Activity: 'Acting Class (Room Acting Class)'   
+DEBUG - Looking for group 'Group 1', found students: ['C3', 'H2', 'F4']
+DEBUG - Replacing C3 with Peter CHAN
+DEBUG - Replacing H2 with Jansci WONG
+DEBUG - Replacing F4 with Yanis SZE
+DEBUG - Looking for group 'Group 3', found students: ['C6', 'H5']
+DEBUG - Replacing C6 with Ivy YUE
+DEBUG - Replacing H5 with Gabriel MOK
+DEBUG - Looking for group 'Group 4', found students: ['C4', 'F6']
+DEBUG - Replacing C4 with Yauyau NG
+DEBUG - Replacing F6 with Moses LO
+DEBUG - Looking for group 'Group 6', found students: ['H3', 'F2']
+DEBUG - Replacing H3 with Shannon CHENG
+DEBUG - Replacing F2 with Hailey LEUNG
+DEBUG - Looking for group 'Group 8', found students: ['H9', 'H1', 'H6']
+DEBUG - Replacing H9 with Eve LUNG
+DEBUG - Replacing H1 with Sonia SUNG
+DEBUG - Replacing H6 with Grace NG
+DEBUG - Cell D28 updated to: 'Acting Class
+(Room Acting Class)
+Group 1
+Peter CHAN, Jansci WONG, Yanis SZE
+Group 3
+Ivy YUE, Gabriel MOK
+Group 4
+Yauyau NG, Moses LO
+Group 6
+Shannon CHENG, Hailey LEUNG
+Group 8
+Eve LUNG, Sonia SUNG, Grace NG'
+DEBUG - Found complex group match in E28: 'Group 2
+(Room Tomasz)'
+DEBUG - Group numbers: '2', Activity: '(Room Tomasz)'
+DEBUG - Looking for group 'Group 2', found students: ['C1', 'F5']
+DEBUG - Replacing C1 with Max TAM
+DEBUG - Replacing F5 with Cybi CHENG
+DEBUG - Cell E28 updated to: '
+(Room Tomasz)
+Group 2
+Max TAM, Cybi CHENG'
+DEBUG - Found complex group match in F28: 'Group 7
+(Room Gwyneth)'
+DEBUG - Group numbers: '7', Activity: '(Room Gwyneth)'
+DEBUG - Looking for group 'Group 7', found students: ['C2', 'F1']
+DEBUG - Replacing C2 with Henry SUN
+DEBUG - Replacing F1 with Roni WONG
+DEBUG - Cell F28 updated to: '
+(Room Gwyneth)
+Group 7
+Henry SUN, Roni WONG'
+DEBUG - Found exact group match in I28: 'Group 5'
+DEBUG - Looking for group 'Group 5', found students: ['C5', 'H4', 'F3']
+DEBUG - Replacing C5 with Icelyn GE, Cello
+DEBUG - Replacing H4 with Luna ZUO, Harp
+DEBUG - Replacing F3 with Evan QI, Flute
+DEBUG - Cell I28 updated to: 'Group 5
+Icelyn GE, Cello
+Luna ZUO, Harp
+Evan QI, Flute'
+DEBUG - Found complex group match in K28: 'Group 1, 3, 4, 6, 8 Acting Class (Room Acting Class)'
+DEBUG - Group numbers: '1, 3, 4, 6, 8', Activity: 'Acting Class (Room Acting Class)'   
+DEBUG - Looking for group 'Group 1', found students: ['C3', 'H2', 'F4']
+DEBUG - Replacing C3 with Peter CHAN
+DEBUG - Replacing H2 with Jansci WONG
+DEBUG - Replacing F4 with Yanis SZE
+DEBUG - Looking for group 'Group 3', found students: ['C6', 'H5']
+DEBUG - Replacing C6 with Ivy YUE
+DEBUG - Replacing H5 with Gabriel MOK
+DEBUG - Looking for group 'Group 4', found students: ['C4', 'F6']
+DEBUG - Replacing C4 with Yauyau NG
+DEBUG - Replacing F6 with Moses LO
+DEBUG - Looking for group 'Group 6', found students: ['H3', 'F2']
+DEBUG - Replacing H3 with Shannon CHENG
+DEBUG - Replacing F2 with Hailey LEUNG
+DEBUG - Looking for group 'Group 8', found students: ['H9', 'H1', 'H6']
+DEBUG - Replacing H9 with Eve LUNG
+DEBUG - Replacing H1 with Sonia SUNG
+DEBUG - Replacing H6 with Grace NG
+DEBUG - Cell K28 updated to: 'Acting Class
+(Room Acting Class)
+Group 1
+Peter CHAN, Jansci WONG, Yanis SZE
+Group 3
+Ivy YUE, Gabriel MOK
+Group 4
+Yauyau NG, Moses LO
+Group 6
+Shannon CHENG, Hailey LEUNG
+Group 8
+Eve LUNG, Sonia SUNG, Grace NG'
+DEBUG - Found complex group match in L28: 'Group 2
+(Room Tomasz)'
+DEBUG - Group numbers: '2', Activity: '(Room Tomasz)'
+DEBUG - Looking for group 'Group 2', found students: ['C1', 'F5']
+DEBUG - Replacing C1 with Max TAM
+DEBUG - Replacing F5 with Cybi CHENG
+DEBUG - Cell L28 updated to: '
+(Room Tomasz)
+Group 2
+Max TAM, Cybi CHENG'
+DEBUG - Found complex group match in M28: 'Group 7
+(Room Gwyneth)'
+DEBUG - Group numbers: '7', Activity: '(Room Gwyneth)'
+DEBUG - Looking for group 'Group 7', found students: ['C2', 'F1']
+DEBUG - Replacing C2 with Henry SUN
+DEBUG - Replacing F1 with Roni WONG
+DEBUG - Cell M28 updated to: '
+(Room Gwyneth)
+Group 7
+Henry SUN, Roni WONG'
+DEBUG - Found exact group match in P28: 'Group 5'
+DEBUG - Looking for group 'Group 5', found students: ['C5', 'H4', 'F3']
+DEBUG - Replacing C5 with Icelyn GE, Cello
+DEBUG - Replacing H4 with Luna ZUO, Harp
+DEBUG - Replacing F3 with Evan QI, Flute
+DEBUG - Cell P28 updated to: 'Group 5
+Icelyn GE, Cello
+Luna ZUO, Harp
+Evan QI, Flute'
+DEBUG - Found complex group match in R28: 'Group 1, 3, 4, 6, 8 Acting Class (Room Acting Class)'
+DEBUG - Group numbers: '1, 3, 4, 6, 8', Activity: 'Acting Class (Room Acting Class)'   
+DEBUG - Looking for group 'Group 1', found students: ['C3', 'H2', 'F4']
+DEBUG - Replacing C3 with Peter CHAN
+DEBUG - Replacing H2 with Jansci WONG
+DEBUG - Replacing F4 with Yanis SZE
+DEBUG - Looking for group 'Group 3', found students: ['C6', 'H5']
+DEBUG - Replacing C6 with Ivy YUE
+DEBUG - Replacing H5 with Gabriel MOK
+DEBUG - Looking for group 'Group 4', found students: ['C4', 'F6']
+DEBUG - Replacing C4 with Yauyau NG
+DEBUG - Replacing F6 with Moses LO
+DEBUG - Looking for group 'Group 6', found students: ['H3', 'F2']
+DEBUG - Replacing H3 with Shannon CHENG
+DEBUG - Replacing F2 with Hailey LEUNG
+DEBUG - Looking for group 'Group 8', found students: ['H9', 'H1', 'H6']
+DEBUG - Replacing H9 with Eve LUNG
+DEBUG - Replacing H1 with Sonia SUNG
+DEBUG - Replacing H6 with Grace NG
+DEBUG - Cell R28 updated to: 'Acting Class
+(Room Acting Class)
+Group 1
+Peter CHAN, Jansci WONG, Yanis SZE
+Group 3
+Ivy YUE, Gabriel MOK
+Group 4
+Yauyau NG, Moses LO
+Group 6
+Shannon CHENG, Hailey LEUNG
+Group 8
+Eve LUNG, Sonia SUNG, Grace NG'
+DEBUG - Found complex group match in S28: 'Group 2
+(Room Tomasz)'
+DEBUG - Group numbers: '2', Activity: '(Room Tomasz)'
+DEBUG - Looking for group 'Group 2', found students: ['C1', 'F5']
+DEBUG - Replacing C1 with Max TAM
+DEBUG - Replacing F5 with Cybi CHENG
+DEBUG - Cell S28 updated to: '
+(Room Tomasz)
+Group 2
+Max TAM, Cybi CHENG'
+DEBUG - Found complex group match in T28: 'Group 7
+(Room Gwyneth)'
+DEBUG - Group numbers: '7', Activity: '(Room Gwyneth)'
+DEBUG - Looking for group 'Group 7', found students: ['C2', 'F1']
+DEBUG - Replacing C2 with Henry SUN
+DEBUG - Replacing F1 with Roni WONG
+DEBUG - Cell T28 updated to: '
+(Room Gwyneth)
+Group 7
+Henry SUN, Roni WONG'
+DEBUG - Found exact group match in W28: 'Group 5'
+DEBUG - Looking for group 'Group 5', found students: ['C5', 'H4', 'F3']
+DEBUG - Replacing C5 with Icelyn GE, Cello
+DEBUG - Replacing H4 with Luna ZUO, Harp
+DEBUG - Replacing F3 with Evan QI, Flute
+DEBUG - Cell W28 updated to: 'Group 5
+Icelyn GE, Cello
+Luna ZUO, Harp
+Evan QI, Flute'
+DEBUG - Found complex group match in Y28: 'Group 1, 3, 4, 6, 8 Acting Class (Room Acting Class)'
+DEBUG - Group numbers: '1, 3, 4, 6, 8', Activity: 'Acting Class (Room Acting Class)'   
+DEBUG - Looking for group 'Group 1', found students: ['C3', 'H2', 'F4']
+DEBUG - Replacing C3 with Peter CHAN
+DEBUG - Replacing H2 with Jansci WONG
+DEBUG - Replacing F4 with Yanis SZE
+DEBUG - Looking for group 'Group 3', found students: ['C6', 'H5']
+DEBUG - Replacing C6 with Ivy YUE
+DEBUG - Replacing H5 with Gabriel MOK
+DEBUG - Looking for group 'Group 4', found students: ['C4', 'F6']
+DEBUG - Replacing C4 with Yauyau NG
+DEBUG - Replacing F6 with Moses LO
+DEBUG - Looking for group 'Group 6', found students: ['H3', 'F2']
+DEBUG - Replacing H3 with Shannon CHENG
+DEBUG - Replacing F2 with Hailey LEUNG
+DEBUG - Looking for group 'Group 8', found students: ['H9', 'H1', 'H6']
+DEBUG - Replacing H9 with Eve LUNG
+DEBUG - Replacing H1 with Sonia SUNG
+DEBUG - Replacing H6 with Grace NG
+DEBUG - Cell Y28 updated to: 'Acting Class
+(Room Acting Class)
+Group 1
+Peter CHAN, Jansci WONG, Yanis SZE
+Group 3
+Ivy YUE, Gabriel MOK
+Group 4
+Yauyau NG, Moses LO
+Group 6
+Shannon CHENG, Hailey LEUNG
+Group 8
+Eve LUNG, Sonia SUNG, Grace NG'
+DEBUG - Found complex group match in Z28: 'Group 2
+(Room Tomasz)'
+DEBUG - Group numbers: '2', Activity: '(Room Tomasz)'
+DEBUG - Looking for group 'Group 2', found students: ['C1', 'F5']
+DEBUG - Replacing C1 with Max TAM
+DEBUG - Replacing F5 with Cybi CHENG
+DEBUG - Cell Z28 updated to: '
+(Room Tomasz)
+Group 2
+Max TAM, Cybi CHENG'
+DEBUG - Found complex group match in AA28: 'Group 7
+(Room Gwyneth)'
+DEBUG - Group numbers: '7', Activity: '(Room Gwyneth)'
+DEBUG - Looking for group 'Group 7', found students: ['C2', 'F1']
+DEBUG - Replacing C2 with Henry SUN
+DEBUG - Replacing F1 with Roni WONG
+DEBUG - Cell AA28 updated to: '
+(Room Gwyneth)
+Group 7
+Henry SUN, Roni WONG'
+DEBUG - Found exact group match in AD28: 'Group 5'
+DEBUG - Looking for group 'Group 5', found students: ['C5', 'H4', 'F3']
+DEBUG - Replacing C5 with Icelyn GE, Cello
+DEBUG - Replacing H4 with Luna ZUO, Harp
+DEBUG - Replacing F3 with Evan QI, Flute
+DEBUG - Cell AD28 updated to: 'Group 5
+Icelyn GE, Cello
+Luna ZUO, Harp
+Evan QI, Flute'
+DEBUG - Found complex group match in AF28: 'Group 1, 3, 4, 6, 8 Group Activity (Room Group Activity)'
+DEBUG - Group numbers: '1, 3, 4, 6, 8', Activity: 'Group Activity (Room Group Activity)'
+DEBUG - Looking for group 'Group 1', found students: ['C3', 'H2', 'F4']
+DEBUG - Replacing C3 with Peter CHAN
+DEBUG - Replacing H2 with Jansci WONG
+DEBUG - Replacing F4 with Yanis SZE
+DEBUG - Looking for group 'Group 3', found students: ['C6', 'H5']
+DEBUG - Replacing C6 with Ivy YUE
+DEBUG - Replacing H5 with Gabriel MOK
+DEBUG - Looking for group 'Group 4', found students: ['C4', 'F6']
+DEBUG - Replacing C4 with Yauyau NG
+DEBUG - Replacing F6 with Moses LO
+DEBUG - Looking for group 'Group 6', found students: ['H3', 'F2']
+DEBUG - Replacing H3 with Shannon CHENG
+DEBUG - Replacing F2 with Hailey LEUNG
+DEBUG - Looking for group 'Group 8', found students: ['H9', 'H1', 'H6']
+DEBUG - Replacing H9 with Eve LUNG
+DEBUG - Replacing H1 with Sonia SUNG
+DEBUG - Replacing H6 with Grace NG
+DEBUG - Cell AF28 updated to: 'Group Activity
+(Room Group Activity)
+Group 1
+Peter CHAN, Jansci WONG, Yanis SZE
+Group 3
+Ivy YUE, Gabriel MOK
+Group 4
+Yauyau NG, Moses LO
+Group 6
+Shannon CHENG, Hailey LEUNG
+Group 8
+Eve LUNG, Sonia SUNG, Grace NG'
+DEBUG - Found complex group match in AG28: 'Group 2
+(Room Tomasz)'
+DEBUG - Group numbers: '2', Activity: '(Room Tomasz)'
+DEBUG - Looking for group 'Group 2', found students: ['C1', 'F5']
+DEBUG - Replacing C1 with Max TAM
+DEBUG - Replacing F5 with Cybi CHENG
+DEBUG - Cell AG28 updated to: '
+(Room Tomasz)
+Group 2
+Max TAM, Cybi CHENG'
+DEBUG - Found complex group match in AH28: 'Group 7
+(Room Gwyneth)'
+DEBUG - Group numbers: '7', Activity: '(Room Gwyneth)'
+DEBUG - Looking for group 'Group 7', found students: ['C2', 'F1']
+DEBUG - Replacing C2 with Henry SUN
+DEBUG - Replacing F1 with Roni WONG
+DEBUG - Cell AH28 updated to: '
+(Room Gwyneth)
+Group 7
+Henry SUN, Roni WONG'
+DEBUG - Found student IDs in C42: ['F1']
+DEBUG - Replacing student ID F1 with Roni WONG
+DEBUG - Cell C42 updated from 'F1' to 'Roni WONG'
+DEBUG - Found student IDs in C43: ['F2']
+DEBUG - Replacing student ID F2 with Hailey LEUNG
+DEBUG - Cell C43 updated from 'F2' to 'Hailey LEUNG'
+DEBUG - Found student IDs in C44: ['F3']
+DEBUG - Replacing student ID F3 with Evan QI
+DEBUG - Cell C44 updated from 'F3' to 'Evan QI'
+DEBUG - Found student IDs in C45: ['F4']
+DEBUG - Replacing student ID F4 with Yanis SZE
+DEBUG - Cell C45 updated from 'F4' to 'Yanis SZE'
+DEBUG - Found student IDs in C46: ['F5']
+DEBUG - Replacing student ID F5 with Cybi CHENG
+DEBUG - Cell C46 updated from 'F5' to 'Cybi CHENG'
+DEBUG - Found student IDs in C47: ['F6']
+DEBUG - Replacing student ID F6 with Moses LO
+DEBUG - Cell C47 updated from 'F6' to 'Moses LO'
+DEBUG - Sheet 'Flute-Camp-A' summary: 199 cells processed, 118 cells modified
+    Auto-resizing columns for sheet 'Flute-Camp-A'...
+Traceback (most recent call last):
+  File "c:\Users\user\Desktop\Python\summer-camp-time-table\update_master_timetable.py", line 304, in <module>
+    update_master_timetable()
+    ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\user\Desktop\Python\summer-camp-time-table\update_master_timetable.py", line 264, in update_master_timetable
+    column_letter = column_cells[0].column_letter
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'MergedCell' object has no attribute 'column_letter'
+PS C:\Users\user\Desktop\Python\summer-camp-time-table> 
