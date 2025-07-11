@@ -8,6 +8,27 @@ from openpyxl.styles import Alignment, Font, Border, Side
 from openpyxl.utils import get_column_letter
 from shared_utils import sanitize_filename, process_sheet, load_student_name_mapping, load_room_no_mapping
 
+def load_room_mapping(filename):
+    """
+    Loads teacher-to-room mappings from the specified CSV file.
+    The CSV should have 'teacher_name' and 'room_name' columns.
+    """
+    room_mappings = {}
+    try:
+        with open(filename, mode='r', encoding='utf-8-sig') as infile:
+            reader = csv.DictReader(infile)
+            for row in reader:
+                teacher_name = row.get('teacher_name')
+                room_number = row.get('room_name')
+                if teacher_name and room_number:
+                    room_mappings[teacher_name.strip()] = room_number.strip()
+    except FileNotFoundError:
+        print(f"Warning: {filename} not found. No room numbers will be assigned to teachers.")
+    except Exception as e:
+        print(f"An error occurred while reading {filename}: {e}")
+    
+    return room_mappings
+
 def generate_teacher_timetables(input_filename):
     """
     Reads an Excel file with multiple sheets (each representing a date) and
@@ -33,6 +54,9 @@ def generate_teacher_timetables(input_filename):
 
     student_mapping_file = os.path.join("input", f"student_mapping-{camp_part}.csv")
     student_name_map = load_student_name_mapping(student_mapping_file)
+
+    room_mapping_file = os.path.join("input", f"room_mapping-{camp_part}.csv")
+    room_mappings = load_room_mapping(room_mapping_file)
 
     room_no_mapping_file = os.path.join("input", f"room_no_mapping-{camp_part}.csv")
     room_no_map = load_room_no_mapping(room_no_mapping_file)
@@ -132,17 +156,43 @@ def generate_teacher_timetables(input_filename):
                         activity = ""
 
                     if activity:
-                        # Rename group activities like "Group 6" to "Group 6 Ensemble Coaching"
-                        activity = re.sub(r'(Group\s+\d+)(?! Ensemble Coaching)', r'\1 Ensemble Coaching', activity)
-
-                        # Find all student IDs (e.g., F1) in the activity string
+                        # Handle specific pattern: "{student_no} Private Lesson with {teacher name} & pianist"
                         instrument_prefix = music_instrument[0].upper()
-                        student_ids = re.findall(rf'\b{instrument_prefix}\d+\b', activity)
-                        
-                        for student_id in student_ids:
-                            # Replace each student ID with their name, if available
+                        private_lesson_pattern = rf'\b({instrument_prefix}\d+)\s+Private\s+Lesson\s+with\s+.+?\s+&\s+pianist'
+                        match = re.search(private_lesson_pattern, activity, re.IGNORECASE)
+                        if match:
+                            student_id = match.group(1)
                             student_name = student_name_map.get(student_id, student_id)
-                            activity = activity.replace(student_id, student_name)
+                            activity = f"{student_name} with pianist"
+                        else:
+                            # Handle harp MasterClass activities without room numbers
+                            if 'harp masterclass' in activity.lower() and 'by' in activity.lower():
+                                # Extract teacher name from "Harp MasterClass by Teacher Name"
+                                teacher_match = re.search(r'harp\s+masterclass\s+by\s+(.+?)(?:\*|$)', activity, re.IGNORECASE)
+                                if teacher_match:
+                                    masterclass_teacher = teacher_match.group(1).strip()
+                                    # Remove any trailing asterisks or special characters
+                                    masterclass_teacher = re.sub(r'\*+$', '', masterclass_teacher).strip()
+                                    
+                                    # Look up room for this teacher
+                                    room_number = room_mappings.get(masterclass_teacher, "TBD")
+                                    
+                                    # Check if room info is already in the activity
+                                    if '(' not in activity or ')' not in activity:
+                                        # Add room information
+                                        clean_activity = re.sub(r'\*+$', '', activity).strip()
+                                        activity = f"{clean_activity}\n({room_number})"
+                            
+                            # Rename group activities like "Group 6" to "Group 6 Ensemble Coaching"
+                            activity = re.sub(r'(Group\s+\d+)(?! Ensemble Coaching)', r'\1 Ensemble Coaching', activity)
+
+                            # Find all student IDs (e.g., F1) in the activity string
+                            student_ids = re.findall(rf'\b{instrument_prefix}\d+\b', activity)
+                            
+                            for student_id in student_ids:
+                                # Replace each student ID with their name, if available
+                                student_name = student_name_map.get(student_id, student_id)
+                                activity = activity.replace(student_id, student_name)
                 
                 if activity:
                     daily_schedule_map[time] = activity
@@ -180,15 +230,18 @@ def generate_teacher_timetables(input_filename):
             continue
 
         sorted_times = sorted(list(all_time_slots))
-        time_to_row = {time: i + 3 for i, time in enumerate(sorted_times)}
+        time_to_row = {time: i + 4 for i, time in enumerate(sorted_times)}
 
         teacher_wb = Workbook()
         teacher_ws = teacher_wb.active
         teacher_ws.title = "Full Timetable"
 
-        teacher_ws.cell(row=2, column=1, value="Time").font = Font(bold=True)
+        # Add teacher name in row 1, merged across all columns
+        teacher_ws.cell(row=1, column=1, value=teacher).font = Font(bold=True, size=14)
+        
+        teacher_ws.cell(row=3, column=1, value="Time").font = Font(bold=True, size=14)
         for i, time in enumerate(sorted_times):
-            teacher_ws.cell(row=i + 3, column=1, value=time)
+            teacher_ws.cell(row=i + 4, column=1, value=time).font = Font(size=14)
 
         current_col = 2
         for day_index, sheet_name in enumerate(workbook.sheetnames):
@@ -201,7 +254,7 @@ def generate_teacher_timetables(input_filename):
             else:
                 header_text = sheet_name
 
-            teacher_ws.cell(row=1, column=current_col, value=header_text).font = Font(bold=True)
+            teacher_ws.cell(row=2, column=current_col, value=header_text).font = Font(bold=True, size=14)
             
             # Create a full schedule for the day, including empty slots, to allow merging of consecutive empty cells.
             todays_schedule_map = dict(daily_schedules[sheet_name])
@@ -245,45 +298,57 @@ def generate_teacher_timetables(input_filename):
 
             current_col += 1
 
-        # Set column widths
+        # Merge teacher name across all columns in row 1
+        teacher_ws.merge_cells(start_row=1, start_column=1, end_row=1, end_column=current_col-1)
+
+        # Auto-fit column widths based on content to accommodate complete lines
         for column in teacher_ws.columns:
             column_letter = get_column_letter(column[0].column)
-            if column[0].column == 1:  # First column
-                max_length = 0
-                for cell in column:
-                    try:
-                        if len(str(cell.value)) > max_length:
-                            max_length = len(str(cell.value))
-                    except:
-                        pass
-                adjusted_width = (max_length + 2)
-                teacher_ws.column_dimensions[column_letter].width = adjusted_width
-            else:  # Other columns
-                teacher_ws.column_dimensions[column_letter].width = 35
-
-        # Auto-adjust row heights to ensure content is visible
-        for row_index in range(1, teacher_ws.max_row + 1):
-            max_cell_height = 15  # Minimum row height
-            for col_index in range(1, teacher_ws.max_column + 1):
-                cell = teacher_ws.cell(row=row_index, column=col_index)
-                if cell.value:
-                    # Estimate height needed for the cell
-                    # Count lines from explicit newlines
-                    lines = str(cell.value).count('\n') + 1
-                    
-                    # Estimate height based on line count (15 pixels per line as a heuristic)
-                    estimated_height = lines * 15
-
-                    if estimated_height > max_cell_height:
-                        max_cell_height = estimated_height
+            max_length = 0
+            for cell in column:
+                try:
+                    if cell.value:
+                        # Count lines and find the longest line
+                        lines = str(cell.value).split('\n')
+                        max_line_length = max(len(line) for line in lines) if lines else 0
+                        if max_line_length > max_length:
+                            max_length = max_line_length
+                except:
+                    pass
             
-            teacher_ws.row_dimensions[row_index].height = max_cell_height
+            # Calculate width to accommodate complete lines without wrapping
+            # Account for 14pt font size (slightly larger than default 11pt)
+            # Use consistent padding of 2 across all cells
+            font_size_factor = 1.3  # Factor to account for 14pt font vs default
+            padding = 2  # Consistent padding for all cells
+            
+            if max_length > 0:
+                # For content columns: ensure complete lines fit, with consistent padding
+                adjusted_width = max(max_length * font_size_factor + padding, 15)
+                # Remove the strict 60-character limit to allow full content to display
+                adjusted_width = min(adjusted_width, 100)  # Reasonable maximum to prevent extreme widths
+            else:
+                # For empty columns: minimum width with same padding
+                adjusted_width = 15
+                
+            teacher_ws.column_dimensions[column_letter].width = adjusted_width
 
-        # Apply borders and alignment to all cells
+        # Set specific row heights as requested
+        teacher_ws.row_dimensions[1].height = 50  # Teacher name header
+        teacher_ws.row_dimensions[2].height = 18  # Date headers
+        for row_index in range(3, teacher_ws.max_row + 1):
+            teacher_ws.row_dimensions[row_index].height = 50  # Time and data rows
+
+        # Apply borders, alignment, and font to all cells
         for row in teacher_ws.iter_rows(min_row=1, max_row=teacher_ws.max_row, min_col=1, max_col=teacher_ws.max_column):
             for cell in row:
                 cell.border = thin_border
                 cell.alignment = Alignment(horizontal='center', vertical='center', wrap_text=True)
+                # Apply 14pt font to all cells, preserving existing bold formatting if any
+                if cell.font and cell.font.bold:
+                    cell.font = Font(bold=True, size=14)
+                else:
+                    cell.font = Font(size=14)
 
         sanitized_file_name = sanitize_filename(teacher)
         camp_part = f"_{camp_name}" if camp_name else ""
