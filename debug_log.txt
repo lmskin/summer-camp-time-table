@@ -1,895 +1,508 @@
-PS C:\Users\user\Desktop\Python\summer-camp-time-table> & C:/Users/user/AppData/Local/Microsoft/WindowsApps/python3.12.exe c:/Users/user/Desktop/Python/summer-camp-time-table/update_master_timetable.py
+a Class
+(Room Yoga)' to 'Yoga Class
+(Room UG24)'
+DEBUG - Replacing room 'Room Yoga' with 'Room UG24' in E2
+DEBUG - Cell E2 updated from 'Yoga Class
+(Room Yoga)' to 'Yoga Class
+(Room UG24)'
+DEBUG - Replacing room 'Room zzz' with 'Room G13' in F2
+DEBUG - Cell F2 updated from 'Briefing for Saturday
+(Room zzz)' to 'Briefing for Saturday
+(Room G13)'
+DEBUG - Found student IDs in B6: ['C3']
+DEBUG - Replacing student ID C3 with Charlotte LAW
+DEBUG - Cell B6 updated from 'C3' to 'Charlotte LAW'
+DEBUG - Replacing room 'Room Piotr' with 'Room G15' in F6
+DEBUG - Cell F6 updated from 'Cello MasterClass
+(Room Piotr)' to 'Cello MasterClass
+(Room G15)'
+DEBUG - Found student IDs in B10: ['C1']
+DEBUG - Replacing student ID C1 with Tucker POON
+DEBUG - Cell B10 updated from 'C1' to 'Tucker POON'
+DEBUG - Found student IDs in C10: ['C3']
+DEBUG - Replacing student ID C3 with Charlotte LAW
+DEBUG - Replacing room 'Room Piotr' with 'Room G15' in C10
+DEBUG - Cell C10 updated from 'C3 Private Lesson with Pitor SKWERES
+(Room Piotr)' to 'Charlotte LAW Private Lesson with Pitor SKWERES  
+(Room G15)'
+DEBUG - Found student IDs in C18: ['C1']
+DEBUG - Replacing student ID C1 with Tucker POON
+DEBUG - Replacing room 'Room Piotr' with 'Room G15' in C18
+DEBUG - Cell C18 updated from 'C1 Private Lesson with Pitor SKWERES
+(Room Piotr)' to 'Tucker POON Private Lesson with Pitor SKWERES    
+(Room G15)'
+DEBUG - Replacing room 'Room Piotr' with 'Room G15' in F18
+DEBUG - Cell F18 updated from 'Cello MasterClass
+(Room Piotr)' to 'Cello MasterClass
+(Room G15)'
+DEBUG - Replacing room 'Room Karen' with 'Room G19' in B22
+DEBUG - Cell B22 updated from 'Group 3
+(Room Karen)' to 'Group 3
+(Room G19)'
+DEBUG - Replacing room 'Room Karen' with 'Room G19' in C22
+DEBUG - Cell C22 updated from 'Group 3
+(Room Karen)' to 'Group 3
+(Room G19)'
+DEBUG - Replacing room 'Room Karen' with 'Room G19' in D22
+DEBUG - Cell D22 updated from 'Group 3
+(Room Karen)' to 'Group 3
+(Room G19)'
+DEBUG - Replacing room 'Room Karen' with 'Room G19' in E22
+DEBUG - Cell E22 updated from 'Group 3
+(Room Karen)' to 'Group 3
+(Room G19)'
+DEBUG - Replacing room 'Room Karen' with 'Room G19' in F22
+DEBUG - Cell F22 updated from 'Group 3
+(Room Karen)' to 'Group 3
+(Room G19)'
+DEBUG - Sheet 'Vincci-CHAN-campB' summary: 49 cells processed, 14     Applying formatting for sheet 'Vincci-CHAN-campB'...
+    Successfully saved 'pianist_timetables\Vincci-CHAN_CampB_timetable.xlsx'
+
+Processing complete. Individual pianist timetables saved to 'pianist_timetables' directory.        
+PS C:\Users\lapmi\Desktop\summer-camp-time-table> & c:/Users/lapmi/Desktop/summer-camp-time-table/.venv/Scripts/python.exe c:/Users/lapmi/Desktop/summer-camp-time-table/process_pianist_timetables.py
+
 Loading mapping files...
-DEBUG - Loading group mapping from: input\group_mapping-campA.csv
-DEBUG - CSV headers: ['group_number', 'student_no']
-DEBUG - Row 1: group_number='1', student_no='C3, H2, F4'
-DEBUG - Extracted student IDs: ['C3', 'H2', 'F4']
-DEBUG - Added mapping: Group 1 -> ['C3', 'H2', 'F4']
-DEBUG - Row 2: group_number='2', student_no='C1, F5'
-DEBUG - Extracted student IDs: ['C1', 'F5']
-DEBUG - Added mapping: Group 2 -> ['C1', 'F5']
-DEBUG - Row 3: group_number='3', student_no='C6, H5'
-DEBUG - Extracted student IDs: ['C6', 'H5']
-DEBUG - Added mapping: Group 3 -> ['C6', 'H5']
-DEBUG - Row 4: group_number='4', student_no='C4, F6'
-DEBUG - Extracted student IDs: ['C4', 'F6']
-DEBUG - Added mapping: Group 4 -> ['C4', 'F6']
-DEBUG - Row 5: group_number='5', student_no='C5, H4, F3'
-DEBUG - Extracted student IDs: ['C5', 'H4', 'F3']
-DEBUG - Added mapping: Group 5 -> ['C5', 'H4', 'F3']
-DEBUG - Row 6: group_number='6', student_no='H3, F2'
-DEBUG - Extracted student IDs: ['H3', 'F2']
-DEBUG - Added mapping: Group 6 -> ['H3', 'F2']
-DEBUG - Row 7: group_number='7', student_no='C2, F1'
-DEBUG - Extracted student IDs: ['C2', 'F1']
-DEBUG - Added mapping: Group 7 -> ['C2', 'F1']
-DEBUG - Row 8: group_number='8', student_no='H9, H1, H6'
-DEBUG - Extracted student IDs: ['H9', 'H1', 'H6']
-DEBUG - Added mapping: Group 8 -> ['H9', 'H1', 'H6']
-DEBUG - Row 9: group_number='9', student_no='H7, H8'
-DEBUG - Extracted student IDs: ['H7', 'H8']
-DEBUG - Added mapping: Group 9 -> ['H7', 'H8']
-DEBUG - Final group mappings loaded: {'Group 1': ['C3', 'H2', 'F4'], 'Group 2': ['C1', 'F5'], 'Group 3': ['C6', 'H5'], 'Group 4': ['C4', 'F6'], 'Group 5': ['C5', 'H4', 'F3'], 'Group 6': ['H3', 'F2'], 'Group 7': ['C2', 'F1'], 'Group 8': ['H9', 'H1', 'H6'], 'Group 9': ['H7', 'H8']}
-DEBUG - Loading group mapping from: input\group_mapping-campB.csv
-DEBUG - CSV headers: ['group_number', 'student_no']
-DEBUG - Row 1: group_number='1', student_no='C1, H8, F3'
-DEBUG - Extracted student IDs: ['C1', 'H8', 'F3']
-DEBUG - Added mapping: Group 1 -> ['C1', 'H8', 'F3']
-DEBUG - Row 2: group_number='2', student_no='C2, H12'
-DEBUG - Extracted student IDs: ['C2', 'H12']
-DEBUG - Added mapping: Group 2 -> ['C2', 'H12']
-DEBUG - Row 3: group_number='3', student_no='C3, F4'
-DEBUG - Extracted student IDs: ['C3', 'F4']
-DEBUG - Added mapping: Group 3 -> ['C3', 'F4']
-DEBUG - Row 4: group_number='4', student_no='C4, H9'
-DEBUG - Extracted student IDs: ['C4', 'H9']
-DEBUG - Added mapping: Group 4 -> ['C4', 'H9']
-DEBUG - Row 5: group_number='5', student_no='C5, H6, F1'
-DEBUG - Extracted student IDs: ['C5', 'H6', 'F1']
-DEBUG - Added mapping: Group 5 -> ['C5', 'H6', 'F1']
-DEBUG - Row 6: group_number='6', student_no='H11, F5, F2'
-DEBUG - Extracted student IDs: ['H11', 'F5', 'F2']
-DEBUG - Added mapping: Group 6 -> ['H11', 'F5', 'F2']
-DEBUG - Row 7: group_number='7', student_no='H4, H7, H2, H1'
-DEBUG - Extracted student IDs: ['H4', 'H7', 'H2', 'H1']
-DEBUG - Added mapping: Group 7 -> ['H4', 'H7', 'H2', 'H1']
-DEBUG - Row 8: group_number='8', student_no='H5, F6'
-DEBUG - Extracted student IDs: ['H5', 'F6']
-DEBUG - Added mapping: Group 8 -> ['H5', 'F6']
-DEBUG - Row 9: group_number='9', student_no='H3, H10'
-DEBUG - Extracted student IDs: ['H3', 'H10']
-DEBUG - Added mapping: Group 9 -> ['H3', 'H10']
-DEBUG - Final group mappings loaded: {'Group 1': ['C1', 'H8', 'F3'], 'Group 2': ['C2', 'H12'], 'Group 3': ['C3', 'F4'], 'Group 4': ['C4', 'H9'], 'Group 5': ['C5', 'H6', 'F1'], 'Group 6': ['H11', 'F5', 'F2'], 'Group 7': ['H4', 'H7', 'H2', 'H1'], 'Group 8': ['H5', 'F6'], 'Group 9': ['H3', 'H10']}
+DEBUG - Loading student mapping from: input\student_mapping-campA.csv
+DEBUG - CSV headers: ['student_no', 'student_name']
+DEBUG - Row 1: student_no='F1', student_name='Roni WONG'
+DEBUG - Added student mapping: 'F1' -> 'Roni WONG'
+DEBUG - Row 2: student_no='F2', student_name='Hailey LEUNG'       
+DEBUG - Added student mapping: 'F2' -> 'Hailey LEUNG'
+DEBUG - Row 3: student_no='F3', student_name='Evan QI'
+DEBUG - Added student mapping: 'F3' -> 'Evan QI'
+DEBUG - Row 4: student_no='F4', student_name='Yanis SZE'
+DEBUG - Added student mapping: 'F4' -> 'Yanis SZE'
+DEBUG - Row 5: student_no='F5', student_name='Cybi CHENG'
+DEBUG - Added student mapping: 'F5' -> 'Cybi CHENG'
+DEBUG - Row 6: student_no='F6', student_name='Moses LO'
+DEBUG - Added student mapping: 'F6' -> 'Moses LO'
+DEBUG - Row 7: student_no='C1', student_name='Max TAM'
+DEBUG - Added student mapping: 'C1' -> 'Max TAM'
+DEBUG - Row 8: student_no='C2', student_name='Henry SUN'
+DEBUG - Added student mapping: 'C2' -> 'Henry SUN'
+DEBUG - Row 9: student_no='C3', student_name='Peter CHAN'
+DEBUG - Added student mapping: 'C3' -> 'Peter CHAN'
+DEBUG - Row 10: student_no='C4', student_name='Yauyau NG'
+DEBUG - Added student mapping: 'C4' -> 'Yauyau NG'
+DEBUG - Row 11: student_no='C5', student_name='Icelyn GE'
+DEBUG - Added student mapping: 'C5' -> 'Icelyn GE'
+DEBUG - Row 12: student_no='C6', student_name='Ivy YUE'
+DEBUG - Added student mapping: 'C6' -> 'Ivy YUE'
+DEBUG - Row 13: student_no='H1', student_name='Sonia SUNG'        
+DEBUG - Added student mapping: 'H1' -> 'Sonia SUNG'
+DEBUG - Row 14: student_no='H2', student_name='Jansci WONG'       
+DEBUG - Added student mapping: 'H2' -> 'Jansci WONG'
+DEBUG - Row 15: student_no='H3', student_name='Shannon CHENG'     
+DEBUG - Added student mapping: 'H3' -> 'Shannon CHENG'
+DEBUG - Row 16: student_no='H4', student_name='Luna ZUO'
+DEBUG - Added student mapping: 'H4' -> 'Luna ZUO'
+DEBUG - Row 17: student_no='H5', student_name='Gabriel MOK'       
+DEBUG - Added student mapping: 'H5' -> 'Gabriel MOK'
+DEBUG - Row 18: student_no='H6', student_name='Grace NG'
+DEBUG - Added student mapping: 'H6' -> 'Grace NG'
+DEBUG - Row 19: student_no='H7', student_name='Ho Yee HO'
+DEBUG - Added student mapping: 'H7' -> 'Ho Yee HO'
+DEBUG - Row 20: student_no='H8', student_name='Caitlyn YIP'       
+DEBUG - Added student mapping: 'H8' -> 'Caitlyn YIP'
+DEBUG - Row 21: student_no='H9', student_name='Eve LUNG'
+DEBUG - Added student mapping: 'H9' -> 'Eve LUNG'
+DEBUG - Final student mappings loaded: 21 entries
+DEBUG - Loading room mapping from: input\room_no_mapping-campA.csv
+DEBUG - CSV headers: ['room_name', 'room_number']
+DEBUG - Row 1: room_name='Room Shelley', room_number='Room G13'   
+DEBUG - Added room mapping: 'Room Shelley' -> 'Room G13'
+DEBUG - Row 2: room_name='Room Queena', room_number='Room 204'    
+DEBUG - Added room mapping: 'Room Queena' -> 'Room 204'
+DEBUG - Row 3: room_name='Room Ivy', room_number='Room G14'       
+DEBUG - Added room mapping: 'Room Ivy' -> 'Room G14'
+DEBUG - Row 4: room_name='Room Stephane', room_number='Room G19'  
+DEBUG - Added room mapping: 'Room Stephane' -> 'Room G19'
+DEBUG - Row 5: room_name='Room TanCong', room_number='Room 201'   
+DEBUG - Added room mapping: 'Room TanCong' -> 'Room 201'
+DEBUG - Row 6: room_name='Room Tomasz', room_number='Room G15'    
+DEBUG - Added room mapping: 'Room Tomasz' -> 'Room G15'
+DEBUG - Row 7: room_name='Room Liya', room_number='Room 241'      
+DEBUG - Added room mapping: 'Room Liya' -> 'Room 241'
+DEBUG - Row 8: room_name='Room Sivan', room_number='Room 246'     
+DEBUG - Added room mapping: 'Room Sivan' -> 'Room 246'
+DEBUG - Row 9: room_name='Room Gwyneth', room_number='Room 236'   
+DEBUG - Added room mapping: 'Room Gwyneth' -> 'Room 236'
+DEBUG - Row 10: room_name='Room Acting Class', room_number='Room UG24'
+DEBUG - Added room mapping: 'Room Acting Class' -> 'Room UG24'    
+DEBUG - Row 11: room_name='Room Group Activity', room_number='Room 113'
+DEBUG - Added room mapping: 'Room Group Activity' -> 'Room 113'   
+DEBUG - Row 12: room_name='Room Yoga', room_number='Room UG24'    
+DEBUG - Added room mapping: 'Room Yoga' -> 'Room UG24'
+DEBUG - Row 13: room_name='Room zzz', room_number='Room G13'      
+DEBUG - Added room mapping: 'Room zzz' -> 'Room G13'
+DEBUG - Final room mappings loaded: 13 entries
+DEBUG - Loading student mapping from: input\student_mapping-campB.csv
+DEBUG - CSV headers: ['student_no', 'student_name']
+DEBUG - Row 1: student_no='F1', student_name='Marquis YEUNG'      
+DEBUG - Added student mapping: 'F1' -> 'Marquis YEUNG'
+DEBUG - Row 2: student_no='F2', student_name='Angelina WONG'      
+DEBUG - Added student mapping: 'F2' -> 'Angelina WONG'
+DEBUG - Row 3: student_no='F3', student_name='Issac CHAN'
+DEBUG - Added student mapping: 'F3' -> 'Issac CHAN'
+DEBUG - Row 4: student_no='F4', student_name='Victor CHEN'        
+DEBUG - Added student mapping: 'F4' -> 'Victor CHEN'
+DEBUG - Row 5: student_no='F5', student_name='Molly WONG'
+DEBUG - Added student mapping: 'F5' -> 'Molly WONG'
+DEBUG - Row 6: student_no='F6', student_name='Kaylee WONG'        
+DEBUG - Added student mapping: 'F6' -> 'Kaylee WONG'
+DEBUG - Row 7: student_no='C1', student_name='Tucker POON'        
+DEBUG - Added student mapping: 'C1' -> 'Tucker POON'
+DEBUG - Row 8: student_no='C2', student_name='Venus CHAN'
+DEBUG - Added student mapping: 'C2' -> 'Venus CHAN'
+DEBUG - Row 9: student_no='C3', student_name='Charlotte LAW'      
+DEBUG - Added student mapping: 'C3' -> 'Charlotte LAW'
+DEBUG - Row 10: student_no='C4', student_name='Hannah HO'
+DEBUG - Added student mapping: 'C4' -> 'Hannah HO'
+DEBUG - Row 11: student_no='C5', student_name='Effie WONG'        
+DEBUG - Added student mapping: 'C5' -> 'Effie WONG'
+DEBUG - Row 12: student_no='H1', student_name='Nicole LAU '       
+DEBUG - Added student mapping: 'H1' -> 'Nicole LAU'
+DEBUG - Row 13: student_no='H2', student_name='Celine IP'
+DEBUG - Added student mapping: 'H2' -> 'Celine IP'
+DEBUG - Row 14: student_no='H3', student_name='Valerie LIU'       
+DEBUG - Added student mapping: 'H3' -> 'Valerie LIU'
+DEBUG - Row 15: student_no='H4', student_name='Janmie WONG'       
+DEBUG - Added student mapping: 'H4' -> 'Janmie WONG'
+DEBUG - Row 16: student_no='H5', student_name='Jansci WONG'       
+DEBUG - Added student mapping: 'H5' -> 'Jansci WONG'
+DEBUG - Row 17: student_no='H6', student_name='Phyllis LUK'       
+DEBUG - Added student mapping: 'H6' -> 'Phyllis LUK'
+DEBUG - Row 18: student_no='H7', student_name='Amanda HUNG'       
+DEBUG - Added student mapping: 'H7' -> 'Amanda HUNG'
+DEBUG - Row 19: student_no='H8', student_name='Zhuangluan ZHOU'   
+DEBUG - Added student mapping: 'H8' -> 'Zhuangluan ZHOU'
+DEBUG - Row 20: student_no='H9', student_name='Monique NG'        
+DEBUG - Added student mapping: 'H9' -> 'Monique NG'
+DEBUG - Row 21: student_no='H10', student_name='Si Yu QI'
+DEBUG - Added student mapping: 'H10' -> 'Si Yu QI'
+DEBUG - Row 22: student_no='H11', student_name='Feiyang WANG'     
+DEBUG - Added student mapping: 'H11' -> 'Feiyang WANG'
+DEBUG - Row 23: student_no='H12', student_name='Clement Yim'      
+DEBUG - Added student mapping: 'H12' -> 'Clement Yim'
+DEBUG - Final student mappings loaded: 23 entries
+DEBUG - Loading room mapping from: input\room_no_mapping-campB.csv
+DEBUG - CSV headers: ['room_name', 'room_number']
+DEBUG - Row 1: room_name='Room Shelley', room_number='Room G13'   
+DEBUG - Added room mapping: 'Room Shelley' -> 'Room G13'
+DEBUG - Row 2: room_name='Room Vincci', room_number='Room 204'    
+DEBUG - Added room mapping: 'Room Vincci' -> 'Room 204'
+DEBUG - Row 3: room_name='Room Jason', room_number='Room G20'     
+DEBUG - Added room mapping: 'Room Jason' -> 'Room G20'
+DEBUG - Row 4: room_name='Room Ivy', room_number='Room G14'       
+DEBUG - Added room mapping: 'Room Ivy' -> 'Room G14'
+DEBUG - Row 5: room_name='Room Karen', room_number='Room G19'     
+DEBUG - Added room mapping: 'Room Karen' -> 'Room G19'
+DEBUG - Row 6: room_name='Room TanCong', room_number='Room 201'   
+DEBUG - Added room mapping: 'Room TanCong' -> 'Room 201'
+DEBUG - Row 7: room_name='Room Piotr', room_number='Room G15'     
+DEBUG - Added room mapping: 'Room Piotr' -> 'Room G15'
+DEBUG - Row 8: room_name='Room Liya', room_number='Room 207'      
+DEBUG - Added room mapping: 'Room Liya' -> 'Room 207'
+DEBUG - Row 9: room_name='Room Naoko', room_number='Room 241'     
+DEBUG - Added room mapping: 'Room Naoko' -> 'Room 241'
+DEBUG - Row 10: room_name='Room Judy', room_number='Room 246'     
+DEBUG - Added room mapping: 'Room Judy' -> 'Room 246'
+DEBUG - Row 11: room_name='Room Gwyneth', room_number='Room 236'  
+DEBUG - Added room mapping: 'Room Gwyneth' -> 'Room 236'
+DEBUG - Row 12: room_name='Room Acting Class', room_number='Room UG24'
+DEBUG - Added room mapping: 'Room Acting Class' -> 'Room UG24'    
+DEBUG - Row 13: room_name='Room Group Activity', room_number='Room 113'
+DEBUG - Added room mapping: 'Room Group Activity' -> 'Room 113'   
+DEBUG - Row 14: room_name='Room Yoga', room_number='Room UG24'    
+DEBUG - Added room mapping: 'Room Yoga' -> 'Room UG24'
+DEBUG - Row 15: room_name='Room zzz', room_number='Room G13'      
+DEBUG - Added room mapping: 'Room zzz' -> 'Room G13'
+DEBUG - Final room mappings loaded: 15 entries
 
 DEBUG - Camp A Student mappings loaded: 21 entries
-Sample student mappings: {'F1': 'Roni WONG', 'F2': 'Hailey LEUNG', 'F3': 'Evan QI'}    
-DEBUG - Camp A Group mappings loaded: 9 entries
-Sample group mappings: {'Group 1': ['C3', 'H2', 'F4'], 'Group 2': ['C1', 'F5'], 'Group 3': ['C6', 'H5']}
+DEBUG - Camp A Room mappings loaded: 13 entries
 DEBUG - Camp B Student mappings loaded: 23 entries
-Sample student mappings: {'F1': 'Marquis YEUNG', 'F2': 'Angelina WONG', 'F3': 'Issac CHAN'}
-DEBUG - Camp B Group mappings loaded: 9 entries
-Sample group mappings: {'Group 1': ['C1', 'H8', 'F3'], 'Group 2': ['C2', 'H12'], 'Group 3': ['C3', 'F4']}
+DEBUG - Camp B Room mappings loaded: 15 entries
 
-Successfully copied 'input\master.xlsx' to 'input\master_processed.xlsx'.
+Successfully loaded pianist timetable from 'Pianist Timetable\pianist-master-time-table.xlsx'      
 Processing sheets...
-DEBUG - Available sheets in workbook: ['Flute-Camp-A', 'Cello-Camp-A', 'Harp-Camp-A', 'Flute-Camp-B', 'Cello-Camp-B', 'Harp-Camp-B', 'Ensemble Camp A', 'Ensemble B']
-DEBUG - Target sheets to process: ['Flute-Camp-A', 'Cello-Camp-A', 'Harp-Camp-A', 'Flute-Camp-B', 'Cello-Camp-B', 'Harp-Camp-B']
+DEBUG - Available sheets in workbook: ['Jason-LIU-campB', 'Queena-Chu-campA', 'Shelley_NG-campA', 'Shelley_NG-campB', 'Vincci-CHAN-campB']
 
-  - Processing sheet: 'Flute-Camp-A'
-DEBUG - Processing cell A1: '14 July (Monday)'
-DEBUG - Processing cell I1: '15 July (Tuseday)'
-DEBUG - Processing cell P1: '16 July (Wednesday)'
-DEBUG - Processing cell W1: '17 July (Thursday)'
-DEBUG - Processing cell AD1: '18 July (Friday)'
-DEBUG - Processing cell AL1: '19th July (Saturday, Maritime Museum)'
-DEBUG - Processing cell A2: 'Teacher'
-DEBUG - Processing cell B2: 'Ivy CHUANG'
-DEBUG - Processing cell C2: 'Stephane RETY'
-DEBUG - Processing cell I2: 'Ivy CHUANG'
-DEBUG - Found student IDs in B8: ['F1']
-DEBUG - Replacing student ID F1 with Roni WONG
-DEBUG - Cell B8 updated from 'F1' to 'Roni WONG'
-DEBUG - Found student IDs in C8: ['F3']
-DEBUG - Replacing student ID F3 with Evan QI
-DEBUG - Cell C8 updated from 'F3' to 'Evan QI'
-DEBUG - Found student IDs in D8: ['F6']
-DEBUG - Replacing student ID F6 with Moses LO
-DEBUG - Cell D8 updated from 'F6 Rehearsal with pianist
-(Room Shelley)' to 'Moses LO Rehearsal with pianist
-(Room Shelley)'
-DEBUG - Found student IDs in E8: ['F5']
-DEBUG - Replacing student ID F5 with Cybi CHENG
-DEBUG - Cell E8 updated from 'F5' to 'Cybi CHENG'
-DEBUG - Found student IDs in F8: ['F4']
-DEBUG - Replacing student ID F4 with Yanis SZE
-DEBUG - Cell F8 updated from 'F4' to 'Yanis SZE'
-DEBUG - Found student IDs in G8: ['F2']
-DEBUG - Replacing student ID F2 with Hailey LEUNG
-DEBUG - Cell G8 updated from 'F2' to 'Hailey LEUNG'
-DEBUG - Found student IDs in I8: ['F4']
-DEBUG - Replacing student ID F4 with Yanis SZE
-DEBUG - Cell I8 updated from 'F4' to 'Yanis SZE'
-DEBUG - Found student IDs in J8: ['F2']
-DEBUG - Replacing student ID F2 with Hailey LEUNG
-DEBUG - Cell J8 updated from 'F2  Private Lesson with Stephane RETY  & pianist' to 'Hailey LEUNG  Private Lesson with Stephane RETY  & pianist'
-DEBUG - Found student IDs in K8: ['F3']
-DEBUG - Replacing student ID F3 with Evan QI
-DEBUG - Cell K8 updated from 'F3' to 'Evan QI'
-DEBUG - Found student IDs in L8: ['F1']
-DEBUG - Replacing student ID F1 with Roni WONG
-DEBUG - Cell L8 updated from 'F1' to 'Roni WONG'
-DEBUG - Found student IDs in M8: ['F5']
-DEBUG - Replacing student ID F5 with Cybi CHENG
-DEBUG - Cell M8 updated from 'F5' to 'Cybi CHENG'
-DEBUG - Found student IDs in N8: ['F6']
-DEBUG - Replacing student ID F6 with Moses LO
-DEBUG - Cell N8 updated from 'F6' to 'Moses LO'
-DEBUG - Found student IDs in P8: ['F5']
-DEBUG - Replacing student ID F5 with Cybi CHENG
-DEBUG - Cell P8 updated from 'F5' to 'Cybi CHENG'
-DEBUG - Found student IDs in Q8: ['F6']
-DEBUG - Replacing student ID F6 with Moses LO
-DEBUG - Cell Q8 updated from 'F6' to 'Moses LO'
-DEBUG - Found student IDs in R8: ['F4']
-DEBUG - Replacing student ID F4 with Yanis SZE
-DEBUG - Cell R8 updated from 'F4 Rehearsal with pianist
-(Room Shelley)' to 'Yanis SZE Rehearsal with pianist
-(Room Shelley)'
-DEBUG - Found student IDs in S8: ['F2']
-DEBUG - Replacing student ID F2 with Hailey LEUNG
-DEBUG - Cell S8 updated from 'F2' to 'Hailey LEUNG'
-DEBUG - Found student IDs in T8: ['F1']
-DEBUG - Replacing student ID F1 with Roni WONG
-DEBUG - Cell T8 updated from 'F1' to 'Roni WONG'
-DEBUG - Found student IDs in U8: ['F3']
-DEBUG - Replacing student ID F3 with Evan QI
-DEBUG - Cell U8 updated from 'F3' to 'Evan QI'
-DEBUG - Found student IDs in W8: ['F1']
-DEBUG - Replacing student ID F1 with Roni WONG
-DEBUG - Cell W8 updated from 'F1 ' to 'Roni WONG '
-DEBUG - Found student IDs in X8: ['F3']
-DEBUG - Replacing student ID F3 with Evan QI
-DEBUG - Cell X8 updated from 'F3 Private Lesson with Stephane RETY & pianist' to 'Evan QI Private Lesson with Stephane RETY & pianist'
-DEBUG - Found student IDs in Y8: ['F2']
-DEBUG - Replacing student ID F2 with Hailey LEUNG
-DEBUG - Cell Y8 updated from 'F2' to 'Hailey LEUNG'
-DEBUG - Found student IDs in Z8: ['F4']
-DEBUG - Replacing student ID F4 with Yanis SZE
-DEBUG - Cell Z8 updated from 'F4' to 'Yanis SZE'
-DEBUG - Found student IDs in AA8: ['F6']
-DEBUG - Replacing student ID F6 with Moses LO
-DEBUG - Cell AA8 updated from 'F6' to 'Moses LO'
-DEBUG - Found student IDs in AB8: ['F5']
-DEBUG - Replacing student ID F5 with Cybi CHENG
-DEBUG - Cell AB8 updated from 'F5' to 'Cybi CHENG'
-DEBUG - Found student IDs in B12: ['F2']
-DEBUG - Replacing student ID F2 with Hailey LEUNG
-DEBUG - Cell B12 updated from 'F2' to 'Hailey LEUNG'
-DEBUG - Found student IDs in C12: ['F4']
-DEBUG - Replacing student ID F4 with Yanis SZE
-DEBUG - Cell C12 updated from 'F4' to 'Yanis SZE'
-DEBUG - Found student IDs in D12: ['F1']
-DEBUG - Replacing student ID F1 with Roni WONG
-DEBUG - Cell D12 updated from 'F1 Rehearsal with pianist
-(Room Shelley)' to 'Roni WONG Rehearsal with pianist
-(Room Shelley)'
-DEBUG - Found student IDs in E12: ['F5']
-DEBUG - Replacing student ID F5 with Cybi CHENG
-DEBUG - Cell E12 updated from 'F5' to 'Cybi CHENG'
-DEBUG - Found student IDs in F12: ['F6']
-DEBUG - Replacing student ID F6 with Moses LO
-DEBUG - Cell F12 updated from 'F6' to 'Moses LO'
-DEBUG - Found student IDs in G12: ['F3']
-DEBUG - Replacing student ID F3 with Evan QI
-DEBUG - Cell G12 updated from 'F3' to 'Evan QI'
-DEBUG - Found student IDs in I12: ['F5']
-DEBUG - Replacing student ID F5 with Cybi CHENG
-DEBUG - Cell I12 updated from 'F5 ' to 'Cybi CHENG '
-DEBUG - Found student IDs in J12: ['F6']
-DEBUG - Replacing student ID F6 with Moses LO
-DEBUG - Cell J12 updated from 'F6 Private Lesson with Stephane RETY & pianist' to 'Moses LO Private Lesson with Stephane RETY & pianist'
-DEBUG - Found student IDs in K12: ['F3']
-DEBUG - Replacing student ID F3 with Evan QI
-DEBUG - Cell K12 updated from 'F3' to 'Evan QI'
-DEBUG - Found student IDs in L12: ['F1']
-DEBUG - Replacing student ID F1 with Roni WONG
-DEBUG - Cell L12 updated from 'F1' to 'Roni WONG'
-DEBUG - Found student IDs in M12: ['F2']
-DEBUG - Replacing student ID F2 with Hailey LEUNG
-DEBUG - Cell M12 updated from 'F2' to 'Hailey LEUNG'
-DEBUG - Found student IDs in N12: ['F4']
-DEBUG - Replacing student ID F4 with Yanis SZE
-DEBUG - Cell N12 updated from 'F4' to 'Yanis SZE'
-DEBUG - Found student IDs in P12: ['F3']
-DEBUG - Replacing student ID F3 with Evan QI
-DEBUG - Cell P12 updated from 'F3' to 'Evan QI'
-DEBUG - Found student IDs in Q12: ['F1']
-DEBUG - Replacing student ID F1 with Roni WONG
-DEBUG - Cell Q12 updated from 'F1' to 'Roni WONG'
-DEBUG - Found student IDs in R12: ['F5']
-DEBUG - Replacing student ID F5 with Cybi CHENG
-DEBUG - Cell R12 updated from 'F5 Rehearsal with pianist
-(Room Shelley)' to 'Cybi CHENG Rehearsal with pianist
-(Room Shelley)'
-DEBUG - Found student IDs in S12: ['F2']
-DEBUG - Replacing student ID F2 with Hailey LEUNG
-DEBUG - Cell S12 updated from 'F2' to 'Hailey LEUNG'
-DEBUG - Found student IDs in T12: ['F4']
-DEBUG - Replacing student ID F4 with Yanis SZE
-DEBUG - Cell T12 updated from 'F4' to 'Yanis SZE'
-DEBUG - Found student IDs in U12: ['F6']
-DEBUG - Replacing student ID F6 with Moses LO
-DEBUG - Cell U12 updated from 'F6' to 'Moses LO'
-DEBUG - Found student IDs in W12: ['F2']
-DEBUG - Replacing student ID F2 with Hailey LEUNG
-DEBUG - Cell W12 updated from 'F2 ' to 'Hailey LEUNG '
-DEBUG - Found student IDs in X12: ['F4']
-DEBUG - Replacing student ID F4 with Yanis SZE
-DEBUG - Cell X12 updated from 'F4 Private Lesson with Stephane RETY & pianist' to 'Yanis SZE Private Lesson with Stephane RETY & pianist'
-DEBUG - Found student IDs in Y12: ['F3']
-DEBUG - Replacing student ID F3 with Evan QI
-DEBUG - Cell Y12 updated from 'F3' to 'Evan QI'
-DEBUG - Found student IDs in Z12: ['F1']
-DEBUG - Replacing student ID F1 with Roni WONG
-DEBUG - Cell Z12 updated from 'F1' to 'Roni WONG'
-DEBUG - Found student IDs in AA12: ['F6']
-DEBUG - Replacing student ID F6 with Moses LO
-DEBUG - Cell AA12 updated from 'F6' to 'Moses LO'
-DEBUG - Found student IDs in AB12: ['F5']
-DEBUG - Replacing student ID F5 with Cybi CHENG
-DEBUG - Cell AB12 updated from 'F5' to 'Cybi CHENG'
-DEBUG - Found student IDs in B20: ['F6']
-DEBUG - Replacing student ID F6 with Moses LO
-DEBUG - Cell B20 updated from 'F6' to 'Moses LO'
-DEBUG - Found student IDs in C20: ['F5']
-DEBUG - Replacing student ID F5 with Cybi CHENG
-DEBUG - Cell C20 updated from 'F5' to 'Cybi CHENG'
-DEBUG - Found student IDs in D20: ['F2']
-DEBUG - Replacing student ID F2 with Hailey LEUNG
-DEBUG - Cell D20 updated from 'F2  Rehearsal with pianist
-(Room Shelley)' to 'Hailey LEUNG  Rehearsal with pianist
-(Room Shelley)'
-DEBUG - Found student IDs in E20: ['F1']
-DEBUG - Replacing student ID F1 with Roni WONG
-DEBUG - Cell E20 updated from 'F1' to 'Roni WONG'
-DEBUG - Found student IDs in F20: ['F4']
-DEBUG - Replacing student ID F4 with Yanis SZE
-DEBUG - Cell F20 updated from 'F4' to 'Yanis SZE'
-DEBUG - Found student IDs in G20: ['F3']
-DEBUG - Replacing student ID F3 with Evan QI
-DEBUG - Cell G20 updated from 'F3' to 'Evan QI'
-DEBUG - Found student IDs in I20: ['F3']
-DEBUG - Replacing student ID F3 with Evan QI
-DEBUG - Cell I20 updated from 'F3 ' to 'Evan QI '
-DEBUG - Found student IDs in J20: ['F1']
-DEBUG - Replacing student ID F1 with Roni WONG
-DEBUG - Cell J20 updated from 'F1 Private Lesson with Stephane RETY & pianist' to 'Roni WONG Private Lesson with Stephane RETY & pianist'
-DEBUG - Found student IDs in K20: ['F5']
-DEBUG - Replacing student ID F5 with Cybi CHENG
-DEBUG - Cell K20 updated from 'F5' to 'Cybi CHENG'
-DEBUG - Found student IDs in L20: ['F6']
-DEBUG - Replacing student ID F6 with Moses LO
-DEBUG - Cell L20 updated from 'F6' to 'Moses LO'
-DEBUG - Found student IDs in M20: ['F2']
-DEBUG - Replacing student ID F2 with Hailey LEUNG
-DEBUG - Cell M20 updated from 'F2' to 'Hailey LEUNG'
-DEBUG - Found student IDs in N20: ['F4']
-DEBUG - Replacing student ID F4 with Yanis SZE
-DEBUG - Cell N20 updated from 'F4' to 'Yanis SZE'
-DEBUG - Found student IDs in P20: ['F4']
-DEBUG - Replacing student ID F4 with Yanis SZE
-DEBUG - Cell P20 updated from 'F4' to 'Yanis SZE'
-DEBUG - Found student IDs in Q20: ['F2']
-DEBUG - Replacing student ID F2 with Hailey LEUNG
-DEBUG - Cell Q20 updated from 'F2' to 'Hailey LEUNG'
-DEBUG - Found student IDs in R20: ['F3']
-DEBUG - Replacing student ID F3 with Evan QI
-DEBUG - Cell R20 updated from 'F3 Rehearsal with pianist
-(Room Shelley)' to 'Evan QI Rehearsal with pianist
-(Room Shelley)'
-DEBUG - Found student IDs in S20: ['F5']
-DEBUG - Replacing student ID F5 with Cybi CHENG
-DEBUG - Cell S20 updated from 'F5' to 'Cybi CHENG'
-DEBUG - Found student IDs in T20: ['F1']
-DEBUG - Replacing student ID F1 with Roni WONG
-DEBUG - Cell T20 updated from 'F1' to 'Roni WONG'
-DEBUG - Found student IDs in U20: ['F6']
-DEBUG - Replacing student ID F6 with Moses LO
-DEBUG - Cell U20 updated from 'F6' to 'Moses LO'
-DEBUG - Found student IDs in W20: ['F6']
-DEBUG - Replacing student ID F6 with Moses LO
-DEBUG - Cell W20 updated from 'F6 ' to 'Moses LO '
-DEBUG - Found student IDs in X20: ['F5']
-DEBUG - Replacing student ID F5 with Cybi CHENG
-DEBUG - Cell X20 updated from 'F5 Private Lesson with Stephane RETY  & pianist' to 'Cybi CHENG Private Lesson with Stephane RETY  & pianist'
-DEBUG - Found student IDs in Y20: ['F3']
-DEBUG - Replacing student ID F3 with Evan QI
-DEBUG - Cell Y20 updated from 'F3' to 'Evan QI'
-DEBUG - Found student IDs in Z20: ['F1']
-DEBUG - Replacing student ID F1 with Roni WONG
-DEBUG - Cell Z20 updated from 'F1' to 'Roni WONG'
-DEBUG - Found student IDs in AA20: ['F4']
-DEBUG - Replacing student ID F4 with Yanis SZE
-DEBUG - Cell AA20 updated from 'F4' to 'Yanis SZE'
-DEBUG - Found student IDs in AB20: ['F2']
-DEBUG - Replacing student ID F2 with Hailey LEUNG
-DEBUG - Cell AB20 updated from 'F2' to 'Hailey LEUNG'
-DEBUG - Found exact group match in B24: 'Group 6'
-DEBUG - Looking for group 'Group 6', found students: ['H3', 'F2']
-DEBUG - Replacing H3 with Shannon CHENG, Harp
-DEBUG - Replacing F2 with Hailey LEUNG, Flute
-DEBUG - Cell B24 updated to: 'Group 6
-Shannon CHENG, Harp
-Hailey LEUNG, Flute'
-DEBUG - Found exact group match in C24: 'Group 4'
-DEBUG - Looking for group 'Group 4', found students: ['C4', 'F6']
-DEBUG - Replacing C4 with Yauyau NG, Cello
-DEBUG - Replacing F6 with Moses LO, Flute
-DEBUG - Cell C24 updated to: 'Group 4
-Yauyau NG, Cello
-Moses LO, Flute'
-DEBUG - Found complex group match in D24: 'Group 2, 5, 7, 9 Acting Class (Room Acting Class)'
-DEBUG - Group numbers: '2, 5, 7, 9', Activity: 'Acting Class (Room Acting Class)'      
-DEBUG - Looking for group 'Group 2', found students: ['C1', 'F5']
-DEBUG - Replacing C1 with Max TAM
-DEBUG - Replacing F5 with Cybi CHENG
-DEBUG - Looking for group 'Group 5', found students: ['C5', 'H4', 'F3']
-DEBUG - Replacing C5 with Icelyn GE
-DEBUG - Replacing H4 with Luna ZUO
-DEBUG - Replacing F3 with Evan QI
-DEBUG - Looking for group 'Group 7', found students: ['C2', 'F1']
-DEBUG - Replacing C2 with Henry SUN
-DEBUG - Replacing F1 with Roni WONG
-DEBUG - Looking for group 'Group 9', found students: ['H7', 'H8']
-DEBUG - Replacing H7 with Ho Yee HO
-DEBUG - Replacing H8 with Caitlyn YIP
-DEBUG - Cell D24 updated to: 'Acting Class
-(Room Acting Class)
-Group 2
-Max TAM, Cybi CHENG
-Group 5
-Icelyn GE, Luna ZUO, Evan QI
-Group 7
-Henry SUN, Roni WONG
-Group 9
-Ho Yee HO, Caitlyn YIP'
-DEBUG - Found complex group match in E24: 'Group 1
-(Room Sivan)'
-DEBUG - Group numbers: '1', Activity: '(Room Sivan)'
-DEBUG - Looking for group 'Group 1', found students: ['C3', 'H2', 'F4']
-DEBUG - Replacing C3 with Peter CHAN
-DEBUG - Replacing H2 with Jansci WONG
-DEBUG - Replacing F4 with Yanis SZE
-DEBUG - Cell E24 updated to: '
-(Room Sivan)
-Group 1
-Peter CHAN, Jansci WONG, Yanis SZE'
-DEBUG - Found exact group match in I24: 'Group 6'
-DEBUG - Looking for group 'Group 6', found students: ['H3', 'F2']
-DEBUG - Replacing H3 with Shannon CHENG, Harp
-DEBUG - Replacing F2 with Hailey LEUNG, Flute
-DEBUG - Cell I24 updated to: 'Group 6
-Shannon CHENG, Harp
-Hailey LEUNG, Flute'
-DEBUG - Found exact group match in J24: 'Group 4'
-DEBUG - Looking for group 'Group 4', found students: ['C4', 'F6']
-DEBUG - Replacing C4 with Yauyau NG, Cello
-DEBUG - Replacing F6 with Moses LO, Flute
-DEBUG - Cell J24 updated to: 'Group 4
-Yauyau NG, Cello
-Moses LO, Flute'
-DEBUG - Found complex group match in K24: 'Group 2, 5, 7, 9 Acting Class (Room Acting Class)'
-DEBUG - Group numbers: '2, 5, 7, 9', Activity: 'Acting Class (Room Acting Class)'      
-DEBUG - Looking for group 'Group 2', found students: ['C1', 'F5']
-DEBUG - Replacing C1 with Max TAM
-DEBUG - Replacing F5 with Cybi CHENG
-DEBUG - Looking for group 'Group 5', found students: ['C5', 'H4', 'F3']
-DEBUG - Replacing C5 with Icelyn GE
-DEBUG - Replacing H4 with Luna ZUO
-DEBUG - Replacing F3 with Evan QI
-DEBUG - Looking for group 'Group 7', found students: ['C2', 'F1']
-DEBUG - Replacing C2 with Henry SUN
-DEBUG - Replacing F1 with Roni WONG
-DEBUG - Looking for group 'Group 9', found students: ['H7', 'H8']
-DEBUG - Replacing H7 with Ho Yee HO
-DEBUG - Replacing H8 with Caitlyn YIP
-DEBUG - Cell K24 updated to: 'Acting Class
-(Room Acting Class)
-Group 2
-Max TAM, Cybi CHENG
-Group 5
-Icelyn GE, Luna ZUO, Evan QI
-Group 7
-Henry SUN, Roni WONG
-Group 9
-Ho Yee HO, Caitlyn YIP'
-DEBUG - Found complex group match in L24: 'Group 1
-(Room Sivan)'
-DEBUG - Group numbers: '1', Activity: '(Room Sivan)'
-DEBUG - Looking for group 'Group 1', found students: ['C3', 'H2', 'F4']
-DEBUG - Replacing C3 with Peter CHAN
-DEBUG - Replacing H2 with Jansci WONG
-DEBUG - Replacing F4 with Yanis SZE
-DEBUG - Cell L24 updated to: '
-(Room Sivan)
-Group 1
-Peter CHAN, Jansci WONG, Yanis SZE'
-DEBUG - Found exact group match in P24: 'Group 6'
-DEBUG - Looking for group 'Group 6', found students: ['H3', 'F2']
-DEBUG - Replacing H3 with Shannon CHENG, Harp
-DEBUG - Replacing F2 with Hailey LEUNG, Flute
-DEBUG - Cell P24 updated to: 'Group 6
-Shannon CHENG, Harp
-Hailey LEUNG, Flute'
-DEBUG - Found exact group match in Q24: 'Group 4'
-DEBUG - Looking for group 'Group 4', found students: ['C4', 'F6']
-DEBUG - Replacing C4 with Yauyau NG, Cello
-DEBUG - Replacing F6 with Moses LO, Flute
-DEBUG - Cell Q24 updated to: 'Group 4
-Yauyau NG, Cello
-Moses LO, Flute'
-DEBUG - Found complex group match in R24: 'Group 2, 5, 7, 9 Acting Class (Room Acting Class)'
-DEBUG - Group numbers: '2, 5, 7, 9', Activity: 'Acting Class (Room Acting Class)'      
-DEBUG - Looking for group 'Group 2', found students: ['C1', 'F5']
-DEBUG - Replacing C1 with Max TAM
-DEBUG - Replacing F5 with Cybi CHENG
-DEBUG - Looking for group 'Group 5', found students: ['C5', 'H4', 'F3']
-DEBUG - Replacing C5 with Icelyn GE
-DEBUG - Replacing H4 with Luna ZUO
-DEBUG - Replacing F3 with Evan QI
-DEBUG - Looking for group 'Group 7', found students: ['C2', 'F1']
-DEBUG - Replacing C2 with Henry SUN
-DEBUG - Replacing F1 with Roni WONG
-DEBUG - Looking for group 'Group 9', found students: ['H7', 'H8']
-DEBUG - Replacing H7 with Ho Yee HO
-DEBUG - Replacing H8 with Caitlyn YIP
-DEBUG - Cell R24 updated to: 'Acting Class
-(Room Acting Class)
-Group 2
-Max TAM, Cybi CHENG
-Group 5
-Icelyn GE, Luna ZUO, Evan QI
-Group 7
-Henry SUN, Roni WONG
-Group 9
-Ho Yee HO, Caitlyn YIP'
-DEBUG - Found complex group match in S24: 'Group 1
-(Room Sivan)'
-DEBUG - Group numbers: '1', Activity: '(Room Sivan)'
-DEBUG - Looking for group 'Group 1', found students: ['C3', 'H2', 'F4']
-DEBUG - Replacing C3 with Peter CHAN
-DEBUG - Replacing H2 with Jansci WONG
-DEBUG - Replacing F4 with Yanis SZE
-DEBUG - Cell S24 updated to: '
-(Room Sivan)
-Group 1
-Peter CHAN, Jansci WONG, Yanis SZE'
-DEBUG - Found exact group match in W24: 'Group 6'
-DEBUG - Looking for group 'Group 6', found students: ['H3', 'F2']
-DEBUG - Replacing H3 with Shannon CHENG, Harp
-DEBUG - Replacing F2 with Hailey LEUNG, Flute
-DEBUG - Cell W24 updated to: 'Group 6
-Shannon CHENG, Harp
-Hailey LEUNG, Flute'
-DEBUG - Found exact group match in X24: 'Group 4'
-DEBUG - Looking for group 'Group 4', found students: ['C4', 'F6']
-DEBUG - Replacing C4 with Yauyau NG, Cello
-DEBUG - Replacing F6 with Moses LO, Flute
-DEBUG - Cell X24 updated to: 'Group 4
-Yauyau NG, Cello
-Moses LO, Flute'
-DEBUG - Found complex group match in Y24: 'Group 2, 5, 7, 9 Acting Class (Room Acting Class)'
-DEBUG - Group numbers: '2, 5, 7, 9', Activity: 'Acting Class (Room Acting Class)'      
-DEBUG - Looking for group 'Group 2', found students: ['C1', 'F5']
-DEBUG - Replacing C1 with Max TAM
-DEBUG - Replacing F5 with Cybi CHENG
-DEBUG - Looking for group 'Group 5', found students: ['C5', 'H4', 'F3']
-DEBUG - Replacing C5 with Icelyn GE
-DEBUG - Replacing H4 with Luna ZUO
-DEBUG - Replacing F3 with Evan QI
-DEBUG - Looking for group 'Group 7', found students: ['C2', 'F1']
-DEBUG - Replacing C2 with Henry SUN
-DEBUG - Replacing F1 with Roni WONG
-DEBUG - Looking for group 'Group 9', found students: ['H7', 'H8']
-DEBUG - Replacing H7 with Ho Yee HO
-DEBUG - Replacing H8 with Caitlyn YIP
-DEBUG - Cell Y24 updated to: 'Acting Class
-(Room Acting Class)
-Group 2
-Max TAM, Cybi CHENG
-Group 5
-Icelyn GE, Luna ZUO, Evan QI
-Group 7
-Henry SUN, Roni WONG
-Group 9
-Ho Yee HO, Caitlyn YIP'
-DEBUG - Found complex group match in Z24: 'Group 1
-(Room Sivan)'
-DEBUG - Group numbers: '1', Activity: '(Room Sivan)'
-DEBUG - Looking for group 'Group 1', found students: ['C3', 'H2', 'F4']
-DEBUG - Replacing C3 with Peter CHAN
-DEBUG - Replacing H2 with Jansci WONG
-DEBUG - Replacing F4 with Yanis SZE
-DEBUG - Cell Z24 updated to: '
-(Room Sivan)
-Group 1
-Peter CHAN, Jansci WONG, Yanis SZE'
-DEBUG - Found exact group match in AD24: 'Group 6'
-DEBUG - Looking for group 'Group 6', found students: ['H3', 'F2']
-DEBUG - Replacing H3 with Shannon CHENG, Harp
-DEBUG - Replacing F2 with Hailey LEUNG, Flute
-DEBUG - Cell AD24 updated to: 'Group 6
-Shannon CHENG, Harp
-Hailey LEUNG, Flute'
-DEBUG - Found exact group match in AE24: 'Group 4'
-DEBUG - Looking for group 'Group 4', found students: ['C4', 'F6']
-DEBUG - Replacing C4 with Yauyau NG, Cello
-DEBUG - Replacing F6 with Moses LO, Flute
-DEBUG - Cell AE24 updated to: 'Group 4
-Yauyau NG, Cello
-Moses LO, Flute'
-DEBUG - Found complex group match in AF24: 'Group 2, 5, 7, 9 Group Activity (Room Group Activity)'
-DEBUG - Group numbers: '2, 5, 7, 9', Activity: 'Group Activity (Room Group Activity)'  
-DEBUG - Looking for group 'Group 2', found students: ['C1', 'F5']
-DEBUG - Replacing C1 with Max TAM
-DEBUG - Replacing F5 with Cybi CHENG
-DEBUG - Looking for group 'Group 5', found students: ['C5', 'H4', 'F3']
-DEBUG - Replacing C5 with Icelyn GE
-DEBUG - Replacing H4 with Luna ZUO
-DEBUG - Replacing F3 with Evan QI
-DEBUG - Looking for group 'Group 7', found students: ['C2', 'F1']
-DEBUG - Replacing C2 with Henry SUN
-DEBUG - Replacing F1 with Roni WONG
-DEBUG - Looking for group 'Group 9', found students: ['H7', 'H8']
-DEBUG - Replacing H7 with Ho Yee HO
-DEBUG - Replacing H8 with Caitlyn YIP
-DEBUG - Cell AF24 updated to: 'Group Activity
-(Room Group Activity)
-Group 2
-Max TAM, Cybi CHENG
-Group 5
-Icelyn GE, Luna ZUO, Evan QI
-Group 7
-Henry SUN, Roni WONG
-Group 9
-Ho Yee HO, Caitlyn YIP'
-DEBUG - Found complex group match in AG24: 'Group 1
-(Room Sivan)'
-DEBUG - Group numbers: '1', Activity: '(Room Sivan)'
-DEBUG - Looking for group 'Group 1', found students: ['C3', 'H2', 'F4']
-DEBUG - Replacing C3 with Peter CHAN
-DEBUG - Replacing H2 with Jansci WONG
-DEBUG - Replacing F4 with Yanis SZE
-DEBUG - Cell AG24 updated to: '
-(Room Sivan)
-Group 1
-Peter CHAN, Jansci WONG, Yanis SZE'
-DEBUG - Found exact group match in B28: 'Group 5'
-DEBUG - Looking for group 'Group 5', found students: ['C5', 'H4', 'F3']
-DEBUG - Replacing C5 with Icelyn GE, Cello
-DEBUG - Replacing H4 with Luna ZUO, Harp
-DEBUG - Replacing F3 with Evan QI, Flute
-DEBUG - Cell B28 updated to: 'Group 5
-Icelyn GE, Cello
-Luna ZUO, Harp
-Evan QI, Flute'
-DEBUG - Found complex group match in D28: 'Group 1, 3, 4, 6, 8 Acting Class (Room Acting Class)'
-DEBUG - Group numbers: '1, 3, 4, 6, 8', Activity: 'Acting Class (Room Acting Class)'   
-DEBUG - Looking for group 'Group 1', found students: ['C3', 'H2', 'F4']
-DEBUG - Replacing C3 with Peter CHAN
-DEBUG - Replacing H2 with Jansci WONG
-DEBUG - Replacing F4 with Yanis SZE
-DEBUG - Looking for group 'Group 3', found students: ['C6', 'H5']
-DEBUG - Replacing C6 with Ivy YUE
-DEBUG - Replacing H5 with Gabriel MOK
-DEBUG - Looking for group 'Group 4', found students: ['C4', 'F6']
-DEBUG - Replacing C4 with Yauyau NG
-DEBUG - Replacing F6 with Moses LO
-DEBUG - Looking for group 'Group 6', found students: ['H3', 'F2']
-DEBUG - Replacing H3 with Shannon CHENG
-DEBUG - Replacing F2 with Hailey LEUNG
-DEBUG - Looking for group 'Group 8', found students: ['H9', 'H1', 'H6']
-DEBUG - Replacing H9 with Eve LUNG
-DEBUG - Replacing H1 with Sonia SUNG
-DEBUG - Replacing H6 with Grace NG
-DEBUG - Cell D28 updated to: 'Acting Class
-(Room Acting Class)
-Group 1
-Peter CHAN, Jansci WONG, Yanis SZE
-Group 3
-Ivy YUE, Gabriel MOK
-Group 4
-Yauyau NG, Moses LO
-Group 6
-Shannon CHENG, Hailey LEUNG
-Group 8
-Eve LUNG, Sonia SUNG, Grace NG'
-DEBUG - Found complex group match in E28: 'Group 2
-(Room Tomasz)'
-DEBUG - Group numbers: '2', Activity: '(Room Tomasz)'
-DEBUG - Looking for group 'Group 2', found students: ['C1', 'F5']
-DEBUG - Replacing C1 with Max TAM
-DEBUG - Replacing F5 with Cybi CHENG
-DEBUG - Cell E28 updated to: '
-(Room Tomasz)
-Group 2
-Max TAM, Cybi CHENG'
-DEBUG - Found complex group match in F28: 'Group 7
-(Room Gwyneth)'
-DEBUG - Group numbers: '7', Activity: '(Room Gwyneth)'
-DEBUG - Looking for group 'Group 7', found students: ['C2', 'F1']
-DEBUG - Replacing C2 with Henry SUN
-DEBUG - Replacing F1 with Roni WONG
-DEBUG - Cell F28 updated to: '
-(Room Gwyneth)
-Group 7
-Henry SUN, Roni WONG'
-DEBUG - Found exact group match in I28: 'Group 5'
-DEBUG - Looking for group 'Group 5', found students: ['C5', 'H4', 'F3']
-DEBUG - Replacing C5 with Icelyn GE, Cello
-DEBUG - Replacing H4 with Luna ZUO, Harp
-DEBUG - Replacing F3 with Evan QI, Flute
-DEBUG - Cell I28 updated to: 'Group 5
-Icelyn GE, Cello
-Luna ZUO, Harp
-Evan QI, Flute'
-DEBUG - Found complex group match in K28: 'Group 1, 3, 4, 6, 8 Acting Class (Room Acting Class)'
-DEBUG - Group numbers: '1, 3, 4, 6, 8', Activity: 'Acting Class (Room Acting Class)'   
-DEBUG - Looking for group 'Group 1', found students: ['C3', 'H2', 'F4']
-DEBUG - Replacing C3 with Peter CHAN
-DEBUG - Replacing H2 with Jansci WONG
-DEBUG - Replacing F4 with Yanis SZE
-DEBUG - Looking for group 'Group 3', found students: ['C6', 'H5']
-DEBUG - Replacing C6 with Ivy YUE
-DEBUG - Replacing H5 with Gabriel MOK
-DEBUG - Looking for group 'Group 4', found students: ['C4', 'F6']
-DEBUG - Replacing C4 with Yauyau NG
-DEBUG - Replacing F6 with Moses LO
-DEBUG - Looking for group 'Group 6', found students: ['H3', 'F2']
-DEBUG - Replacing H3 with Shannon CHENG
-DEBUG - Replacing F2 with Hailey LEUNG
-DEBUG - Looking for group 'Group 8', found students: ['H9', 'H1', 'H6']
-DEBUG - Replacing H9 with Eve LUNG
-DEBUG - Replacing H1 with Sonia SUNG
-DEBUG - Replacing H6 with Grace NG
-DEBUG - Cell K28 updated to: 'Acting Class
-(Room Acting Class)
-Group 1
-Peter CHAN, Jansci WONG, Yanis SZE
-Group 3
-Ivy YUE, Gabriel MOK
-Group 4
-Yauyau NG, Moses LO
-Group 6
-Shannon CHENG, Hailey LEUNG
-Group 8
-Eve LUNG, Sonia SUNG, Grace NG'
-DEBUG - Found complex group match in L28: 'Group 2
-(Room Tomasz)'
-DEBUG - Group numbers: '2', Activity: '(Room Tomasz)'
-DEBUG - Looking for group 'Group 2', found students: ['C1', 'F5']
-DEBUG - Replacing C1 with Max TAM
-DEBUG - Replacing F5 with Cybi CHENG
-DEBUG - Cell L28 updated to: '
-(Room Tomasz)
-Group 2
-Max TAM, Cybi CHENG'
-DEBUG - Found complex group match in M28: 'Group 7
-(Room Gwyneth)'
-DEBUG - Group numbers: '7', Activity: '(Room Gwyneth)'
-DEBUG - Looking for group 'Group 7', found students: ['C2', 'F1']
-DEBUG - Replacing C2 with Henry SUN
-DEBUG - Replacing F1 with Roni WONG
-DEBUG - Cell M28 updated to: '
-(Room Gwyneth)
-Group 7
-Henry SUN, Roni WONG'
-DEBUG - Found exact group match in P28: 'Group 5'
-DEBUG - Looking for group 'Group 5', found students: ['C5', 'H4', 'F3']
-DEBUG - Replacing C5 with Icelyn GE, Cello
-DEBUG - Replacing H4 with Luna ZUO, Harp
-DEBUG - Replacing F3 with Evan QI, Flute
-DEBUG - Cell P28 updated to: 'Group 5
-Icelyn GE, Cello
-Luna ZUO, Harp
-Evan QI, Flute'
-DEBUG - Found complex group match in R28: 'Group 1, 3, 4, 6, 8 Acting Class (Room Acting Class)'
-DEBUG - Group numbers: '1, 3, 4, 6, 8', Activity: 'Acting Class (Room Acting Class)'   
-DEBUG - Looking for group 'Group 1', found students: ['C3', 'H2', 'F4']
-DEBUG - Replacing C3 with Peter CHAN
-DEBUG - Replacing H2 with Jansci WONG
-DEBUG - Replacing F4 with Yanis SZE
-DEBUG - Looking for group 'Group 3', found students: ['C6', 'H5']
-DEBUG - Replacing C6 with Ivy YUE
-DEBUG - Replacing H5 with Gabriel MOK
-DEBUG - Looking for group 'Group 4', found students: ['C4', 'F6']
-DEBUG - Replacing C4 with Yauyau NG
-DEBUG - Replacing F6 with Moses LO
-DEBUG - Looking for group 'Group 6', found students: ['H3', 'F2']
-DEBUG - Replacing H3 with Shannon CHENG
-DEBUG - Replacing F2 with Hailey LEUNG
-DEBUG - Looking for group 'Group 8', found students: ['H9', 'H1', 'H6']
-DEBUG - Replacing H9 with Eve LUNG
-DEBUG - Replacing H1 with Sonia SUNG
-DEBUG - Replacing H6 with Grace NG
-DEBUG - Cell R28 updated to: 'Acting Class
-(Room Acting Class)
-Group 1
-Peter CHAN, Jansci WONG, Yanis SZE
-Group 3
-Ivy YUE, Gabriel MOK
-Group 4
-Yauyau NG, Moses LO
-Group 6
-Shannon CHENG, Hailey LEUNG
-Group 8
-Eve LUNG, Sonia SUNG, Grace NG'
-DEBUG - Found complex group match in S28: 'Group 2
-(Room Tomasz)'
-DEBUG - Group numbers: '2', Activity: '(Room Tomasz)'
-DEBUG - Looking for group 'Group 2', found students: ['C1', 'F5']
-DEBUG - Replacing C1 with Max TAM
-DEBUG - Replacing F5 with Cybi CHENG
-DEBUG - Cell S28 updated to: '
-(Room Tomasz)
-Group 2
-Max TAM, Cybi CHENG'
-DEBUG - Found complex group match in T28: 'Group 7
-(Room Gwyneth)'
-DEBUG - Group numbers: '7', Activity: '(Room Gwyneth)'
-DEBUG - Looking for group 'Group 7', found students: ['C2', 'F1']
-DEBUG - Replacing C2 with Henry SUN
-DEBUG - Replacing F1 with Roni WONG
-DEBUG - Cell T28 updated to: '
-(Room Gwyneth)
-Group 7
-Henry SUN, Roni WONG'
-DEBUG - Found exact group match in W28: 'Group 5'
-DEBUG - Looking for group 'Group 5', found students: ['C5', 'H4', 'F3']
-DEBUG - Replacing C5 with Icelyn GE, Cello
-DEBUG - Replacing H4 with Luna ZUO, Harp
-DEBUG - Replacing F3 with Evan QI, Flute
-DEBUG - Cell W28 updated to: 'Group 5
-Icelyn GE, Cello
-Luna ZUO, Harp
-Evan QI, Flute'
-DEBUG - Found complex group match in Y28: 'Group 1, 3, 4, 6, 8 Acting Class (Room Acting Class)'
-DEBUG - Group numbers: '1, 3, 4, 6, 8', Activity: 'Acting Class (Room Acting Class)'   
-DEBUG - Looking for group 'Group 1', found students: ['C3', 'H2', 'F4']
-DEBUG - Replacing C3 with Peter CHAN
-DEBUG - Replacing H2 with Jansci WONG
-DEBUG - Replacing F4 with Yanis SZE
-DEBUG - Looking for group 'Group 3', found students: ['C6', 'H5']
-DEBUG - Replacing C6 with Ivy YUE
-DEBUG - Replacing H5 with Gabriel MOK
-DEBUG - Looking for group 'Group 4', found students: ['C4', 'F6']
-DEBUG - Replacing C4 with Yauyau NG
-DEBUG - Replacing F6 with Moses LO
-DEBUG - Looking for group 'Group 6', found students: ['H3', 'F2']
-DEBUG - Replacing H3 with Shannon CHENG
-DEBUG - Replacing F2 with Hailey LEUNG
-DEBUG - Looking for group 'Group 8', found students: ['H9', 'H1', 'H6']
-DEBUG - Replacing H9 with Eve LUNG
-DEBUG - Replacing H1 with Sonia SUNG
-DEBUG - Replacing H6 with Grace NG
-DEBUG - Cell Y28 updated to: 'Acting Class
-(Room Acting Class)
-Group 1
-Peter CHAN, Jansci WONG, Yanis SZE
-Group 3
-Ivy YUE, Gabriel MOK
-Group 4
-Yauyau NG, Moses LO
-Group 6
-Shannon CHENG, Hailey LEUNG
-Group 8
-Eve LUNG, Sonia SUNG, Grace NG'
-DEBUG - Found complex group match in Z28: 'Group 2
-(Room Tomasz)'
-DEBUG - Group numbers: '2', Activity: '(Room Tomasz)'
-DEBUG - Looking for group 'Group 2', found students: ['C1', 'F5']
-DEBUG - Replacing C1 with Max TAM
-DEBUG - Replacing F5 with Cybi CHENG
-DEBUG - Cell Z28 updated to: '
-(Room Tomasz)
-Group 2
-Max TAM, Cybi CHENG'
-DEBUG - Found complex group match in AA28: 'Group 7
-(Room Gwyneth)'
-DEBUG - Group numbers: '7', Activity: '(Room Gwyneth)'
-DEBUG - Looking for group 'Group 7', found students: ['C2', 'F1']
-DEBUG - Replacing C2 with Henry SUN
-DEBUG - Replacing F1 with Roni WONG
-DEBUG - Cell AA28 updated to: '
-(Room Gwyneth)
-Group 7
-Henry SUN, Roni WONG'
-DEBUG - Found exact group match in AD28: 'Group 5'
-DEBUG - Looking for group 'Group 5', found students: ['C5', 'H4', 'F3']
-DEBUG - Replacing C5 with Icelyn GE, Cello
-DEBUG - Replacing H4 with Luna ZUO, Harp
-DEBUG - Replacing F3 with Evan QI, Flute
-DEBUG - Cell AD28 updated to: 'Group 5
-Icelyn GE, Cello
-Luna ZUO, Harp
-Evan QI, Flute'
-DEBUG - Found complex group match in AF28: 'Group 1, 3, 4, 6, 8 Group Activity (Room Group Activity)'
-DEBUG - Group numbers: '1, 3, 4, 6, 8', Activity: 'Group Activity (Room Group Activity)'
-DEBUG - Looking for group 'Group 1', found students: ['C3', 'H2', 'F4']
-DEBUG - Replacing C3 with Peter CHAN
-DEBUG - Replacing H2 with Jansci WONG
-DEBUG - Replacing F4 with Yanis SZE
-DEBUG - Looking for group 'Group 3', found students: ['C6', 'H5']
-DEBUG - Replacing C6 with Ivy YUE
-DEBUG - Replacing H5 with Gabriel MOK
-DEBUG - Looking for group 'Group 4', found students: ['C4', 'F6']
-DEBUG - Replacing C4 with Yauyau NG
-DEBUG - Replacing F6 with Moses LO
-DEBUG - Looking for group 'Group 6', found students: ['H3', 'F2']
-DEBUG - Replacing H3 with Shannon CHENG
-DEBUG - Replacing F2 with Hailey LEUNG
-DEBUG - Looking for group 'Group 8', found students: ['H9', 'H1', 'H6']
-DEBUG - Replacing H9 with Eve LUNG
-DEBUG - Replacing H1 with Sonia SUNG
-DEBUG - Replacing H6 with Grace NG
-DEBUG - Cell AF28 updated to: 'Group Activity
-(Room Group Activity)
-Group 1
-Peter CHAN, Jansci WONG, Yanis SZE
-Group 3
-Ivy YUE, Gabriel MOK
-Group 4
-Yauyau NG, Moses LO
-Group 6
-Shannon CHENG, Hailey LEUNG
-Group 8
-Eve LUNG, Sonia SUNG, Grace NG'
-DEBUG - Found complex group match in AG28: 'Group 2
-(Room Tomasz)'
-DEBUG - Group numbers: '2', Activity: '(Room Tomasz)'
-DEBUG - Looking for group 'Group 2', found students: ['C1', 'F5']
-DEBUG - Replacing C1 with Max TAM
-DEBUG - Replacing F5 with Cybi CHENG
-DEBUG - Cell AG28 updated to: '
-(Room Tomasz)
-Group 2
-Max TAM, Cybi CHENG'
-DEBUG - Found complex group match in AH28: 'Group 7
-(Room Gwyneth)'
-DEBUG - Group numbers: '7', Activity: '(Room Gwyneth)'
-DEBUG - Looking for group 'Group 7', found students: ['C2', 'F1']
-DEBUG - Replacing C2 with Henry SUN
-DEBUG - Replacing F1 with Roni WONG
-DEBUG - Cell AH28 updated to: '
-(Room Gwyneth)
-Group 7
-Henry SUN, Roni WONG'
-DEBUG - Found student IDs in C42: ['F1']
-DEBUG - Replacing student ID F1 with Roni WONG
-DEBUG - Cell C42 updated from 'F1' to 'Roni WONG'
-DEBUG - Found student IDs in C43: ['F2']
-DEBUG - Replacing student ID F2 with Hailey LEUNG
-DEBUG - Cell C43 updated from 'F2' to 'Hailey LEUNG'
-DEBUG - Found student IDs in C44: ['F3']
-DEBUG - Replacing student ID F3 with Evan QI
-DEBUG - Cell C44 updated from 'F3' to 'Evan QI'
-DEBUG - Found student IDs in C45: ['F4']
-DEBUG - Replacing student ID F4 with Yanis SZE
-DEBUG - Cell C45 updated from 'F4' to 'Yanis SZE'
-DEBUG - Found student IDs in C46: ['F5']
-DEBUG - Replacing student ID F5 with Cybi CHENG
-DEBUG - Cell C46 updated from 'F5' to 'Cybi CHENG'
-DEBUG - Found student IDs in C47: ['F6']
-DEBUG - Replacing student ID F6 with Moses LO
-DEBUG - Cell C47 updated from 'F6' to 'Moses LO'
-DEBUG - Sheet 'Flute-Camp-A' summary: 199 cells processed, 118 cells modified
-    Auto-resizing columns for sheet 'Flute-Camp-A'...
-Traceback (most recent call last):
-  File "c:\Users\user\Desktop\Python\summer-camp-time-table\update_master_timetable.py", line 304, in <module>
-    update_master_timetable()
-    ^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "c:\Users\user\Desktop\Python\summer-camp-time-table\update_master_timetable.py", line 264, in update_master_timetable
-    column_letter = column_cells[0].column_letter
-                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-AttributeError: 'MergedCell' object has no attribute 'column_letter'
-PS C:\Users\user\Desktop\Python\summer-camp-time-table> 
+  - Processing sheet: 'Jason-LIU-campB'
+DEBUG - Pianist: 'Jason-LIU', Camp: 'campb'
+DEBUG - Processed 50 rows of data
+DEBUG - Copied 50 rows to new worksheet
+DEBUG - Merged cells in column 2, rows 3 to 5
+DEBUG - Merged cells in column 2, rows 7 to 9
+DEBUG - Merged cells in column 2, rows 11 to 13
+DEBUG - Merged cells in column 2, rows 15 to 17
+DEBUG - Merged cells in column 2, rows 19 to 21
+DEBUG - Merged cells in column 2, rows 23 to 25
+DEBUG - Merged cells in column 2, rows 27 to 30
+DEBUG - Merged cells in column 2, rows 32 to 50
+DEBUG - Merged cells in column 3, rows 3 to 5
+DEBUG - Merged cells in column 3, rows 7 to 9
+DEBUG - Merged cells in column 3, rows 11 to 13
+DEBUG - Merged cells in column 3, rows 15 to 17
+DEBUG - Merged cells in column 3, rows 19 to 21
+DEBUG - Merged cells in column 3, rows 23 to 25
+DEBUG - Merged cells in column 3, rows 27 to 30
+DEBUG - Merged cells in column 3, rows 32 to 50
+DEBUG - Merged cells in column 4, rows 1 to 5
+DEBUG - Merged cells in column 4, rows 7 to 9
+DEBUG - Merged cells in column 4, rows 11 to 13
+DEBUG - Merged cells in column 4, rows 15 to 17
+DEBUG - Merged cells in column 4, rows 19 to 21
+DEBUG - Merged cells in column 4, rows 23 to 25
+DEBUG - Merged cells in column 4, rows 27 to 30
+DEBUG - Merged cells in column 4, rows 32 to 50
+DEBUG - Merged cells in column 5, rows 3 to 5
+DEBUG - Merged cells in column 5, rows 7 to 9
+DEBUG - Merged cells in column 5, rows 11 to 13
+DEBUG - Merged cells in column 5, rows 15 to 17
+DEBUG - Merged cells in column 5, rows 19 to 21
+DEBUG - Merged cells in column 5, rows 23 to 25
+DEBUG - Merged cells in column 5, rows 27 to 30
+DEBUG - Merged cells in column 5, rows 32 to 50
+DEBUG - Merged cells in column 6, rows 3 to 5
+DEBUG - Merged cells in column 6, rows 7 to 13
+DEBUG - Merged cells in column 6, rows 15 to 17
+DEBUG - Merged cells in column 6, rows 19 to 21
+DEBUG - Merged cells in column 6, rows 23 to 25
+DEBUG - Merged cells in column 6, rows 27 to 30
+DEBUG - Merged cells in column 6, rows 32 to 50
+DEBUG - Merged cells in column 7, rows 3 to 5
+DEBUG - Merged cells in column 7, rows 7 to 13
+DEBUG - Merged cells in column 7, rows 15 to 18
+DEBUG - Merged cells in column 7, rows 21 to 25
+DEBUG - Merged cells in column 7, rows 27 to 28
+DEBUG - Merged cells in column 7, rows 30 to 31
+DEBUG - Merged cells in column 7, rows 33 to 35
+DEBUG - Merged cells in column 7, rows 37 to 40
+DEBUG - Merged cells in column 7, rows 42 to 43
+DEBUG - Merged cells in column 7, rows 45 to 50
+    Applying formatting for sheet 'Jason-LIU-campB'...
+    Successfully saved 'pianist_timetables\Jason-LIU_CampB_timetable.xlsx'
+
+  - Processing sheet: 'Queena-Chu-campA'
+DEBUG - Pianist: 'Queena-Chu', Camp: 'campa'
+DEBUG - Processed 50 rows of data
+DEBUG - Copied 50 rows to new worksheet
+DEBUG - Merged cells in column 2, rows 3 to 5
+DEBUG - Merged cells in column 2, rows 7 to 9
+DEBUG - Merged cells in column 2, rows 11 to 13
+DEBUG - Merged cells in column 2, rows 15 to 17
+DEBUG - Merged cells in column 2, rows 19 to 21
+DEBUG - Merged cells in column 2, rows 23 to 25
+DEBUG - Merged cells in column 2, rows 27 to 30
+DEBUG - Merged cells in column 2, rows 32 to 50
+DEBUG - Merged cells in column 3, rows 3 to 5
+DEBUG - Merged cells in column 3, rows 7 to 9
+DEBUG - Merged cells in column 3, rows 11 to 13
+DEBUG - Merged cells in column 3, rows 15 to 17
+DEBUG - Merged cells in column 3, rows 19 to 21
+DEBUG - Merged cells in column 3, rows 23 to 25
+DEBUG - Merged cells in column 3, rows 27 to 30
+DEBUG - Merged cells in column 3, rows 32 to 50
+DEBUG - Merged cells in column 4, rows 1 to 5
+DEBUG - Merged cells in column 4, rows 7 to 9
+DEBUG - Merged cells in column 4, rows 11 to 13
+DEBUG - Merged cells in column 4, rows 15 to 17
+DEBUG - Merged cells in column 4, rows 19 to 21
+DEBUG - Merged cells in column 4, rows 23 to 25
+DEBUG - Merged cells in column 4, rows 27 to 30
+DEBUG - Merged cells in column 4, rows 32 to 50
+DEBUG - Merged cells in column 5, rows 3 to 5
+DEBUG - Merged cells in column 5, rows 7 to 9
+DEBUG - Merged cells in column 5, rows 11 to 13
+DEBUG - Merged cells in column 5, rows 15 to 17
+DEBUG - Merged cells in column 5, rows 19 to 21
+DEBUG - Merged cells in column 5, rows 23 to 25
+DEBUG - Merged cells in column 5, rows 27 to 30
+DEBUG - Merged cells in column 5, rows 32 to 50
+DEBUG - Merged cells in column 6, rows 3 to 5
+DEBUG - Merged cells in column 6, rows 7 to 13
+DEBUG - Merged cells in column 6, rows 15 to 17
+DEBUG - Merged cells in column 6, rows 19 to 21
+DEBUG - Merged cells in column 6, rows 23 to 25
+DEBUG - Merged cells in column 6, rows 27 to 30
+DEBUG - Merged cells in column 6, rows 32 to 50
+DEBUG - Merged cells in column 7, rows 1 to 5
+DEBUG - Merged cells in column 7, rows 7 to 13
+DEBUG - Merged cells in column 7, rows 15 to 18
+DEBUG - Merged cells in column 7, rows 21 to 25
+DEBUG - Merged cells in column 7, rows 27 to 28
+DEBUG - Merged cells in column 7, rows 30 to 31
+DEBUG - Merged cells in column 7, rows 33 to 35
+DEBUG - Merged cells in column 7, rows 37 to 40
+DEBUG - Merged cells in column 7, rows 42 to 43
+DEBUG - Merged cells in column 7, rows 45 to 50
+    Applying formatting for sheet 'Queena-Chu-campA'...
+    Successfully saved 'pianist_timetables\Queena-Chu_CampA_timetable.xlsx'
+
+  - Processing sheet: 'Shelley_NG-campA'
+DEBUG - Pianist: 'Shelley_NG', Camp: 'campa'
+DEBUG - Processed 57 rows of data
+DEBUG - Copied 57 rows to new worksheet
+DEBUG - Merged cells in column 2, rows 3 to 5
+DEBUG - Merged cells in column 2, rows 7 to 9
+DEBUG - Merged cells in column 2, rows 11 to 13
+DEBUG - Merged cells in column 2, rows 15 to 17
+DEBUG - Merged cells in column 2, rows 19 to 21
+DEBUG - Merged cells in column 2, rows 23 to 25
+DEBUG - Merged cells in column 2, rows 27 to 57
+DEBUG - Merged cells in column 3, rows 3 to 5
+DEBUG - Merged cells in column 3, rows 7 to 9
+DEBUG - Merged cells in column 3, rows 11 to 17
+DEBUG - Merged cells in column 3, rows 19 to 21
+DEBUG - Merged cells in column 3, rows 23 to 25
+DEBUG - Merged cells in column 3, rows 27 to 30
+DEBUG - Merged cells in column 3, rows 32 to 57
+DEBUG - Merged cells in column 4, rows 1 to 5
+DEBUG - Merged cells in column 4, rows 7 to 9
+DEBUG - Merged cells in column 4, rows 11 to 13
+DEBUG - Merged cells in column 4, rows 15 to 17
+DEBUG - Merged cells in column 4, rows 19 to 21
+DEBUG - Merged cells in column 4, rows 23 to 25
+DEBUG - Merged cells in column 4, rows 27 to 30
+DEBUG - Merged cells in column 4, rows 32 to 57
+DEBUG - Merged cells in column 5, rows 3 to 5
+DEBUG - Merged cells in column 5, rows 7 to 9
+DEBUG - Merged cells in column 5, rows 11 to 13
+DEBUG - Merged cells in column 5, rows 15 to 17
+DEBUG - Merged cells in column 5, rows 19 to 21
+DEBUG - Merged cells in column 5, rows 23 to 25
+DEBUG - Merged cells in column 5, rows 27 to 30
+DEBUG - Merged cells in column 5, rows 32 to 57
+DEBUG - Merged cells in column 6, rows 3 to 5
+DEBUG - Merged cells in column 6, rows 7 to 13
+DEBUG - Merged cells in column 6, rows 15 to 17
+DEBUG - Merged cells in column 6, rows 19 to 21
+DEBUG - Merged cells in column 6, rows 23 to 25
+DEBUG - Merged cells in column 6, rows 27 to 30
+DEBUG - Merged cells in column 6, rows 32 to 57
+DEBUG - Merged cells in column 7, rows 1 to 5
+DEBUG - Merged cells in column 7, rows 7 to 13
+DEBUG - Merged cells in column 7, rows 15 to 18
+DEBUG - Merged cells in column 7, rows 21 to 25
+DEBUG - Merged cells in column 7, rows 27 to 28
+DEBUG - Merged cells in column 7, rows 30 to 31
+DEBUG - Merged cells in column 7, rows 33 to 35
+DEBUG - Merged cells in column 7, rows 37 to 40
+DEBUG - Merged cells in column 7, rows 42 to 43
+DEBUG - Merged cells in column 7, rows 45 to 57
+    Applying formatting for sheet 'Shelley_NG-campA'...
+    Successfully saved 'pianist_timetables\Shelley_NG_CampA_timetable.xlsx'
+
+  - Processing sheet: 'Shelley_NG-campB'
+DEBUG - Pianist: 'Shelley_NG', Camp: 'campb'
+DEBUG - Processed 50 rows of data
+DEBUG - Copied 50 rows to new worksheet
+DEBUG - Merged cells in column 2, rows 3 to 5
+DEBUG - Merged cells in column 2, rows 7 to 9
+DEBUG - Merged cells in column 2, rows 11 to 13
+DEBUG - Merged cells in column 2, rows 15 to 17
+DEBUG - Merged cells in column 2, rows 19 to 21
+DEBUG - Merged cells in column 2, rows 23 to 25
+DEBUG - Merged cells in column 2, rows 27 to 30
+DEBUG - Merged cells in column 2, rows 32 to 50
+DEBUG - Merged cells in column 3, rows 3 to 5
+DEBUG - Merged cells in column 3, rows 7 to 9
+DEBUG - Merged cells in column 3, rows 11 to 13
+DEBUG - Merged cells in column 3, rows 15 to 17
+DEBUG - Merged cells in column 3, rows 19 to 21
+DEBUG - Merged cells in column 3, rows 23 to 25
+DEBUG - Merged cells in column 3, rows 27 to 30
+DEBUG - Merged cells in column 3, rows 32 to 50
+DEBUG - Merged cells in column 4, rows 1 to 5
+DEBUG - Merged cells in column 4, rows 7 to 9
+DEBUG - Merged cells in column 4, rows 11 to 13
+DEBUG - Merged cells in column 4, rows 15 to 17
+DEBUG - Merged cells in column 4, rows 19 to 21
+DEBUG - Merged cells in column 4, rows 23 to 25
+DEBUG - Merged cells in column 4, rows 27 to 30
+DEBUG - Merged cells in column 4, rows 32 to 50
+DEBUG - Merged cells in column 5, rows 3 to 5
+DEBUG - Merged cells in column 5, rows 7 to 9
+DEBUG - Merged cells in column 5, rows 11 to 13
+DEBUG - Merged cells in column 5, rows 15 to 17
+DEBUG - Merged cells in column 5, rows 19 to 21
+DEBUG - Merged cells in column 5, rows 23 to 25
+DEBUG - Merged cells in column 5, rows 27 to 30
+DEBUG - Merged cells in column 5, rows 32 to 50
+DEBUG - Merged cells in column 6, rows 3 to 5
+DEBUG - Merged cells in column 6, rows 7 to 13
+DEBUG - Merged cells in column 6, rows 15 to 17
+DEBUG - Merged cells in column 6, rows 19 to 21
+DEBUG - Merged cells in column 6, rows 23 to 25
+DEBUG - Merged cells in column 6, rows 27 to 30
+DEBUG - Merged cells in column 6, rows 32 to 50
+DEBUG - Merged cells in column 7, rows 1 to 5
+DEBUG - Merged cells in column 7, rows 7 to 13
+DEBUG - Merged cells in column 7, rows 15 to 18
+DEBUG - Merged cells in column 7, rows 21 to 25
+DEBUG - Merged cells in column 7, rows 27 to 28
+DEBUG - Merged cells in column 7, rows 30 to 31
+DEBUG - Merged cells in column 7, rows 33 to 35
+DEBUG - Merged cells in column 7, rows 37 to 40
+DEBUG - Merged cells in column 7, rows 42 to 43
+DEBUG - Merged cells in column 7, rows 45 to 50
+    Applying formatting for sheet 'Shelley_NG-campB'...
+    Successfully saved 'pianist_timetables\Shelley_NG_CampB_timetable.xlsx'
+
+  - Processing sheet: 'Vincci-CHAN-campB'
+DEBUG - Pianist: 'Vincci-CHAN', Camp: 'campb'
+DEBUG - Processed 50 rows of data
+DEBUG - Copied 50 rows to new worksheet
+DEBUG - Merged cells in column 2, rows 3 to 5
+DEBUG - Merged cells in column 2, rows 7 to 9
+DEBUG - Merged cells in column 2, rows 11 to 13
+DEBUG - Merged cells in column 2, rows 15 to 17
+DEBUG - Merged cells in column 2, rows 19 to 21
+DEBUG - Merged cells in column 2, rows 23 to 25
+DEBUG - Merged cells in column 2, rows 27 to 30
+DEBUG - Merged cells in column 2, rows 32 to 50
+DEBUG - Merged cells in column 3, rows 3 to 5
+DEBUG - Merged cells in column 3, rows 7 to 9
+DEBUG - Merged cells in column 3, rows 11 to 13
+DEBUG - Merged cells in column 3, rows 15 to 17
+DEBUG - Merged cells in column 3, rows 19 to 21
+DEBUG - Merged cells in column 3, rows 23 to 25
+DEBUG - Merged cells in column 3, rows 27 to 30
+DEBUG - Merged cells in column 3, rows 32 to 50
+DEBUG - Merged cells in column 4, rows 1 to 5
+DEBUG - Merged cells in column 4, rows 7 to 9
+DEBUG - Merged cells in column 4, rows 11 to 13
+DEBUG - Merged cells in column 4, rows 15 to 17
+DEBUG - Merged cells in column 4, rows 19 to 21
+DEBUG - Merged cells in column 4, rows 23 to 25
+DEBUG - Merged cells in column 4, rows 27 to 30
+DEBUG - Merged cells in column 4, rows 32 to 50
+DEBUG - Merged cells in column 5, rows 3 to 5
+DEBUG - Merged cells in column 5, rows 7 to 9
+DEBUG - Merged cells in column 5, rows 11 to 13
+DEBUG - Merged cells in column 5, rows 15 to 17
+DEBUG - Merged cells in column 5, rows 19 to 21
+DEBUG - Merged cells in column 5, rows 23 to 25
+DEBUG - Merged cells in column 5, rows 27 to 30
+DEBUG - Merged cells in column 5, rows 32 to 50
+DEBUG - Merged cells in column 6, rows 3 to 5
+DEBUG - Merged cells in column 6, rows 7 to 13
+DEBUG - Merged cells in column 6, rows 15 to 17
+DEBUG - Merged cells in column 6, rows 19 to 21
+DEBUG - Merged cells in column 6, rows 23 to 25
+DEBUG - Merged cells in column 6, rows 27 to 30
+DEBUG - Merged cells in column 6, rows 32 to 50
+DEBUG - Merged cells in column 7, rows 1 to 5
+DEBUG - Merged cells in column 7, rows 7 to 13
+DEBUG - Merged cells in column 7, rows 15 to 18
+DEBUG - Merged cells in column 7, rows 21 to 25
+DEBUG - Merged cells in column 7, rows 27 to 28
+DEBUG - Merged cells in column 7, rows 30 to 31
+DEBUG - Merged cells in column 7, rows 33 to 35
+DEBUG - Merged cells in column 7, rows 37 to 40
+DEBUG - Merged cells in column 7, rows 42 to 43
+DEBUG - Merged cells in column 7, rows 45 to 50
+    Applying formatting for sheet 'Vincci-CHAN-campB'...
+    Successfully saved 'pianist_timetables\Vincci-CHAN_CampB_timetable.xlsx'
+

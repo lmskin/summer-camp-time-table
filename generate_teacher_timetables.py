@@ -301,43 +301,42 @@ def generate_teacher_timetables(input_filename):
         # Merge teacher name across all columns in row 1
         teacher_ws.merge_cells(start_row=1, start_column=1, end_row=1, end_column=current_col-1)
 
-        # Auto-fit column widths based on content to accommodate complete lines
+        # Set column widths: Time column auto-fit, date columns set to 80
         for column in teacher_ws.columns:
             column_letter = get_column_letter(column[0].column)
-            max_length = 0
-            for cell in column:
-                try:
-                    if cell.value:
-                        # Count lines and find the longest line
-                        lines = str(cell.value).split('\n')
-                        max_line_length = max(len(line) for line in lines) if lines else 0
-                        if max_line_length > max_length:
-                            max_length = max_line_length
-                except:
-                    pass
+            column_number = column[0].column
             
-            # Calculate width to accommodate complete lines without wrapping
-            # Account for 14pt font size (slightly larger than default 11pt)
-            # Use consistent padding of 2 across all cells
-            font_size_factor = 1.3  # Factor to account for 14pt font vs default
-            padding = 2  # Consistent padding for all cells
-            
-            if max_length > 0:
-                # For content columns: ensure complete lines fit, with consistent padding
-                adjusted_width = max(max_length * font_size_factor + padding, 15)
-                # Remove the strict 60-character limit to allow full content to display
-                adjusted_width = min(adjusted_width, 100)  # Reasonable maximum to prevent extreme widths
-            else:
-                # For empty columns: minimum width with same padding
-                adjusted_width = 15
+            if column_number == 1:  # Time column
+                # Auto-fit time column based on content
+                max_length = 0
+                for cell in column:
+                    try:
+                        if cell.value:
+                            lines = str(cell.value).split('\n')
+                            max_line_length = max(len(line) for line in lines) if lines else 0
+                            if max_line_length > max_length:
+                                max_length = max_line_length
+                    except:
+                        pass
                 
-            teacher_ws.column_dimensions[column_letter].width = adjusted_width
+                # Set reasonable width for time column
+                font_size_factor = 1.3
+                padding = 2
+                if max_length > 0:
+                    adjusted_width = max(max_length * font_size_factor + padding, 15)
+                    adjusted_width = min(adjusted_width, 25)  # Reasonable max for time column
+                else:
+                    adjusted_width = 15
+                teacher_ws.column_dimensions[column_letter].width = adjusted_width
+            else:  # Date columns (Monday to Saturday)
+                # Set date columns to width 80
+                teacher_ws.column_dimensions[column_letter].width = 80
 
         # Set specific row heights as requested
-        teacher_ws.row_dimensions[1].height = 50  # Teacher name header
-        teacher_ws.row_dimensions[2].height = 18  # Date headers
+        teacher_ws.row_dimensions[1].height = 35  # Teacher name header
+        teacher_ws.row_dimensions[2].height = 35  # Date headers
         for row_index in range(3, teacher_ws.max_row + 1):
-            teacher_ws.row_dimensions[row_index].height = 50  # Time and data rows
+            teacher_ws.row_dimensions[row_index].height = 35  # Time and data rows
 
         # Apply borders, alignment, and font to all cells
         for row in teacher_ws.iter_rows(min_row=1, max_row=teacher_ws.max_row, min_col=1, max_col=teacher_ws.max_column):
