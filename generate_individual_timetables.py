@@ -114,6 +114,7 @@ def load_group_mappings(filename, music_instrument):
     """
     Loads group-to-student mappings from the specified CSV file.
     The CSV should have 'group_number' and 'student_no' columns.
+    Since we're now working with student names instead of IDs, we'll try to map both.
     """
     group_mappings = {}
     try:
@@ -125,9 +126,22 @@ def load_group_mappings(filename, music_instrument):
 
                 if group_number and student_nos_str:
                     group_name = f"Group {group_number.strip()}"
-                    # Extract student IDs based on instrument prefix
+                    
+                    # Extract student IDs based on instrument prefix (for backwards compatibility)
                     instrument_prefix = music_instrument[0].upper()
                     found_students = re.findall(rf'\b{instrument_prefix}\d+\b', student_nos_str)
+                    
+                    # Also try to extract student names (anything that's not an ID pattern)
+                    # Split by common delimiters and clean up
+                    potential_names = re.split(r'[,;&\n]+', student_nos_str)
+                    for name in potential_names:
+                        name = name.strip()
+                        # If it's not a student ID pattern and has letters, consider it a name
+                        if (name and 
+                            not re.match(rf'^{instrument_prefix}\d+$', name) and
+                            len(name) >= 2 and 
+                            re.search(r'[A-Za-z]', name)):
+                            found_students.append(name)
                     
                     if found_students:
                         if group_name not in group_mappings:
@@ -228,16 +242,67 @@ def generate_individual_timetables(input_filename):
 
     # Find all unique students across all processed sheets
     all_students = set()
+    
+    # Debug: Let's see what's actually in the cells
+    print("🔍 Debugging cell contents...")
+    sample_count = 0
+    for sheet_name, sheet_data in processed_sheets.items():
+        print(f"  Sheet: {sheet_name}")
+        schedule_rows = sheet_data[2:]  # Schedule data starts from the third row
+        for row_idx, row in enumerate(schedule_rows[:3]):  # Show first 3 rows as sample
+            for col_idx, cell in enumerate(row[1:3]):  # Show first 2 columns as sample
+                if cell and str(cell).strip():
+                    print(f"    Row {row_idx+3}, Col {col_idx+2}: '{cell}'")
+                    sample_count += 1
+                    if sample_count >= 10:  # Limit debug output
+                        break
+            if sample_count >= 10:
+                break
+        if sample_count >= 10:
+            break
+    
+    # Extract student names from cells (look for names that appear to be students)
     for sheet_name, sheet_data in processed_sheets.items():
         schedule_rows = sheet_data[2:]  # Schedule data starts from the third row
         for row in schedule_rows:
             for cell in row[1:]:
-                if isinstance(cell, str):
-                    # Extract student IDs based on instrument prefix
-                    instrument_prefix = music_instrument[0].upper()
-                    found_students = re.findall(rf'\b{instrument_prefix}\d+\b', cell)
-                    for s in found_students:
-                        all_students.add(s)
+                if isinstance(cell, str) and cell.strip():
+                    cell_content = cell.strip()
+                    
+                    # Skip obviously non-student entries
+                    skip_patterns = [
+                        r'^\d{1,2}:\d{2}',  # Time patterns
+                        r'^(lunch|break|welcome|workshop|toilet|rehearsal|concert|briefing|yoga|regulation|masterclass|ensemble|practice|room|group)',  # Common activities
+                        r'^(monday|tuesday|wednesday|thursday|friday|saturday|sunday)',  # Day names
+                        r'^\d+$',  # Just numbers
+                        r'^[A-Z]{1,3}\d+[A-Z]?$',  # Room codes like UG24, B123
+                    ]
+                    
+                    should_skip = False
+                    for pattern in skip_patterns:
+                        if re.match(pattern, cell_content, re.IGNORECASE):
+                            should_skip = True
+                            break
+                    
+                    if should_skip:
+                        continue
+                    
+                    # Look for what appears to be student names (contains letters, possibly spaces)
+                    # Names should be at least 2 characters and contain letters
+                    if (len(cell_content) >= 2 and 
+                        re.search(r'[A-Za-z]', cell_content) and 
+                        not re.search(r'^\d+$', cell_content)):
+                        
+                        # Extract individual names if multiple names are in one cell
+                        # Split by common delimiters
+                        potential_names = re.split(r'[,;&\n]+', cell_content)
+                        
+                        for name in potential_names:
+                            name = name.strip()
+                            if (len(name) >= 2 and 
+                                re.search(r'[A-Za-z]', name) and
+                                not re.match(r'^\d+$', name)):
+                                all_students.add(name)
 
     print(f"Found {len(all_students)} students: {sorted(all_students)}")
 
@@ -367,8 +432,8 @@ def generate_individual_timetables(input_filename):
                         if not activity:
                             continue
 
-                        # Handle Masterclass activities containing student's ID
-                        if not activity_found_for_timeslot and 'masterclass' in activity.lower() and re.search(r'\b' + re.escape(student) + r'\b', activity):
+                        # Handle Masterclass activities containing student's name
+                        if not activity_found_for_timeslot and 'masterclass' in activity.lower() and student.lower() in activity.lower():
                             teacher = None
                             # Try to find teacher from the mapping in the activity string
                             for known_teacher in sorted(room_mappings.keys(), key=len, reverse=True):
@@ -382,19 +447,27 @@ def generate_individual_timetables(input_filename):
 
                             room_number = room_mappings.get(teacher, "TBD")
 
-                            # Clean up activity description
-                            instrument_prefix = music_instrument[0].upper()
-                            base_activity = re.sub(rf'\b{instrument_prefix}\d+\b,?\s*', '', activity).strip()
+                            # Clean up activity description - remove student name
+                            base_activity = activity
+                            # Remove the student name (case insensitive)
+                            base_activity = re.sub(re.escape(student), '', base_activity, flags=re.IGNORECASE).strip()
+                            # Remove any existing room string
                             base_activity = re.sub(r'\s*\([^)]+\)$', '', base_activity).strip()
+                            # Clean up extra commas and spaces
+                            base_activity = re.sub(r'[,\s]+', ' ', base_activity).strip()
 
                             desc = f"{base_activity}\n({room_number})"
                             student_schedule.append((time, desc))
                             activity_found_for_timeslot = True
 
-                        # Handle direct student matches (private lessons, etc.)
-                        if not activity_found_for_timeslot and re.search(r'\b' + re.escape(student) + r'\b', activity):
-                            cleaned_activity = re.sub(r'\b' + re.escape(student) + r'\b', '', activity).strip()
-                            is_private_lesson = (activity.strip() == student) or ('private lesson' in cleaned_activity.lower())
+                        # Handle direct student name matches (private lessons, etc.)
+                        if not activity_found_for_timeslot and student.lower() in activity.lower():
+                            # Remove student name from activity
+                            cleaned_activity = re.sub(re.escape(student), '', activity, flags=re.IGNORECASE).strip()
+                            # Clean up extra commas and spaces
+                            cleaned_activity = re.sub(r'^[,\s]+|[,\s]+$', '', cleaned_activity).strip()
+                            
+                            is_private_lesson = (activity.strip().lower() == student.lower()) or ('private lesson' in cleaned_activity.lower())
                             
                             # Check for "Lesson with {teacher} & pianist" pattern
                             pianist_lesson_match = re.search(r'lesson with (.+?) & pianist', cleaned_activity.lower())
@@ -492,12 +565,11 @@ def generate_individual_timetables(input_filename):
                         if not activity:
                             continue
                         
-                        # Skip MasterClass activities that contain other student IDs
+                        # Skip MasterClass activities that contain other student names
                         if 'masterclass' in activity.lower():
-                            instrument_prefix = music_instrument[0].upper()
-                            found_students = re.findall(rf'\b{instrument_prefix}\d+\b', activity)
-                            if found_students and student not in found_students:
-                                continue
+                            # Check if this activity contains the current student's name
+                            if student.lower() not in activity.lower():
+                                continue  # Skip this MasterClass as it doesn't include current student
                         
                         for common_activity in common_activities:
                             if common_activity in activity:
@@ -526,7 +598,21 @@ def generate_individual_timetables(input_filename):
         student_ws.title = "Full Timetable"
 
         # Add student name in row 1
-        student_name = student_name_map.get(student, student)
+        # If we have a mapping from student ID to name, try to use it
+        # Otherwise, use the student name directly from the Excel file
+        student_name = student  # Default to the name from Excel
+        
+        # Try to find a mapping if the student appears to be an ID
+        if student in student_name_map:
+            student_name = student_name_map[student]
+        else:
+            # If no direct mapping and student looks like a name already, use it
+            # Also check if any mapping values match (reverse lookup)
+            for student_id, mapped_name in student_name_map.items():
+                if mapped_name.lower() == student.lower():
+                    student_name = mapped_name
+                    break
+        
         student_ws.cell(row=1, column=1, value=student_name).font = Font(bold=True, size=28)
         
         # Add time column header
@@ -673,6 +759,15 @@ def main():
     # Find all timetable files matching the expected pattern
     filename_pattern = re.compile(r"(cello|flute|harp)-(camp[ab])-time-table\.xlsx", re.IGNORECASE)
     timetable_files = [f for f in os.listdir(input_dir) if filename_pattern.match(f)]
+    
+    # Debug: Show all files in input directory
+    print(f"📁 All files in '{input_dir}':")
+    for f in os.listdir(input_dir):
+        print(f"   • {f}")
+        if filename_pattern.match(f):
+            print(f"     ✅ Matches pattern")
+        else:
+            print(f"     ❌ Does not match pattern")
 
     if not timetable_files:
         print(f"❌ No timetable files found in '{input_dir}'")
